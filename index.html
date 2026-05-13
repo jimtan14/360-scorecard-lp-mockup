@@ -127,20 +127,28 @@
 
   /* HEADER */
   .header {
-    background: var(--cream);
-    padding: 20px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: transparent;
+    padding: 24px 0;
     position: sticky;
     top: 0;
     z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
   }
 
   .logo {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
+    flex-shrink: 0;
   }
 
   .logo img {
@@ -149,10 +157,34 @@
     display: block;
   }
 
+  .header-nav {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    flex: 1;
+  }
+
+  .header-nav a {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--near-black);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .header-nav a:hover { opacity: 0.65; }
+
   .header-actions {
     display: flex;
     gap: 12px;
     align-items: center;
+    margin-left: auto;
+  }
+
+  @media (max-width: 800px) {
+    .header-nav { display: none; }
+    .header-inner { padding: 12px 12px 12px 24px; gap: 16px; }
   }
 
   /* HERO */
@@ -164,31 +196,48 @@
     overflow: hidden;
   }
 
-  .hero::before,
-  .hero::after {
-    content: "";
+  .hero-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(40px);
-    opacity: 0.7;
-    z-index: 0;
+    filter: blur(60px);
     pointer-events: none;
+    z-index: 0;
   }
 
-  .hero::before {
-    width: 420px;
-    height: 380px;
-    background: var(--accent-mint);
-    top: -120px;
-    right: -80px;
+  .hero-blob-1 {
+    width: 520px;
+    height: 460px;
+    background: radial-gradient(circle, #5FFF8A 0%, #5FFF8A 50%, transparent 75%);
+    top: -100px;
+    right: 4%;
+    opacity: 0.85;
   }
 
-  .hero::after {
-    width: 360px;
-    height: 320px;
-    background: var(--accent-pink);
-    bottom: -100px;
-    left: -60px;
+  .hero-blob-2 {
+    width: 480px;
+    height: 420px;
+    background: radial-gradient(circle, #80FFD0 0%, #80FFD0 50%, transparent 75%);
+    top: 30%;
+    right: 18%;
+    opacity: 0.7;
+  }
+
+  .hero-blob-3 {
+    width: 440px;
+    height: 400px;
+    background: radial-gradient(circle, #F5C8F0 0%, #F5C8F0 55%, transparent 80%);
+    bottom: -60px;
+    left: 2%;
+    opacity: 0.75;
+  }
+
+  .hero-blob-4 {
+    width: 380px;
+    height: 360px;
+    background: radial-gradient(circle, #B8F0E0 0%, #B8F0E0 50%, transparent 75%);
+    top: 20%;
+    left: 12%;
+    opacity: 0.65;
   }
 
   .hero > * {
@@ -483,8 +532,7 @@
   }
 
   .gated-metrics .metric-cell {
-    filter: blur(6px);
-    opacity: 0.55;
+    /* gating removed — all metrics shown */
   }
 
   .gate-overlay {
@@ -758,6 +806,46 @@
     text-align: right;
   }
 
+  /* YOUR row highlight */
+  .comp-row-you {
+    background: var(--interaction);
+    border-left: 4px solid var(--near-black);
+    padding-left: 28px;
+  }
+
+  .comp-row-you .comp-rank {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--near-black);
+    background: var(--near-black);
+    color: var(--interaction);
+    padding: 4px 8px;
+    border-radius: 999px;
+    text-align: center;
+    width: fit-content;
+  }
+
+  .comp-row-you .comp-name {
+    color: var(--near-black);
+    font-weight: 600;
+  }
+
+  .comp-row-you .comp-why {
+    color: var(--near-black);
+    font-weight: 600;
+  }
+
+  .comp-row-you .comp-share {
+    color: var(--near-black);
+    font-weight: 700;
+  }
+
+  .comp-row-you .comp-logo {
+    border-color: var(--near-black);
+  }
+
   /* PLAYBOOKS */
   .playbooks-section {
     max-width: 1200px;
@@ -872,22 +960,49 @@
 
   .footer-top {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding-bottom: 32px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 56px;
+    gap: 32px;
+    flex-wrap: wrap;
   }
 
-  .footer-wordmark {
-    font-family: 'Helvetica Neue', -apple-system, sans-serif;
-    font-size: clamp(180px, 28vw, 480px);
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    line-height: 0.85;
+  .footer-nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .footer-nav a {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
     color: #DDEEDD;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .footer-nav a:hover { opacity: 0.7; }
+
+  .footer-wordmark {
+    display: block;
+    width: 100%;
+    aspect-ratio: 784 / 252;
     margin: 0;
     user-select: none;
-    overflow: hidden;
-    white-space: nowrap;
+    background-color: #DDEEDD;
+    -webkit-mask-image: url('assets/airops-wordmark.svg');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url('assets/airops-wordmark.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+
+  @media (max-width: 800px) {
+    .footer-nav { display: none; }
   }
 
   .footer-links {
@@ -944,14 +1059,25 @@
 
 <!-- HEADER -->
 <header class="header">
-  <a href="#" class="logo"><img src="assets/airops-wordmark.svg" alt="AirOps"></a>
-  <div class="header-actions">
-    <a href="#cta" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Book a Demo &rarr;</a>
+  <div class="header-inner">
+    <a href="https://www.airops.com" class="logo"><img src="assets/airops-wordmark.svg" alt="AirOps"></a>
+    <nav class="header-nav">
+      <a href="https://www.airops.com/lp/brand-general#how-it-works">How it works</a>
+      <a href="https://www.airops.com/customers">Customer stories</a>
+      <a href="https://www.airops.com/pricing">Pricing</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#cta" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Book a Demo &rarr;</a>
+    </div>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="hero-blob hero-blob-4"></div>
   <span class="pill hero-pill">AEO Readiness Audit · Prepared for Hex.tech</span>
   <img class="hero-logo" src="assets/hex.png" alt="Hex.tech logo" onerror="this.style.display='none'">
   <h1 class="hero-account">hex.tech</h1>
@@ -1003,7 +1129,7 @@
 <section class="breakdown">
   <div class="section-header">
     <h2 class="section-title">Scoring breakdown</h2>
-    <span class="section-meta">Click a metric to highlight · vs. target 70</span>
+    <span class="section-meta">7 metrics · Click to highlight on the radar · vs. target 70</span>
   </div>
 
   <div class="combined-card">
@@ -1108,10 +1234,6 @@
       </div>
     </div>
 
-    <div class="unlock-strip">
-      <div class="gate-text">2 metrics gated</div>
-      <a href="#cta" class="btn btn-primary">Unlock full breakdown &rarr;</a>
-    </div>
   </div>
 </section>
 
@@ -1204,12 +1326,12 @@
       <span class="comp-why">The canonical open-source notebook with deep Wikipedia and entity coverage. Default AI fallback for "notebook" queries.</span>
       <span class="comp-share">9%</span>
     </div>
-    <div class="comp-row" style="background: var(--green-50);">
-      <span class="comp-rank" style="color: var(--green-500);">—</span>
+    <div class="comp-row comp-row-you">
+      <span class="comp-rank">YOU</span>
       <img class="comp-logo" src="assets/hex.png" alt="Hex logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name" style="color: var(--green-500);">hex.tech</span>
-      <span class="comp-why" style="color: var(--green-600); font-weight: 500;">Your current AI citation share</span>
-      <span class="comp-share" style="color: var(--green-500);">7%</span>
+      <span class="comp-name">hex.tech</span>
+      <span class="comp-why">Your current AI citation share</span>
+      <span class="comp-share">7%</span>
     </div>
   </div>
 </section>
@@ -1251,7 +1373,6 @@
 
 <!-- FINAL CTA -->
 <section class="final-cta" id="cta">
-  <span class="pill final-cta-pill">Your move</span>
   <h2>See exactly where you're losing AI search share, and how to win it back.</h2>
   <p>Our team breaks down your scorecard and maps the highest impact moves for the next 90 days.</p>
   <a href="#" class="btn btn-accent" style="font-size: 16px; padding: 18px 36px;">Book a strategy call &rarr;</a>
@@ -1260,9 +1381,14 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
+    <nav class="footer-nav">
+      <a href="https://www.airops.com/lp/brand-general#how-it-works">How it works</a>
+      <a href="https://www.airops.com/customers">Customer stories</a>
+      <a href="https://www.airops.com/pricing">Packages/pricing</a>
+    </nav>
     <a href="#cta" class="btn btn-primary">Book a Demo &rarr;</a>
   </div>
-  <h2 class="footer-wordmark">airops</h2>
+  <div class="footer-wordmark" role="img" aria-label="AirOps"></div>
   <div class="footer-links">
     <a href="#">Privacy Policy</a>
     <a href="#">Terms</a>
