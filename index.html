@@ -74,36 +74,40 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     padding: 14px 28px;
     border: none;
-    border-radius: 0;
+    border-radius: 999px;
     font-family: 'Helvetica Neue', sans-serif;
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
     transition: all 0.15s ease;
     text-decoration: none;
-  }
-
-  .btn-primary {
-    background: var(--near-black);
-    color: var(--white);
-  }
-
-  .btn-primary:hover { background: var(--green-600); }
-
-  .btn-accent {
     background: var(--interaction);
     color: var(--near-black);
+    box-shadow: 0 0 0 6px rgba(0, 255, 100, 0.18);
   }
 
-  .btn-accent:hover { background: var(--green-200); }
+  .btn:hover {
+    background: #4dff8a;
+    box-shadow: 0 0 0 8px rgba(0, 255, 100, 0.25);
+  }
 
+  .btn-primary,
+  .btn-accent,
   .btn-secondary {
-    background: transparent;
+    background: var(--interaction);
     color: var(--near-black);
-    border: 1px solid var(--near-black);
+    border: none;
+    box-shadow: 0 0 0 6px rgba(0, 255, 100, 0.18);
+  }
+
+  .btn-primary:hover,
+  .btn-accent:hover,
+  .btn-secondary:hover {
+    background: #4dff8a;
+    box-shadow: 0 0 0 8px rgba(0, 255, 100, 0.25);
   }
 
   /* HEADER */
@@ -244,6 +248,22 @@
     font-size: 24px;
     font-weight: 400;
     color: var(--white);
+  }
+
+  .competitor-logos {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .competitor-logos img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 5px;
   }
 
   .read-card {
@@ -578,12 +598,24 @@
 
   .comp-row {
     display: grid;
-    grid-template-columns: 60px 200px 1fr 100px;
+    grid-template-columns: 60px 40px 200px 1fr 100px;
     align-items: center;
     padding: 24px 32px;
     border-bottom: 1px solid var(--stroke-green);
-    gap: 24px;
+    gap: 20px;
   }
+
+  .comp-logo {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--stroke-green);
+    background: var(--white);
+    object-fit: contain;
+    padding: 4px;
+    display: block;
+  }
+
+  .comp-logo-spacer { width: 36px; height: 36px; }
 
   .comp-row:last-child { border-bottom: none; }
 
@@ -806,6 +838,13 @@
       <span>Top 5 competitors</span>
       <strong>89/100</strong>
     </div>
+    <div class="competitor-logos">
+      <img src="https://logo.clearbit.com/databricks.com" alt="Databricks" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://logo.clearbit.com/mode.com" alt="Mode" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://logo.clearbit.com/deepnote.com" alt="Deepnote" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://logo.clearbit.com/streamlit.io" alt="Streamlit" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://logo.clearbit.com/jupyter.org" alt="Jupyter" loading="lazy" onerror="this.style.display='none'">
+    </div>
   </div>
 
   <div class="read-card">
@@ -1008,42 +1047,49 @@
   <div class="comp-table">
     <div class="comp-row comp-header">
       <span class="comp-rank">#</span>
+      <span class="comp-logo-spacer"></span>
       <span class="comp-name">Competitor</span>
       <span class="comp-why">Why they're winning</span>
       <span class="comp-share">Cite share</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">01</span>
+      <img class="comp-logo" src="https://logo.clearbit.com/databricks.com" alt="Databricks logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">databricks.com</span>
       <span class="comp-why">Unified data and AI platform. Cross-shopped against Hex by buyers covering exploratory analytics use cases at enterprise scale.</span>
       <span class="comp-share">24%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">02</span>
+      <img class="comp-logo" src="https://logo.clearbit.com/mode.com" alt="Mode logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">mode.com</span>
       <span class="comp-why">SQL-and-Python analytics notebook with reporting. Owns the analyst workflow of querying warehouses and publishing reports.</span>
       <span class="comp-share">19%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">03</span>
+      <img class="comp-logo" src="https://logo.clearbit.com/deepnote.com" alt="Deepnote logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">deepnote.com</span>
       <span class="comp-why">Cross-shopped against Hex with a real-time collaboration angle. Ranks #1 for "hex vs deepnote."</span>
       <span class="comp-share">16%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">04</span>
+      <img class="comp-logo" src="https://logo.clearbit.com/streamlit.io" alt="Streamlit logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">streamlit.io</span>
       <span class="comp-why">Python data app framework. Buyers position it as a code-first alternative for building and sharing internal data apps.</span>
       <span class="comp-share">11%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">05</span>
+      <img class="comp-logo" src="https://logo.clearbit.com/jupyter.org" alt="Jupyter logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">jupyter.org</span>
       <span class="comp-why">The canonical open-source notebook with deep Wikipedia and entity coverage. Default AI fallback for "notebook" queries.</span>
       <span class="comp-share">9%</span>
     </div>
     <div class="comp-row" style="background: var(--green-50);">
       <span class="comp-rank" style="color: var(--green-500);">—</span>
+      <img class="comp-logo" src="https://logo.clearbit.com/hex.tech" alt="Hex logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name" style="color: var(--green-500);">hex.tech</span>
       <span class="comp-why" style="color: var(--green-600); font-weight: 500;">Your current AI citation share</span>
       <span class="comp-share" style="color: var(--green-500);">7%</span>
