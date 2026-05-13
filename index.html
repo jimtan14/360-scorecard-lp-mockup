@@ -630,6 +630,13 @@
     line-height: 1;
   }
 
+  .radar-stat-description {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-top: 8px;
+  }
+
   .radar-chart-wrap {
     display: flex;
     justify-content: center;
@@ -674,11 +681,11 @@
   .risk-tag {
     display: inline-flex;
     align-items: center;
-    padding: 4px 10px;
+    padding: 6px 14px;
     background: var(--risk-red);
     color: var(--white);
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1189,6 +1196,7 @@
         <div class="radar-stat">
           <div class="radar-stat-label" id="stat-1-label">Selected</div>
           <div class="radar-stat-value" id="stat-1-value">— None</div>
+          <div class="radar-stat-description" id="stat-1-description">Click any metric above to see what it measures.</div>
         </div>
         <div class="radar-stat">
           <div class="radar-stat-label" id="stat-2-label">Average</div>
@@ -1405,13 +1413,13 @@
     const TARGET = 70;
     const AVG = 64;
     const METRICS = {
-      freshness:    { label: 'Freshness',           score: 62, competitorAvg: 90 },
-      crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 88 },
-      entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 67 },
-      schema:       { label: 'Schema Coverage',     score: 90, competitorAvg: 91 },
-      citation:     { label: 'Citation Worthiness', score: 62, competitorAvg: 69 },
-      answer:       { label: 'Answerable Format',   score: 66, competitorAvg: 86 },
-      offsite:      { label: 'Offsite Readiness',   score: 48, competitorAvg: 55 },
+      freshness:    { label: 'Freshness',           score: 62, competitorAvg: 90, description: 'How recently your content has been updated. Older content gets cited less by AI engines.' },
+      crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 88, description: 'How easily AI bots can access, parse, and index your pages and structured data.' },
+      entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 67, description: 'Whether AI systems recognize your brand as a distinct, authoritative entity in the topic.' },
+      schema:       { label: 'Schema Coverage',     score: 90, competitorAvg: 91, description: 'Use of structured data markup that helps AI systems understand your page content.' },
+      citation:     { label: 'Citation Worthiness', score: 62, competitorAvg: 69, description: 'How quotable your content is — original data, clear claims, and answer-first structure.' },
+      answer:       { label: 'Answerable Format',   score: 66, competitorAvg: 86, description: 'Whether content is structured as direct Q&A blocks that AI engines extract for answers.' },
+      offsite:      { label: 'Offsite Readiness',   score: 48, competitorAvg: 55, description: 'Third-party mentions and citations on Wikipedia, Reddit, and authoritative listicles.' },
     };
 
     const cells = document.querySelectorAll('.metric-cell[data-metric]');
@@ -1421,6 +1429,7 @@
 
     const stat1Label = document.getElementById('stat-1-label');
     const stat1Value = document.getElementById('stat-1-value');
+    const stat1Description = document.getElementById('stat-1-description');
     const stat2Label = document.getElementById('stat-2-label');
     const stat2Value = document.getElementById('stat-2-value');
     const stat3Label = document.getElementById('stat-3-label');
@@ -1442,6 +1451,7 @@
       document.querySelectorAll('[data-metric="' + key + '"]').forEach(el => el.classList.add('active'));
       stat1Label.textContent = 'Selected';
       stat1Value.textContent = m.label;
+      stat1Description.textContent = m.description;
       stat2Label.textContent = 'Score';
       stat2Value.textContent = m.score;
       stat3Label.textContent = 'Top 5 Competitor Avg ' + m.label;
@@ -1454,6 +1464,7 @@
       stat1Label.textContent = 'Selected';
       stat1Value.textContent = '— None';
       stat1Value.style.color = '';
+      stat1Description.textContent = 'Click any metric above to see what it measures.';
       stat2Label.textContent = 'Average';
       stat2Value.textContent = AVG;
       stat3Label.textContent = 'Top 5 Competitor Avg Score';
