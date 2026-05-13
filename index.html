@@ -1106,7 +1106,7 @@
     </div>
     <div class="score-divider"></div>
     <div class="competitor-line">
-      <span>Top 5 competitors</span>
+      <span>Top 5 competitors in the market</span>
       <strong>89/100</strong>
     </div>
     <div class="competitor-logos">
@@ -1289,7 +1289,7 @@
 <!-- COMPETITORS -->
 <section class="competitors-section">
   <div class="section-header">
-    <h2 class="section-title">Top 5 competitors</h2>
+    <h2 class="section-title">Top 5 competitors in the market</h2>
     <span class="section-meta">Who AI search recommends instead of you</span>
   </div>
 
@@ -1405,13 +1405,13 @@
     const TARGET = 70;
     const AVG = 64;
     const METRICS = {
-      freshness:    { label: 'Freshness',           score: 62 },
-      crawlability: { label: 'Crawlability',        score: 78 },
-      entity:       { label: 'Entity Signals',      score: 42 },
-      schema:       { label: 'Schema Coverage',     score: 90 },
-      citation:     { label: 'Citation Worthiness', score: 62 },
-      answer:       { label: 'Answerable Format',   score: 66 },
-      offsite:      { label: 'Offsite Readiness',   score: 48 },
+      freshness:    { label: 'Freshness',           score: 62, competitorAvg: 85 },
+      crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 92 },
+      entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 88 },
+      schema:       { label: 'Schema Coverage',     score: 90, competitorAvg: 91 },
+      citation:     { label: 'Citation Worthiness', score: 62, competitorAvg: 87 },
+      answer:       { label: 'Answerable Format',   score: 66, competitorAvg: 89 },
+      offsite:      { label: 'Offsite Readiness',   score: 48, competitorAvg: 90 },
     };
 
     const cells = document.querySelectorAll('.metric-cell[data-metric]');
@@ -1433,7 +1433,7 @@
       svgAxes.forEach(a => a.classList.remove('active'));
     }
 
-    const COMPETITOR_AVG = 89;
+    const COMPETITOR_AVG_OVERALL = 89;
 
     function select(key) {
       clearActive();
@@ -1444,8 +1444,8 @@
       stat1Value.textContent = m.label;
       stat2Label.textContent = 'Score';
       stat2Value.textContent = m.score;
-      stat3Label.textContent = 'Top 5 Competitor Avg Score';
-      stat3Value.textContent = COMPETITOR_AVG;
+      stat3Label.textContent = 'Top 5 Competitor Avg ' + m.label;
+      stat3Value.textContent = m.competitorAvg;
       stat3Value.style.color = '';
     }
 
@@ -1457,7 +1457,7 @@
       stat2Label.textContent = 'Average';
       stat2Value.textContent = AVG;
       stat3Label.textContent = 'Top 5 Competitor Avg Score';
-      stat3Value.textContent = COMPETITOR_AVG;
+      stat3Value.textContent = COMPETITOR_AVG_OVERALL;
       stat3Value.style.color = '';
     }
 
