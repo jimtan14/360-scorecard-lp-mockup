@@ -243,7 +243,7 @@
     opacity: 0.65;
   }
 
-  .hero > * {
+  .hero > *:not(.hero-blob) {
     position: relative;
     z-index: 1;
   }
@@ -877,7 +877,7 @@
 
   .playbook-label {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1349,21 +1349,21 @@
 
   <div class="playbooks-grid">
     <div class="playbook-card">
-      <span class="playbook-label">AirOps Playbook · Refresh</span>
+      <span class="playbook-label">Refresh Playbook</span>
       <h3 class="playbook-title">Refresh /blog/ and /templates/ with our Content Refresh playbook</h3>
       <p class="playbook-body">Our refresh playbook scans 200+ pages for entity signals, schema coverage, and citation worthiness. We rewrite headers, inject answer-first paragraphs, layer in FAQ schema, and route Hex's brand mention into every cited section. Expected lift in cite share: 2.4x in 90 days.</p>
       <span class="gate-pill">Locked · Book to unlock</span>
     </div>
 
     <div class="playbook-card">
-      <span class="playbook-label">AirOps Playbook · Creation</span>
+      <span class="playbook-label">Creation Playbook</span>
       <h3 class="playbook-title">Create on-brand category content with our Content Creation playbook</h3>
       <p class="playbook-body">Target the 14 unowned AEO category queries Hex is missing. We produce listicle-style pages built to win AI Overviews: structured comparison tables, original benchmark data, and Hex named in every answerable section. Distribution into Datanami, The New Stack, and InfoWorld included.</p>
       <span class="gate-pill">Locked · Book to unlock</span>
     </div>
 
     <div class="playbook-card">
-      <span class="playbook-label">AirOps Playbook · Offsite</span>
+      <span class="playbook-label">Offsite Playbook</span>
       <h3 class="playbook-title">Fix 3rd-party citations with our Offsite Playbook</h3>
       <p class="playbook-body">Commission the Wikipedia entry. Place Hex in the 7 listicles currently winning AI Overview for "best data notebook platform." Outreach to Splunk, ContentSquare, Zerve.ai, Julius.ai, Syracuse iSchool, and Quadratic with founder-quoted commentary. Highest-ROI move in the audit.</p>
       <span class="gate-pill">Locked · Book to unlock</span>
