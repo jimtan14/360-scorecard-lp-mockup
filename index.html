@@ -7,22 +7,27 @@
 <style>
   :root {
     --white: #ffffff;
-    --off-white: #F8FFFA;
-    --near-black: #000d05;
-    --green-50: #f8fffb;
-    --green-100: #dfeae3;
-    --green-200: #CCFFE0;
-    --green-500: #008c44;
-    --green-600: #002910;
+    --cream: #F4F0E5;
+    --cream-deep: #EBE6D8;
+    --off-white: #F4F0E5;
+    --near-black: #0A1A10;
+    --green-50: #EDEDE2;
+    --green-100: #DDE2D5;
+    --green-200: #C5EDD5;
+    --green-500: #0F6A3A;
+    --green-600: #0F2E1B;
     --green-700: #0a2e14;
-    --interaction: #00ff64;
-    --accent-label: #EEFF8C;
-    --text-primary: #09090b;
-    --text-secondary: #676c79;
-    --text-tertiary: #a5aab6;
-    --stroke-primary: #ecedef;
-    --stroke-green: #d4e8da;
-    --risk-red: #c2410c;
+    --interaction: #5FFF8A;
+    --interaction-deep: #00C75A;
+    --accent-mint: #C5EDD5;
+    --accent-pink: #F0D7F0;
+    --accent-label: #E8E2D0;
+    --text-primary: #0A1A10;
+    --text-secondary: #5A6157;
+    --text-tertiary: #9DA298;
+    --stroke-primary: #E0DBCD;
+    --stroke-green: #DDD8C8;
+    --risk-red: #B94524;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,16 +57,26 @@
   .pill {
     display: inline-flex;
     align-items: center;
-    padding: 4px 10px;
-    background: var(--accent-label);
+    padding: 6px 14px;
+    background: var(--white);
     border: 1px solid var(--stroke-green);
-    border-radius: 0;
+    border-radius: 999px;
     font-family: 'DM Mono', 'Courier New', monospace;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--near-black);
+  }
+
+  .pill::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-500);
+    margin-right: 8px;
   }
 
   .pill-dark {
@@ -112,9 +127,9 @@
 
   /* HEADER */
   .header {
-    background: var(--white);
+    background: var(--cream);
     border-bottom: 1px solid var(--stroke-green);
-    padding: 16px 48px;
+    padding: 20px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -124,20 +139,12 @@
   }
 
   .logo {
-    font-family: Georgia, serif;
-    font-size: 22px;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-family: 'Helvetica Neue', -apple-system, sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
     color: var(--near-black);
-  }
-
-  .header-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
+    text-decoration: none;
   }
 
   .header-actions {
@@ -146,26 +153,46 @@
     align-items: center;
   }
 
-  .icon-btn {
-    width: 38px;
-    height: 38px;
-    border: 1px solid var(--stroke-green);
-    background: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-
-  .icon-btn:hover { background: var(--green-200); }
-
   /* HERO */
   .hero {
-    padding: 80px 48px 64px;
-    background: var(--off-white);
+    padding: 96px 48px 80px;
+    background: var(--cream);
     text-align: center;
     border-bottom: 1px solid var(--stroke-green);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before,
+  .hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.7;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero::before {
+    width: 420px;
+    height: 380px;
+    background: var(--accent-mint);
+    top: -120px;
+    right: -80px;
+  }
+
+  .hero::after {
+    width: 360px;
+    height: 320px;
+    background: var(--accent-pink);
+    bottom: -100px;
+    left: -60px;
+  }
+
+  .hero > * {
+    position: relative;
+    z-index: 1;
   }
 
   .hero-pill {
@@ -186,17 +213,27 @@
 
   .hero-account {
     font-family: Georgia, serif;
-    font-size: 64px;
+    font-size: 72px;
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    color: var(--near-black);
+  }
+
+  .hero-account .accent {
+    color: var(--green-500);
+    font-style: italic;
   }
 
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 17px;
     color: var(--text-secondary);
     margin-bottom: 48px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
   }
 
   /* SCORE SECTION */
@@ -472,6 +509,20 @@
     padding: 6px 12px;
   }
 
+  .unlock-strip {
+    border-top: 1px solid var(--stroke-green);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    background: var(--green-50);
+  }
+
+  .unlock-strip .gate-text {
+    margin-bottom: 0;
+  }
+
   /* RADAR CHART */
   .radar-section {
     max-width: 1200px;
@@ -549,6 +600,15 @@
   }
 
   .risk-card:last-child { border-right: none; }
+
+  .risk-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin-bottom: -4px;
+  }
 
   .risk-tag {
     display: inline-flex;
@@ -802,15 +862,57 @@
   }
 
   .footer {
-    background: var(--near-black);
-    color: var(--text-tertiary);
-    padding: 32px 48px;
-    text-align: center;
+    background: #000;
+    color: #C5EDD5;
+    padding: 56px 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 32px;
+  }
+
+  .footer-wordmark {
+    font-family: 'Helvetica Neue', -apple-system, sans-serif;
+    font-size: clamp(180px, 28vw, 480px);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 0.85;
+    color: #DDEEDD;
+    margin: 0;
+    user-select: none;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 36px;
+    padding: 32px 0 40px;
+  }
+
+  .footer-links a {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--interaction);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .footer-links a:hover { opacity: 0.7; }
+
+  .footer .btn-primary {
+    background: var(--interaction);
+    color: var(--near-black);
+    box-shadow: 0 0 0 6px rgba(95, 255, 138, 0.15);
   }
 
   /* RADAR SVG styling */
@@ -841,25 +943,18 @@
 
 <!-- HEADER -->
 <header class="header">
-  <div class="logo">airops</div>
-  <div class="header-title">AEO Strategy Scorecard</div>
+  <a href="#" class="logo">airops</a>
   <div class="header-actions">
-    <button class="icon-btn" title="Share results">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-      </svg>
-    </button>
-    <a href="#cta" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Talk to us</a>
+    <a href="#cta" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Book a Demo &rarr;</a>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <span class="pill hero-pill">AEO Readiness Audit</span>
-  <img class="hero-logo" src="https://logo.clearbit.com/hex.tech" alt="Hex.tech logo" onerror="this.style.display='none'">
+  <span class="pill hero-pill">AEO Readiness Audit · Prepared for Hex.tech</span>
+  <img class="hero-logo" src="https://www.google.com/s2/favicons?domain=hex.tech&sz=128" alt="Hex.tech logo" onerror="this.style.display='none'">
   <h1 class="hero-account">hex.tech</h1>
-  <p class="hero-subtitle">Your AEO health on a 0&ndash;100 scale</p>
+  <p class="hero-subtitle">An assessment of how Hex.tech is positioned to win visibility, citations, and brand mentions across AI search engines.</p>
 </section>
 
 <!-- SCORE -->
@@ -875,11 +970,11 @@
       <strong>89/100</strong>
     </div>
     <div class="competitor-logos">
-      <img src="https://logo.clearbit.com/databricks.com" alt="Databricks" loading="lazy" onerror="this.style.display='none'">
-      <img src="https://logo.clearbit.com/mode.com" alt="Mode" loading="lazy" onerror="this.style.display='none'">
-      <img src="https://logo.clearbit.com/deepnote.com" alt="Deepnote" loading="lazy" onerror="this.style.display='none'">
-      <img src="https://logo.clearbit.com/streamlit.io" alt="Streamlit" loading="lazy" onerror="this.style.display='none'">
-      <img src="https://logo.clearbit.com/jupyter.org" alt="Jupyter" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://www.google.com/s2/favicons?domain=databricks.com&sz=128" alt="Databricks" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://www.google.com/s2/favicons?domain=mode.com&sz=128" alt="Mode" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://www.google.com/s2/favicons?domain=deepnote.com&sz=128" alt="Deepnote" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://www.google.com/s2/favicons?domain=streamlit.io&sz=128" alt="Streamlit" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://www.google.com/s2/favicons?domain=jupyter.org&sz=128" alt="Jupyter" loading="lazy" onerror="this.style.display='none'">
     </div>
   </div>
 
@@ -950,10 +1045,6 @@
         <div><span class="metric-score">48</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 48%"></div></div>
       </div>
-      <div class="gate-overlay">
-        <div class="gate-text">2 metrics gated</div>
-        <a href="#cta" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Unlock full breakdown</a>
-      </div>
     </div>
 
     <div class="radar-card">
@@ -1015,6 +1106,11 @@
         </svg>
       </div>
     </div>
+
+    <div class="unlock-strip">
+      <div class="gate-text">2 metrics gated</div>
+      <a href="#cta" class="btn btn-primary">Unlock full breakdown &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -1027,21 +1123,24 @@
 
   <div class="risks-grid">
     <div class="risk-card">
+      <span class="risk-number">[1]</span>
       <span class="risk-tag">Critical</span>
-      <h3 class="risk-title">Deepnote owns the "hex vs deepnote" search result. Hex's own comparison pages are broken (404).</h3>
-      <div class="risk-detail">Deepnote ranks <strong>#1 for "hex vs deepnote"</strong> and <strong>#4 for "hex competitors."</strong> Hex's matching pages don't load. (DataForSEO + SERP check)</div>
+      <h3 class="risk-title">Recapture the "hex vs deepnote" SERP and fix broken comparison pages.</h3>
+      <div class="risk-detail">Deepnote ranks <strong>#1 for "hex vs deepnote"</strong> and <strong>#4 for "hex competitors."</strong> Hex's matching comparison pages return 404. (Source: DataForSEO + SERP audit)</div>
     </div>
 
     <div class="risk-card">
+      <span class="risk-number">[2]</span>
       <span class="risk-tag high">High</span>
-      <h3 class="risk-title">Hex's blog and templates get cited by AI 60.9% of the time. The AI rarely names Hex in the answer.</h3>
-      <div class="risk-detail">Of <strong>231 citations</strong> tracked, /blog/ drove 94 and /templates/ drove 47. AI links to the pages but skips the brand name.</div>
+      <h3 class="risk-title">Convert AI citations into named brand mentions on blog and template pages.</h3>
+      <div class="risk-detail">Of <strong>231 tracked AI citations</strong>, /blog/ accounts for 94 and /templates/ for 47. AI engines link to the pages but rarely name Hex in the answer.</div>
     </div>
 
     <div class="risk-card">
+      <span class="risk-number">[3]</span>
       <span class="risk-tag high">High</span>
-      <h3 class="risk-title">When people ask AI about data tools, Hex doesn't get mentioned. Tableau, Databricks, and Snowflake do.</h3>
-      <div class="risk-detail">Hex ranks top 10 on Google for <strong>"data visualization tool"</strong> (2,900 searches/mo). AI Overviews name Tableau, Power BI, Flourish, and Datawrapper. Not Hex.</div>
+      <h3 class="risk-title">Win inclusion in AI Overviews for high-intent data tooling queries.</h3>
+      <div class="risk-detail">Hex ranks top 10 on Google for <strong>"data visualization tool"</strong> (2,900 monthly searches). AI Overviews currently surface Tableau, Power BI, Flourish, and Datawrapper—Hex is absent.</div>
     </div>
   </div>
 </section>
@@ -1071,42 +1170,42 @@
     </div>
     <div class="comp-row">
       <span class="comp-rank">01</span>
-      <img class="comp-logo" src="https://logo.clearbit.com/databricks.com" alt="Databricks logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img class="comp-logo" src="https://www.google.com/s2/favicons?domain=databricks.com&sz=128" alt="Databricks logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">databricks.com</span>
       <span class="comp-why">Unified data and AI platform. Cross-shopped against Hex by buyers covering exploratory analytics use cases at enterprise scale.</span>
       <span class="comp-share">24%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">02</span>
-      <img class="comp-logo" src="https://logo.clearbit.com/mode.com" alt="Mode logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img class="comp-logo" src="https://www.google.com/s2/favicons?domain=mode.com&sz=128" alt="Mode logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">mode.com</span>
       <span class="comp-why">SQL-and-Python analytics notebook with reporting. Owns the analyst workflow of querying warehouses and publishing reports.</span>
       <span class="comp-share">19%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">03</span>
-      <img class="comp-logo" src="https://logo.clearbit.com/deepnote.com" alt="Deepnote logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img class="comp-logo" src="https://www.google.com/s2/favicons?domain=deepnote.com&sz=128" alt="Deepnote logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">deepnote.com</span>
       <span class="comp-why">Cross-shopped against Hex with a real-time collaboration angle. Ranks #1 for "hex vs deepnote."</span>
       <span class="comp-share">16%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">04</span>
-      <img class="comp-logo" src="https://logo.clearbit.com/streamlit.io" alt="Streamlit logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img class="comp-logo" src="https://www.google.com/s2/favicons?domain=streamlit.io&sz=128" alt="Streamlit logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">streamlit.io</span>
       <span class="comp-why">Python data app framework. Buyers position it as a code-first alternative for building and sharing internal data apps.</span>
       <span class="comp-share">11%</span>
     </div>
     <div class="comp-row">
       <span class="comp-rank">05</span>
-      <img class="comp-logo" src="https://logo.clearbit.com/jupyter.org" alt="Jupyter logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img class="comp-logo" src="https://www.google.com/s2/favicons?domain=jupyter.org&sz=128" alt="Jupyter logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name">jupyter.org</span>
       <span class="comp-why">The canonical open-source notebook with deep Wikipedia and entity coverage. Default AI fallback for "notebook" queries.</span>
       <span class="comp-share">9%</span>
     </div>
     <div class="comp-row" style="background: var(--green-50);">
       <span class="comp-rank" style="color: var(--green-500);">—</span>
-      <img class="comp-logo" src="https://logo.clearbit.com/hex.tech" alt="Hex logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <img class="comp-logo" src="https://www.google.com/s2/favicons?domain=hex.tech&sz=128" alt="Hex logo" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="comp-name" style="color: var(--green-500);">hex.tech</span>
       <span class="comp-why" style="color: var(--green-600); font-weight: 500;">Your current AI citation share</span>
       <span class="comp-share" style="color: var(--green-500);">7%</span>
@@ -1159,7 +1258,15 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  AirOps · AEO Strategy Scorecard · Generated for hex.tech
+  <div class="footer-top">
+    <a href="#cta" class="btn btn-primary">Book a Demo &rarr;</a>
+  </div>
+  <h2 class="footer-wordmark">airops</h2>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
 </footer>
 
 <script>
