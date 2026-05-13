@@ -192,7 +192,7 @@
 
   /* HERO */
   .hero {
-    padding: 8px 48px 64px;
+    padding: 18px 48px 64px;
     background: var(--cream);
     text-align: center;
     position: relative;
@@ -779,7 +779,7 @@
   .comp-header .comp-why,
   .comp-header .comp-share {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -1195,8 +1195,8 @@
           <div class="radar-stat-value" id="stat-2-value">64</div>
         </div>
         <div class="radar-stat">
-          <div class="radar-stat-label" id="stat-3-label">Gap vs target</div>
-          <div class="radar-stat-value" id="stat-3-value">–6</div>
+          <div class="radar-stat-label" id="stat-3-label">Top 5 Competitor Avg Score</div>
+          <div class="radar-stat-value" id="stat-3-value">89</div>
         </div>
       </div>
       <div class="radar-chart-wrap">
@@ -1434,6 +1434,8 @@
       svgAxes.forEach(a => a.classList.remove('active'));
     }
 
+    const COMPETITOR_AVG = 89;
+
     function select(key) {
       clearActive();
       const m = METRICS[key];
@@ -1443,10 +1445,9 @@
       stat1Value.textContent = m.label;
       stat2Label.textContent = 'Score';
       stat2Value.textContent = m.score;
-      const gap = m.score - TARGET;
-      stat3Label.textContent = 'Gap vs target';
-      stat3Value.textContent = (gap >= 0 ? '+' : '') + gap;
-      stat3Value.style.color = gap >= 0 ? 'var(--green-500)' : 'var(--risk-red)';
+      stat3Label.textContent = 'Top 5 Competitor Avg Score';
+      stat3Value.textContent = COMPETITOR_AVG;
+      stat3Value.style.color = '';
     }
 
     function reset() {
@@ -1456,9 +1457,9 @@
       stat1Value.style.color = '';
       stat2Label.textContent = 'Average';
       stat2Value.textContent = AVG;
-      stat3Label.textContent = 'Gap vs target';
-      stat3Value.textContent = AVG - TARGET;
-      stat3Value.style.color = (AVG - TARGET) >= 0 ? 'var(--green-500)' : 'var(--risk-red)';
+      stat3Label.textContent = 'Top 5 Competitor Avg Score';
+      stat3Value.textContent = COMPETITOR_AVG;
+      stat3Value.style.color = '';
     }
 
     cells.forEach(cell => {
