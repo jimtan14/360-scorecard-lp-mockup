@@ -194,7 +194,7 @@
 
   /* HERO */
   .hero {
-    padding: 18px 48px 64px;
+    padding: 28px 48px 64px;
     background: var(--cream);
     text-align: center;
     position: relative;
@@ -465,7 +465,7 @@
 
   .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     gap: 0;
     background: var(--white);
     border-bottom: 1px solid var(--stroke-green);
@@ -663,11 +663,12 @@
 
   .risk-number {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 33px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
     color: var(--text-tertiary);
-    margin-bottom: -4px;
+    line-height: 1;
+    margin-bottom: 4px;
   }
 
   .risk-tag {
@@ -1171,9 +1172,6 @@
         <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
       </div>
-    </div>
-
-    <div class="gated-metrics">
       <div class="metric-cell" data-metric="answer" tabindex="0" role="button">
         <div class="metric-label">Answerable Format</div>
         <div><span class="metric-score">66</span><span class="metric-denom">/100</span></div>
@@ -1352,7 +1350,6 @@
 <section class="playbooks-section" id="playbooks">
   <div class="section-header">
     <h2 class="section-title">3 AirOps winning playbooks we'd run for you</h2>
-    <span class="section-meta">One play per pillar: Refresh · Creation · Offsite</span>
   </div>
 
   <div class="playbooks-grid">
@@ -1360,21 +1357,21 @@
       <span class="playbook-label">Refresh Playbook</span>
       <h3 class="playbook-title">Refresh /blog/ and /templates/ with our Content Refresh playbook</h3>
       <p class="playbook-body">Our refresh playbook scans 200+ pages for entity signals, schema coverage, and citation worthiness. We rewrite headers, inject answer-first paragraphs, layer in FAQ schema, and route Hex's brand mention into every cited section. Expected lift in cite share: 2.4x in 90 days.</p>
-      <span class="gate-pill">Locked · Book to unlock</span>
+      <span class="gate-pill">Talk to us to learn more</span>
     </div>
 
     <div class="playbook-card">
       <span class="playbook-label">Creation Playbook</span>
       <h3 class="playbook-title">Create on-brand category content with our Content Creation playbook</h3>
       <p class="playbook-body">Target the 14 unowned AEO category queries Hex is missing. We produce listicle-style pages built to win AI Overviews: structured comparison tables, original benchmark data, and Hex named in every answerable section. Distribution into Datanami, The New Stack, and InfoWorld included.</p>
-      <span class="gate-pill">Locked · Book to unlock</span>
+      <span class="gate-pill">Talk to us to learn more</span>
     </div>
 
     <div class="playbook-card">
       <span class="playbook-label">Offsite Playbook</span>
       <h3 class="playbook-title">Fix 3rd-party citations with our Offsite Playbook</h3>
       <p class="playbook-body">Commission the Wikipedia entry. Place Hex in the 7 listicles currently winning AI Overview for "best data notebook platform." Outreach to Splunk, ContentSquare, Zerve.ai, Julius.ai, Syracuse iSchool, and Quadratic with founder-quoted commentary. Highest-ROI move in the audit.</p>
-      <span class="gate-pill">Locked · Book to unlock</span>
+      <span class="gate-pill">Talk to us to learn more</span>
     </div>
   </div>
 
