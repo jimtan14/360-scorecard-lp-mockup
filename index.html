@@ -192,7 +192,7 @@
 
   /* HERO */
   .hero {
-    padding: 40px 48px 72px;
+    padding: 8px 48px 64px;
     background: var(--cream);
     text-align: center;
     position: relative;
@@ -249,7 +249,8 @@
   }
 
   .hero-pill {
-    margin-bottom: 32px;
+    margin-bottom: 20px;
+    margin-top: 12px;
   }
 
   .hero-logo {
@@ -773,11 +774,11 @@
   .comp-header .comp-why,
   .comp-header .comp-share {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-secondary);
+    color: var(--near-black);
   }
 
   .comp-rank {
@@ -993,7 +994,7 @@
     aspect-ratio: 784 / 252;
     margin: 0;
     user-select: none;
-    background-color: #DDEEDD;
+    background-color: #FFFFFF;
     -webkit-mask-image: url('assets/airops-wordmark.svg');
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
@@ -1065,9 +1066,9 @@
   <div class="header-inner">
     <a href="https://www.airops.com" class="logo"><img src="assets/airops-wordmark.svg" alt="AirOps"></a>
     <nav class="header-nav">
-      <a href="https://www.airops.com/lp/brand-general#how-it-works">How it works</a>
-      <a href="https://www.airops.com/customers">Customer stories</a>
-      <a href="https://www.airops.com/pricing">Pricing</a>
+      <a href="#score-breakdown">Score Breakdown</a>
+      <a href="#opportunities">Strategic Opportunities</a>
+      <a href="#playbooks">3 Winning Playbooks</a>
     </nav>
     <div class="header-actions">
       <a href="#cta" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Book a Demo &rarr;</a>
@@ -1129,7 +1130,7 @@
 </section>
 
 <!-- COMBINED METRICS + RADAR -->
-<section class="breakdown">
+<section class="breakdown" id="score-breakdown">
   <div class="section-header">
     <h2 class="section-title">Scoring breakdown</h2>
     <span class="section-meta">7 metrics · Click to highlight on the radar · vs. target 70</span>
@@ -1241,7 +1242,7 @@
 </section>
 
 <!-- STRATEGIC OPPORTUNITIES -->
-<section class="risks-section">
+<section class="risks-section" id="opportunities">
   <div class="section-header">
     <h2 class="section-title">Strategic opportunities for Hex.tech</h2>
     <span class="section-meta">Where you can win more AI visibility</span>
@@ -1340,7 +1341,7 @@
 </section>
 
 <!-- PLAYBOOKS -->
-<section class="playbooks-section">
+<section class="playbooks-section" id="playbooks">
   <div class="section-header">
     <h2 class="section-title">3 AirOps winning playbooks we'd run for you</h2>
     <span class="section-meta">One play per pillar: Refresh · Creation · Offsite</span>
@@ -1385,9 +1386,9 @@
 <footer class="footer">
   <div class="footer-top">
     <nav class="footer-nav">
-      <a href="https://www.airops.com/lp/brand-general#how-it-works">How it works</a>
-      <a href="https://www.airops.com/customers">Customer stories</a>
-      <a href="https://www.airops.com/pricing">Packages/pricing</a>
+      <a href="#score-breakdown">Score Breakdown</a>
+      <a href="#opportunities">Strategic Opportunities</a>
+      <a href="#playbooks">3 Winning Playbooks</a>
     </nav>
     <a href="#cta" class="btn btn-primary">Book a Demo &rarr;</a>
   </div>
