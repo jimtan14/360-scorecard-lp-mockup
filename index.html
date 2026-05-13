@@ -172,6 +172,18 @@
     margin-bottom: 32px;
   }
 
+  .hero-logo {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    background: var(--white);
+    border: 1px solid var(--stroke-green);
+    border-radius: 20px;
+    padding: 14px;
+    margin: 0 auto 24px;
+    display: block;
+  }
+
   .hero-account {
     font-family: Georgia, serif;
     font-size: 64px;
@@ -347,21 +359,43 @@
     color: var(--text-secondary);
   }
 
+  /* COMBINED MODULE */
+  .combined-card {
+    border: 1px solid var(--stroke-green);
+    background: var(--white);
+  }
+
   .metrics-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0;
-    border: 1px solid var(--stroke-green);
     background: var(--white);
+    border-bottom: 1px solid var(--stroke-green);
   }
 
   .metric-cell {
     padding: 28px 20px;
     border-right: 1px solid var(--stroke-green);
     position: relative;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
   }
 
   .metric-cell:last-child { border-right: none; }
+  .metric-cell:hover { background: var(--green-50); }
+
+  .metric-cell.active {
+    background: var(--green-50);
+    box-shadow: inset 0 -3px 0 var(--green-500);
+  }
+  .metric-cell.active .metric-score { color: var(--green-500); }
 
   .metric-label {
     font-family: 'DM Mono', monospace;
@@ -404,11 +438,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0;
-    margin-top: -1px;
-    border: 1px solid var(--stroke-green);
     background: var(--white);
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--stroke-green);
   }
 
   .gated-metrics .metric-cell {
@@ -448,7 +481,6 @@
 
   .radar-card {
     background: var(--white);
-    border: 1px solid var(--stroke-green);
     padding: 40px;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -783,11 +815,14 @@
 
   /* RADAR SVG styling */
   .radar-svg .grid-line { stroke: var(--stroke-green); stroke-width: 1; fill: none; }
-  .radar-svg .axis-line { stroke: var(--stroke-green); stroke-width: 1; }
+  .radar-svg .axis-line { stroke: var(--stroke-green); stroke-width: 1; transition: stroke 0.2s ease, stroke-width 0.2s ease; }
   .radar-svg .data-shape { fill: rgba(0, 140, 68, 0.18); stroke: var(--green-500); stroke-width: 2; }
   .radar-svg .target-shape { fill: none; stroke: var(--green-600); stroke-width: 1; stroke-dasharray: 4 4; }
-  .radar-svg .data-point { fill: var(--green-500); }
-  .radar-svg .axis-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--text-secondary); }
+  .radar-svg .data-point { fill: var(--green-500); transition: r 0.2s ease, fill 0.2s ease; }
+  .radar-svg .data-point.active { r: 8; fill: var(--interaction); stroke: var(--green-600); stroke-width: 2; }
+  .radar-svg .axis-line.active { stroke: var(--green-500); stroke-width: 2; }
+  .radar-svg .axis-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--text-secondary); transition: fill 0.2s ease, font-weight 0.2s ease; }
+  .radar-svg .axis-label.active { fill: var(--near-black); font-weight: 700; }
 
   @media (max-width: 900px) {
     .score-section, .radar-card { grid-template-columns: 1fr; }
@@ -822,6 +857,7 @@
 <!-- HERO -->
 <section class="hero">
   <span class="pill hero-pill">AEO Readiness Audit</span>
+  <img class="hero-logo" src="https://logo.clearbit.com/hex.tech" alt="Hex.tech logo" onerror="this.style.display='none'">
   <h1 class="hero-account">hex.tech</h1>
   <p class="hero-subtitle">Your AEO health on a 0&ndash;100 scale</p>
 </section>
@@ -867,145 +903,126 @@
   </div>
 </section>
 
-<!-- METRICS BREAKDOWN -->
+<!-- COMBINED METRICS + RADAR -->
 <section class="breakdown">
   <div class="section-header">
     <h2 class="section-title">Scoring breakdown</h2>
-    <span class="section-meta">7 metrics · 5 visible · 2 gated</span>
+    <span class="section-meta">Click a metric to highlight · vs. target 70</span>
   </div>
 
-  <div class="metrics-grid">
-    <div class="metric-cell">
-      <div class="metric-label">Freshness</div>
-      <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
-      <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
+  <div class="combined-card">
+    <div class="metrics-grid">
+      <div class="metric-cell" data-metric="freshness" tabindex="0" role="button">
+        <div class="metric-label">Freshness</div>
+        <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
+      </div>
+      <div class="metric-cell" data-metric="crawlability" tabindex="0" role="button">
+        <div class="metric-label">Crawlability</div>
+        <div><span class="metric-score">78</span><span class="metric-denom">/100</span></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 78%"></div></div>
+      </div>
+      <div class="metric-cell" data-metric="entity" tabindex="0" role="button">
+        <div class="metric-label">Entity Signals</div>
+        <div><span class="metric-score">42</span><span class="metric-denom">/100</span></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 42%; background: var(--risk-red);"></div></div>
+      </div>
+      <div class="metric-cell" data-metric="schema" tabindex="0" role="button">
+        <div class="metric-label">Schema Coverage</div>
+        <div><span class="metric-score">90</span><span class="metric-denom">/100</span></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 90%"></div></div>
+      </div>
+      <div class="metric-cell" data-metric="citation" tabindex="0" role="button">
+        <div class="metric-label">Citation Worthiness</div>
+        <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
+      </div>
     </div>
-    <div class="metric-cell">
-      <div class="metric-label">Crawlability</div>
-      <div><span class="metric-score">78</span><span class="metric-denom">/100</span></div>
-      <div class="metric-bar"><div class="metric-bar-fill" style="width: 78%"></div></div>
-    </div>
-    <div class="metric-cell">
-      <div class="metric-label">Entity Signals</div>
-      <div><span class="metric-score">42</span><span class="metric-denom">/100</span></div>
-      <div class="metric-bar"><div class="metric-bar-fill" style="width: 42%; background: var(--risk-red);"></div></div>
-    </div>
-    <div class="metric-cell">
-      <div class="metric-label">Schema Coverage</div>
-      <div><span class="metric-score">90</span><span class="metric-denom">/100</span></div>
-      <div class="metric-bar"><div class="metric-bar-fill" style="width: 90%"></div></div>
-    </div>
-    <div class="metric-cell">
-      <div class="metric-label">Citation Worthiness</div>
-      <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
-      <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
-    </div>
-  </div>
 
-  <div class="gated-metrics">
-    <div class="metric-cell">
-      <div class="metric-label">Answerable Format</div>
-      <div><span class="metric-score">66</span><span class="metric-denom">/100</span></div>
-      <div class="metric-bar"><div class="metric-bar-fill" style="width: 66%"></div></div>
+    <div class="gated-metrics">
+      <div class="metric-cell" data-metric="answer" tabindex="0" role="button">
+        <div class="metric-label">Answerable Format</div>
+        <div><span class="metric-score">66</span><span class="metric-denom">/100</span></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 66%"></div></div>
+      </div>
+      <div class="metric-cell" data-metric="offsite" tabindex="0" role="button">
+        <div class="metric-label">Offsite Readiness</div>
+        <div><span class="metric-score">48</span><span class="metric-denom">/100</span></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 48%"></div></div>
+      </div>
+      <div class="gate-overlay">
+        <div class="gate-text">2 metrics gated</div>
+        <a href="#cta" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Unlock full breakdown</a>
+      </div>
     </div>
-    <div class="metric-cell">
-      <div class="metric-label">Offsite Readiness</div>
-      <div><span class="metric-score">48</span><span class="metric-denom">/100</span></div>
-      <div class="metric-bar"><div class="metric-bar-fill" style="width: 48%"></div></div>
-    </div>
-    <div class="gate-overlay">
-      <div class="gate-text">2 metrics gated</div>
-      <a href="#cta" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Unlock full breakdown</a>
+
+    <div class="radar-card">
+      <div class="radar-stats">
+        <div class="radar-stat">
+          <div class="radar-stat-label" id="stat-1-label">Selected</div>
+          <div class="radar-stat-value" id="stat-1-value">— None</div>
+        </div>
+        <div class="radar-stat">
+          <div class="radar-stat-label" id="stat-2-label">Average</div>
+          <div class="radar-stat-value" id="stat-2-value">64</div>
+        </div>
+        <div class="radar-stat">
+          <div class="radar-stat-label" id="stat-3-label">Gap vs target</div>
+          <div class="radar-stat-value" id="stat-3-value">–6</div>
+        </div>
+      </div>
+      <div class="radar-chart-wrap">
+        <svg class="radar-svg" viewBox="0 0 440 440" width="100%" style="max-width: 440px;">
+          <!-- Grid -->
+          <polygon class="grid-line" points="220,80 341.24,150 341.24,290 220,360 98.76,290 98.76,150"/>
+          <polygon class="grid-line" points="220,108 317,164 317,276 220,332 123,276 123,164"/>
+          <polygon class="grid-line" points="220,136 292.74,178 292.74,262 220,304 147.26,262 147.26,178"/>
+          <polygon class="grid-line" points="220,164 268.49,192 268.49,248 220,276 171.51,248 171.51,192"/>
+          <polygon class="grid-line" points="220,192 244.25,206 244.25,234 220,248 195.75,234 195.75,206"/>
+
+          <!-- Axis lines -->
+          <line class="axis-line" data-metric="freshness" x1="220" y1="220" x2="220" y2="80"/>
+          <line class="axis-line" data-metric="crawlability" x1="220" y1="220" x2="356.74" y2="156.48"/>
+          <line class="axis-line" data-metric="entity" x1="220" y1="220" x2="356.34" y2="290.79"/>
+          <line class="axis-line" data-metric="schema" x1="220" y1="220" x2="280.36" y2="346.49"/>
+          <line class="axis-line" data-metric="answer" x1="220" y1="220" x2="159.64" y2="346.49"/>
+          <line class="axis-line" data-metric="offsite" x1="220" y1="220" x2="83.66" y2="290.79"/>
+          <line class="axis-line" data-metric="citation" x1="220" y1="220" x2="83.26" y2="156.48"/>
+
+          <!-- Target shape (70) -->
+          <polygon class="target-shape" points="220,122 315.69,175.54 315.41,225.56 262.25,309.54 177.75,309.54 124.59,225.56 124.31,175.54"/>
+
+          <!-- Data shape -->
+          <polygon class="data-shape" points="220,133.2 305.4,151.9 277.3,233.1 274.7,333.5 179.9,303.2 154.5,235 152.2,165.9"/>
+
+          <!-- Data points -->
+          <circle class="data-point" data-metric="freshness" cx="220" cy="133.2" r="4"/>
+          <circle class="data-point" data-metric="crawlability" cx="305.4" cy="151.9" r="4"/>
+          <circle class="data-point" data-metric="entity" cx="277.3" cy="233.1" r="4"/>
+          <circle class="data-point" data-metric="schema" cx="274.7" cy="333.5" r="4"/>
+          <circle class="data-point" data-metric="answer" cx="179.9" cy="303.2" r="4"/>
+          <circle class="data-point" data-metric="offsite" cx="154.5" cy="235" r="4"/>
+          <circle class="data-point" data-metric="citation" cx="152.2" cy="165.9" r="4"/>
+
+          <!-- Axis labels -->
+          <text class="axis-label" data-metric="freshness" x="220" y="68" text-anchor="middle">Freshness</text>
+          <text class="axis-label" data-metric="crawlability" x="375" y="150" text-anchor="middle">Crawlability</text>
+          <text class="axis-label" data-metric="entity" x="378" y="298" text-anchor="middle">Entity</text>
+          <text class="axis-label" data-metric="schema" x="290" y="365" text-anchor="middle">Schema</text>
+          <text class="axis-label" data-metric="answer" x="150" y="365" text-anchor="middle">Answer Format</text>
+          <text class="axis-label" data-metric="offsite" x="58" y="298" text-anchor="middle">Offsite</text>
+          <text class="axis-label" data-metric="citation" x="60" y="150" text-anchor="middle">Citation</text>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RADAR / SHAPE -->
-<section class="radar-section">
-  <div class="section-header">
-    <h2 class="section-title">Your AEO shape</h2>
-    <span class="section-meta">vs. target benchmark (70)</span>
-  </div>
-
-  <div class="radar-card">
-    <div class="radar-stats">
-      <div class="radar-stat">
-        <div class="radar-stat-label">Average</div>
-        <div class="radar-stat-value">64</div>
-      </div>
-      <div class="radar-stat">
-        <div class="radar-stat-label">Strongest</div>
-        <div class="radar-stat-value">Schema</div>
-      </div>
-      <div class="radar-stat">
-        <div class="radar-stat-label">Weakest</div>
-        <div class="radar-stat-value" style="color: var(--risk-red);">Entity</div>
-      </div>
-    </div>
-    <div class="radar-chart-wrap">
-      <svg class="radar-svg" viewBox="0 0 440 440" width="100%" style="max-width: 440px;">
-        <!-- center: 220,220 -->
-        <!-- Grid circles (rings at 20%, 40%, 60%, 80%, 100%) -->
-        <polygon class="grid-line" points="220,80 341.24,150 341.24,290 220,360 98.76,290 98.76,150"/>
-        <polygon class="grid-line" points="220,108 317,164 317,276 220,332 123,276 123,164"/>
-        <polygon class="grid-line" points="220,136 292.74,178 292.74,262 220,304 147.26,262 147.26,178"/>
-        <polygon class="grid-line" points="220,164 268.49,192 268.49,248 220,276 171.51,248 171.51,192"/>
-        <polygon class="grid-line" points="220,192 244.25,206 244.25,234 220,248 195.75,234 195.75,206"/>
-
-        <!-- Axis lines from center to 7 points (heptagon for 7 metrics) -->
-        <!-- Angles: -90, -90+51.43, etc -->
-        <line class="axis-line" x1="220" y1="220" x2="220" y2="80"/>
-        <line class="axis-line" x1="220" y1="220" x2="356.74" y2="156.48"/>
-        <line class="axis-line" x1="220" y1="220" x2="356.34" y2="290.79"/>
-        <line class="axis-line" x1="220" y1="220" x2="280.36" y2="346.49"/>
-        <line class="axis-line" x1="220" y1="220" x2="159.64" y2="346.49"/>
-        <line class="axis-line" x1="220" y1="220" x2="83.66" y2="290.79"/>
-        <line class="axis-line" x1="220" y1="220" x2="83.26" y2="156.48"/>
-
-        <!-- Target shape (70 = 70% of radius 140 = 98) -->
-        <!-- 7 points at radius 98 -->
-        <polygon class="target-shape" points="220,122 315.69,175.54 315.41,225.56 262.25,309.54 177.75,309.54 124.59,225.56 124.31,175.54"/>
-
-        <!-- Data shape: Fresh 62, Crawl 78, Entity 42, Schema 90, Answer 66, Offsite 48, Cite 62 -->
-        <!-- Radius = score/100 * 140 -->
-        <!-- Fresh (top): 62 → r=86.8 → (220, 220-86.8=133.2) -->
-        <!-- Crawl (top-right): 78 → r=109.2 → (220+109.2*cos(-38.57°), 220+109.2*sin(-38.57°))
-             cos(-38.57)=0.7818, sin=-0.6235 → (305.4, 151.9) -->
-        <!-- Entity (right-low): 42 → r=58.8 → angle 12.86° → cos=0.9749, sin=0.2225 → (220+57.3, 220+13.1)=(277.3, 233.1) -->
-        <!-- Schema (bottom-right): 90 → r=126 → angle 64.29° → cos=0.4339, sin=0.9009 → (220+54.7, 220+113.5)=(274.7, 333.5) -->
-        <!-- Answer (bottom-left): 66 → r=92.4 → angle 115.71° (i.e. 180-64.29) → cos=-0.4339, sin=0.9009 → (220-40.1, 220+83.2)=(179.9, 303.2) -->
-        <!-- Offsite (left-low): 48 → r=67.2 → angle 167.14° → cos=-0.9749, sin=0.2225 → (220-65.5, 220+15)=(154.5, 235) -->
-        <!-- Cite (top-left): 62 → r=86.8 → angle -141.43° (218.57° equiv) → cos=-0.7818, sin=-0.6235 → (220-67.8, 220-54.1)=(152.2, 165.9) -->
-
-        <polygon class="data-shape" points="220,133.2 305.4,151.9 277.3,233.1 274.7,333.5 179.9,303.2 154.5,235 152.2,165.9"/>
-
-        <!-- Data points -->
-        <circle class="data-point" cx="220" cy="133.2" r="4"/>
-        <circle class="data-point" cx="305.4" cy="151.9" r="4"/>
-        <circle class="data-point" cx="277.3" cy="233.1" r="4"/>
-        <circle class="data-point" cx="274.7" cy="333.5" r="4"/>
-        <circle class="data-point" cx="179.9" cy="303.2" r="4"/>
-        <circle class="data-point" cx="154.5" cy="235" r="4"/>
-        <circle class="data-point" cx="152.2" cy="165.9" r="4"/>
-
-        <!-- Axis labels -->
-        <text class="axis-label" x="220" y="68" text-anchor="middle">Freshness</text>
-        <text class="axis-label" x="375" y="150" text-anchor="middle">Crawlability</text>
-        <text class="axis-label" x="378" y="298" text-anchor="middle">Entity</text>
-        <text class="axis-label" x="290" y="365" text-anchor="middle">Schema</text>
-        <text class="axis-label" x="150" y="365" text-anchor="middle">Answer Format</text>
-        <text class="axis-label" x="58" y="298" text-anchor="middle">Offsite</text>
-        <text class="axis-label" x="60" y="150" text-anchor="middle">Citation</text>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- STRATEGIC RISKS -->
+<!-- STRATEGIC OPPORTUNITIES -->
 <section class="risks-section">
   <div class="section-header">
-    <h2 class="section-title">Strategic risks</h2>
-    <span class="section-meta">What's quietly costing you AI visibility</span>
+    <h2 class="section-title">Strategic opportunities for Hex.tech</h2>
+    <span class="section-meta">Where you can win more AI visibility</span>
   </div>
 
   <div class="risks-grid">
@@ -1144,6 +1161,96 @@
 <footer class="footer">
   AirOps · AEO Strategy Scorecard · Generated for hex.tech
 </footer>
+
+<script>
+  (function () {
+    const TARGET = 70;
+    const AVG = 64;
+    const METRICS = {
+      freshness:    { label: 'Freshness',           score: 62 },
+      crawlability: { label: 'Crawlability',        score: 78 },
+      entity:       { label: 'Entity Signals',      score: 42 },
+      schema:       { label: 'Schema Coverage',     score: 90 },
+      citation:     { label: 'Citation Worthiness', score: 62 },
+      answer:       { label: 'Answerable Format',   score: 66 },
+      offsite:      { label: 'Offsite Readiness',   score: 48 },
+    };
+
+    const cells = document.querySelectorAll('.metric-cell[data-metric]');
+    const svgPoints = document.querySelectorAll('.radar-svg .data-point[data-metric]');
+    const svgLabels = document.querySelectorAll('.radar-svg .axis-label[data-metric]');
+    const svgAxes = document.querySelectorAll('.radar-svg .axis-line[data-metric]');
+
+    const stat1Label = document.getElementById('stat-1-label');
+    const stat1Value = document.getElementById('stat-1-value');
+    const stat2Label = document.getElementById('stat-2-label');
+    const stat2Value = document.getElementById('stat-2-value');
+    const stat3Label = document.getElementById('stat-3-label');
+    const stat3Value = document.getElementById('stat-3-value');
+
+    function clearActive() {
+      cells.forEach(c => c.classList.remove('active'));
+      svgPoints.forEach(p => p.classList.remove('active'));
+      svgLabels.forEach(l => l.classList.remove('active'));
+      svgAxes.forEach(a => a.classList.remove('active'));
+    }
+
+    function select(key) {
+      clearActive();
+      const m = METRICS[key];
+      if (!m) return;
+      document.querySelectorAll('[data-metric="' + key + '"]').forEach(el => el.classList.add('active'));
+      stat1Label.textContent = 'Selected';
+      stat1Value.textContent = m.label;
+      stat2Label.textContent = 'Score';
+      stat2Value.textContent = m.score;
+      const gap = m.score - TARGET;
+      stat3Label.textContent = 'Gap vs target';
+      stat3Value.textContent = (gap >= 0 ? '+' : '') + gap;
+      stat3Value.style.color = gap >= 0 ? 'var(--green-500)' : 'var(--risk-red)';
+    }
+
+    function reset() {
+      clearActive();
+      stat1Label.textContent = 'Selected';
+      stat1Value.textContent = '— None';
+      stat1Value.style.color = '';
+      stat2Label.textContent = 'Average';
+      stat2Value.textContent = AVG;
+      stat3Label.textContent = 'Gap vs target';
+      stat3Value.textContent = AVG - TARGET;
+      stat3Value.style.color = (AVG - TARGET) >= 0 ? 'var(--green-500)' : 'var(--risk-red)';
+    }
+
+    cells.forEach(cell => {
+      cell.addEventListener('click', () => {
+        const key = cell.getAttribute('data-metric');
+        if (cell.classList.contains('active')) {
+          reset();
+        } else {
+          select(key);
+        }
+      });
+      cell.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          cell.click();
+        }
+      });
+    });
+
+    svgPoints.forEach(p => {
+      p.style.cursor = 'pointer';
+      p.addEventListener('click', () => select(p.getAttribute('data-metric')));
+    });
+    svgLabels.forEach(l => {
+      l.style.cursor = 'pointer';
+      l.addEventListener('click', () => select(l.getAttribute('data-metric')));
+    });
+
+    reset();
+  })();
+</script>
 
 </body>
 </html>
