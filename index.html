@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEO Strategy Scorecard — Hex.tech | AirOps</title>
+<style>
+  :root {
+    --white: #ffffff;
+    --off-white: #F8FFFA;
+    --near-black: #000d05;
+    --green-50: #f8fffb;
+    --green-100: #dfeae3;
+    --green-200: #CCFFE0;
+    --green-500: #008c44;
+    --green-600: #002910;
+    --green-700: #0a2e14;
+    --interaction: #00ff64;
+    --accent-label: #EEFF8C;
+    --text-primary: #09090b;
+    --text-secondary: #676c79;
+    --text-tertiary: #a5aab6;
+    --stroke-primary: #ecedef;
+    --stroke-green: #d4e8da;
+    --risk-red: #c2410c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    background: var(--off-white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .mono {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: var(--accent-label);
+    border: 1px solid var(--stroke-green);
+    border-radius: 0;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--near-black);
+  }
+
+  .pill-dark {
+    background: var(--green-600);
+    color: var(--white);
+    border-color: var(--green-600);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--near-black);
+    color: var(--white);
+  }
+
+  .btn-primary:hover { background: var(--green-600); }
+
+  .btn-accent {
+    background: var(--interaction);
+    color: var(--near-black);
+  }
+
+  .btn-accent:hover { background: var(--green-200); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--near-black);
+    border: 1px solid var(--near-black);
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--white);
+    border-bottom: 1px solid var(--stroke-green);
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--near-black);
+  }
+
+  .header-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--stroke-green);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .icon-btn:hover { background: var(--green-200); }
+
+  /* HERO */
+  .hero {
+    padding: 80px 48px 64px;
+    background: var(--off-white);
+    text-align: center;
+    border-bottom: 1px solid var(--stroke-green);
+  }
+
+  .hero-pill {
+    margin-bottom: 32px;
+  }
+
+  .hero-account {
+    font-family: Georgia, serif;
+    font-size: 64px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+  }
+
+  /* SCORE SECTION */
+  .score-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .score-card {
+    background: var(--green-600);
+    color: var(--white);
+    padding: 48px 40px;
+    border: 1px solid var(--green-600);
+  }
+
+  .score-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--interaction);
+    margin-bottom: 24px;
+  }
+
+  .score-number {
+    font-family: Georgia, serif;
+    font-size: 144px;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .score-denom {
+    font-size: 32px;
+    color: var(--text-tertiary);
+  }
+
+  .score-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+    margin: 28px 0;
+  }
+
+  .competitor-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .competitor-line strong {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .read-card {
+    background: var(--white);
+    border: 1px solid var(--stroke-green);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .read-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .read-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+    flex: 1;
+  }
+
+  .read-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--stroke-green);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-primary);
+    display: flex;
+    gap: 12px;
+  }
+
+  .read-list li:last-child { border-bottom: none; }
+
+  .read-list .bullet {
+    color: var(--green-500);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .read-list strong {
+    font-weight: 600;
+    color: var(--near-black);
+  }
+
+  /* SCORING BREAKDOWN */
+  .breakdown {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--stroke-green);
+    padding-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .section-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border: 1px solid var(--stroke-green);
+    background: var(--white);
+  }
+
+  .metric-cell {
+    padding: 28px 20px;
+    border-right: 1px solid var(--stroke-green);
+    position: relative;
+  }
+
+  .metric-cell:last-child { border-right: none; }
+
+  .metric-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    min-height: 26px;
+  }
+
+  .metric-score {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--near-black);
+  }
+
+  .metric-denom {
+    font-size: 16px;
+    color: var(--text-tertiary);
+  }
+
+  .metric-bar {
+    height: 4px;
+    background: var(--green-100);
+    margin-top: 16px;
+    position: relative;
+  }
+
+  .metric-bar-fill {
+    height: 100%;
+    background: var(--green-500);
+  }
+
+  .gated-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin-top: -1px;
+    border: 1px solid var(--stroke-green);
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gated-metrics .metric-cell {
+    filter: blur(6px);
+    opacity: 0.55;
+  }
+
+  .gate-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(248,255,250,0) 0%, rgba(248,255,250,0.95) 60%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 24px;
+  }
+
+  .gate-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 12px;
+    background: var(--accent-label);
+    padding: 6px 12px;
+  }
+
+  /* RADAR CHART */
+  .radar-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+  }
+
+  .radar-card {
+    background: var(--white);
+    border: 1px solid var(--stroke-green);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .radar-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .radar-stat {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--stroke-green);
+  }
+
+  .radar-stat:last-child { border-bottom: none; }
+
+  .radar-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+
+  .radar-stat-value {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .radar-chart-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* STRATEGIC RISKS */
+  .risks-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+  }
+
+  .risks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--stroke-green);
+    background: var(--white);
+  }
+
+  .risk-card {
+    padding: 32px;
+    border-right: 1px solid var(--stroke-green);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .risk-card:last-child { border-right: none; }
+
+  .risk-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: var(--risk-red);
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .risk-tag.high {
+    background: var(--near-black);
+  }
+
+  .risk-title {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--near-black);
+  }
+
+  .risk-detail {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding-top: 16px;
+    border-top: 1px solid var(--stroke-green);
+  }
+
+  .risk-detail strong {
+    color: var(--near-black);
+    font-weight: 600;
+  }
+
+  /* MID CTA */
+  .mid-cta {
+    max-width: 1200px;
+    margin: 0 auto 64px;
+    padding: 0 48px;
+  }
+
+  .mid-cta-inner {
+    background: var(--green-600);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .mid-cta-text {
+    color: var(--white);
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    flex: 1;
+  }
+
+  /* COMPETITORS */
+  .competitors-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+  }
+
+  .comp-table {
+    background: var(--white);
+    border: 1px solid var(--stroke-green);
+  }
+
+  .comp-row {
+    display: grid;
+    grid-template-columns: 60px 200px 1fr 100px;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--stroke-green);
+    gap: 24px;
+  }
+
+  .comp-row:last-child { border-bottom: none; }
+
+  .comp-header {
+    background: var(--green-50);
+    border-bottom: 1px solid var(--stroke-green);
+  }
+
+  .comp-header .comp-name,
+  .comp-header .comp-rank,
+  .comp-header .comp-why,
+  .comp-header .comp-share {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .comp-rank {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text-tertiary);
+  }
+
+  .comp-name {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--near-black);
+  }
+
+  .comp-why {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .comp-share {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--green-500);
+    text-align: right;
+  }
+
+  /* PLAYBOOKS */
+  .playbooks-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+  }
+
+  .playbooks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .playbook-card {
+    background: var(--white);
+    border: 1px solid var(--stroke-green);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 280px;
+    position: relative;
+  }
+
+  .playbook-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-500);
+  }
+
+  .playbook-title {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--near-black);
+  }
+
+  .playbook-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex: 1;
+    filter: blur(5px);
+    opacity: 0.7;
+    user-select: none;
+  }
+
+  .playbook-card .gate-pill {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    background: var(--accent-label);
+    padding: 6px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--near-black);
+  }
+
+  .playbooks-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--green-600);
+    padding: 96px 48px;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .final-cta-pill {
+    background: var(--interaction);
+    color: var(--near-black);
+    margin-bottom: 32px;
+  }
+
+  .final-cta h2 {
+    font-family: Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    max-width: 900px;
+    margin: 0 auto 24px;
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.55;
+  }
+
+  .footer {
+    background: var(--near-black);
+    color: var(--text-tertiary);
+    padding: 32px 48px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* RADAR SVG styling */
+  .radar-svg .grid-line { stroke: var(--stroke-green); stroke-width: 1; fill: none; }
+  .radar-svg .axis-line { stroke: var(--stroke-green); stroke-width: 1; }
+  .radar-svg .data-shape { fill: rgba(0, 140, 68, 0.18); stroke: var(--green-500); stroke-width: 2; }
+  .radar-svg .target-shape { fill: none; stroke: var(--green-600); stroke-width: 1; stroke-dasharray: 4 4; }
+  .radar-svg .data-point { fill: var(--green-500); }
+  .radar-svg .axis-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--text-secondary); }
+
+  @media (max-width: 900px) {
+    .score-section, .radar-card { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .gated-metrics { grid-template-columns: 1fr; }
+    .risks-grid, .playbooks-grid { grid-template-columns: 1fr; }
+    .risk-card, .playbook-card { border-right: none; border-bottom: 1px solid var(--stroke-green); }
+    .hero-account { font-size: 44px; }
+    .score-number { font-size: 96px; }
+    .final-cta h2 { font-size: 36px; }
+    .mid-cta-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">airops</div>
+  <div class="header-title">AEO Strategy Scorecard</div>
+  <div class="header-actions">
+    <button class="icon-btn" title="Share results">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+    </button>
+    <a href="#cta" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Talk to us</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="pill hero-pill">AEO Readiness Audit</span>
+  <h1 class="hero-account">hex.tech</h1>
+  <p class="hero-subtitle">Your AEO health on a 0&ndash;100 scale</p>
+</section>
+
+<!-- SCORE -->
+<section class="score-section">
+  <div class="score-card">
+    <div class="score-label">Your AEO Readiness Score</div>
+    <div>
+      <span class="score-number">64</span><span class="score-denom">/100</span>
+    </div>
+    <div class="score-divider"></div>
+    <div class="competitor-line">
+      <span>Top 5 competitors</span>
+      <strong>89/100</strong>
+    </div>
+  </div>
+
+  <div class="read-card">
+    <div class="read-label">The Read</div>
+    <ul class="read-list">
+      <li>
+        <span class="bullet">01</span>
+        <span>Ask ChatGPT <strong>"best collaborative SQL and Python notebook for data teams"</strong> (Hex's exact category positioning) and Hex isn't cited. Deepnote, Google Colab, JupyterLab, and Zepl (a deprecated tool) win that answer instead.</span>
+      </li>
+      <li>
+        <span class="bullet">02</span>
+        <span>Hex's blog and templates earn <strong>60.9% of tracked AI citations</strong>, but the answer text rarely names Hex. AI links to the page and skips the brand.</span>
+      </li>
+      <li>
+        <span class="bullet">03</span>
+        <span>For <strong>"data visualization tool"</strong> (2,900 searches/mo), AI Overviews surface Tableau, Power BI, Flourish, and Datawrapper. Not Hex.</span>
+      </li>
+    </ul>
+    <a href="#cta" class="btn btn-accent">Book a strategy call &rarr;</a>
+  </div>
+</section>
+
+<!-- METRICS BREAKDOWN -->
+<section class="breakdown">
+  <div class="section-header">
+    <h2 class="section-title">Scoring breakdown</h2>
+    <span class="section-meta">7 metrics · 5 visible · 2 gated</span>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-cell">
+      <div class="metric-label">Freshness</div>
+      <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
+      <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">Crawlability</div>
+      <div><span class="metric-score">78</span><span class="metric-denom">/100</span></div>
+      <div class="metric-bar"><div class="metric-bar-fill" style="width: 78%"></div></div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">Entity Signals</div>
+      <div><span class="metric-score">42</span><span class="metric-denom">/100</span></div>
+      <div class="metric-bar"><div class="metric-bar-fill" style="width: 42%; background: var(--risk-red);"></div></div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">Schema Coverage</div>
+      <div><span class="metric-score">90</span><span class="metric-denom">/100</span></div>
+      <div class="metric-bar"><div class="metric-bar-fill" style="width: 90%"></div></div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">Citation Worthiness</div>
+      <div><span class="metric-score">62</span><span class="metric-denom">/100</span></div>
+      <div class="metric-bar"><div class="metric-bar-fill" style="width: 62%"></div></div>
+    </div>
+  </div>
+
+  <div class="gated-metrics">
+    <div class="metric-cell">
+      <div class="metric-label">Answerable Format</div>
+      <div><span class="metric-score">66</span><span class="metric-denom">/100</span></div>
+      <div class="metric-bar"><div class="metric-bar-fill" style="width: 66%"></div></div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">Offsite Readiness</div>
+      <div><span class="metric-score">48</span><span class="metric-denom">/100</span></div>
+      <div class="metric-bar"><div class="metric-bar-fill" style="width: 48%"></div></div>
+    </div>
+    <div class="gate-overlay">
+      <div class="gate-text">2 metrics gated</div>
+      <a href="#cta" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Unlock full breakdown</a>
+    </div>
+  </div>
+</section>
+
+<!-- RADAR / SHAPE -->
+<section class="radar-section">
+  <div class="section-header">
+    <h2 class="section-title">Your AEO shape</h2>
+    <span class="section-meta">vs. target benchmark (70)</span>
+  </div>
+
+  <div class="radar-card">
+    <div class="radar-stats">
+      <div class="radar-stat">
+        <div class="radar-stat-label">Average</div>
+        <div class="radar-stat-value">64</div>
+      </div>
+      <div class="radar-stat">
+        <div class="radar-stat-label">Strongest</div>
+        <div class="radar-stat-value">Schema</div>
+      </div>
+      <div class="radar-stat">
+        <div class="radar-stat-label">Weakest</div>
+        <div class="radar-stat-value" style="color: var(--risk-red);">Entity</div>
+      </div>
+    </div>
+    <div class="radar-chart-wrap">
+      <svg class="radar-svg" viewBox="0 0 440 440" width="100%" style="max-width: 440px;">
+        <!-- center: 220,220 -->
+        <!-- Grid circles (rings at 20%, 40%, 60%, 80%, 100%) -->
+        <polygon class="grid-line" points="220,80 341.24,150 341.24,290 220,360 98.76,290 98.76,150"/>
+        <polygon class="grid-line" points="220,108 317,164 317,276 220,332 123,276 123,164"/>
+        <polygon class="grid-line" points="220,136 292.74,178 292.74,262 220,304 147.26,262 147.26,178"/>
+        <polygon class="grid-line" points="220,164 268.49,192 268.49,248 220,276 171.51,248 171.51,192"/>
+        <polygon class="grid-line" points="220,192 244.25,206 244.25,234 220,248 195.75,234 195.75,206"/>
+
+        <!-- Axis lines from center to 7 points (heptagon for 7 metrics) -->
+        <!-- Angles: -90, -90+51.43, etc -->
+        <line class="axis-line" x1="220" y1="220" x2="220" y2="80"/>
+        <line class="axis-line" x1="220" y1="220" x2="356.74" y2="156.48"/>
+        <line class="axis-line" x1="220" y1="220" x2="356.34" y2="290.79"/>
+        <line class="axis-line" x1="220" y1="220" x2="280.36" y2="346.49"/>
+        <line class="axis-line" x1="220" y1="220" x2="159.64" y2="346.49"/>
+        <line class="axis-line" x1="220" y1="220" x2="83.66" y2="290.79"/>
+        <line class="axis-line" x1="220" y1="220" x2="83.26" y2="156.48"/>
+
+        <!-- Target shape (70 = 70% of radius 140 = 98) -->
+        <!-- 7 points at radius 98 -->
+        <polygon class="target-shape" points="220,122 315.69,175.54 315.41,225.56 262.25,309.54 177.75,309.54 124.59,225.56 124.31,175.54"/>
+
+        <!-- Data shape: Fresh 62, Crawl 78, Entity 42, Schema 90, Answer 66, Offsite 48, Cite 62 -->
+        <!-- Radius = score/100 * 140 -->
+        <!-- Fresh (top): 62 → r=86.8 → (220, 220-86.8=133.2) -->
+        <!-- Crawl (top-right): 78 → r=109.2 → (220+109.2*cos(-38.57°), 220+109.2*sin(-38.57°))
+             cos(-38.57)=0.7818, sin=-0.6235 → (305.4, 151.9) -->
+        <!-- Entity (right-low): 42 → r=58.8 → angle 12.86° → cos=0.9749, sin=0.2225 → (220+57.3, 220+13.1)=(277.3, 233.1) -->
+        <!-- Schema (bottom-right): 90 → r=126 → angle 64.29° → cos=0.4339, sin=0.9009 → (220+54.7, 220+113.5)=(274.7, 333.5) -->
+        <!-- Answer (bottom-left): 66 → r=92.4 → angle 115.71° (i.e. 180-64.29) → cos=-0.4339, sin=0.9009 → (220-40.1, 220+83.2)=(179.9, 303.2) -->
+        <!-- Offsite (left-low): 48 → r=67.2 → angle 167.14° → cos=-0.9749, sin=0.2225 → (220-65.5, 220+15)=(154.5, 235) -->
+        <!-- Cite (top-left): 62 → r=86.8 → angle -141.43° (218.57° equiv) → cos=-0.7818, sin=-0.6235 → (220-67.8, 220-54.1)=(152.2, 165.9) -->
+
+        <polygon class="data-shape" points="220,133.2 305.4,151.9 277.3,233.1 274.7,333.5 179.9,303.2 154.5,235 152.2,165.9"/>
+
+        <!-- Data points -->
+        <circle class="data-point" cx="220" cy="133.2" r="4"/>
+        <circle class="data-point" cx="305.4" cy="151.9" r="4"/>
+        <circle class="data-point" cx="277.3" cy="233.1" r="4"/>
+        <circle class="data-point" cx="274.7" cy="333.5" r="4"/>
+        <circle class="data-point" cx="179.9" cy="303.2" r="4"/>
+        <circle class="data-point" cx="154.5" cy="235" r="4"/>
+        <circle class="data-point" cx="152.2" cy="165.9" r="4"/>
+
+        <!-- Axis labels -->
+        <text class="axis-label" x="220" y="68" text-anchor="middle">Freshness</text>
+        <text class="axis-label" x="375" y="150" text-anchor="middle">Crawlability</text>
+        <text class="axis-label" x="378" y="298" text-anchor="middle">Entity</text>
+        <text class="axis-label" x="290" y="365" text-anchor="middle">Schema</text>
+        <text class="axis-label" x="150" y="365" text-anchor="middle">Answer Format</text>
+        <text class="axis-label" x="58" y="298" text-anchor="middle">Offsite</text>
+        <text class="axis-label" x="60" y="150" text-anchor="middle">Citation</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC RISKS -->
+<section class="risks-section">
+  <div class="section-header">
+    <h2 class="section-title">Strategic risks</h2>
+    <span class="section-meta">What's quietly costing you AI visibility</span>
+  </div>
+
+  <div class="risks-grid">
+    <div class="risk-card">
+      <span class="risk-tag">Critical</span>
+      <h3 class="risk-title">Deepnote owns the "hex vs deepnote" search result. Hex's own comparison pages are broken (404).</h3>
+      <div class="risk-detail">Deepnote ranks <strong>#1 for "hex vs deepnote"</strong> and <strong>#4 for "hex competitors."</strong> Hex's matching pages don't load. (DataForSEO + SERP check)</div>
+    </div>
+
+    <div class="risk-card">
+      <span class="risk-tag high">High</span>
+      <h3 class="risk-title">Hex's blog and templates get cited by AI 60.9% of the time. The AI rarely names Hex in the answer.</h3>
+      <div class="risk-detail">Of <strong>231 citations</strong> tracked, /blog/ drove 94 and /templates/ drove 47. AI links to the pages but skips the brand name.</div>
+    </div>
+
+    <div class="risk-card">
+      <span class="risk-tag high">High</span>
+      <h3 class="risk-title">When people ask AI about data tools, Hex doesn't get mentioned. Tableau, Databricks, and Snowflake do.</h3>
+      <div class="risk-detail">Hex ranks top 10 on Google for <strong>"data visualization tool"</strong> (2,900 searches/mo). AI Overviews name Tableau, Power BI, Flourish, and Datawrapper. Not Hex.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CTA -->
+<section class="mid-cta">
+  <div class="mid-cta-inner">
+    <div class="mid-cta-text">Walk through your scorecard with our team. We'll build the action plan together, not a sales demo.</div>
+    <a href="#cta" class="btn btn-accent">Book a strategy call &rarr;</a>
+  </div>
+</section>
+
+<!-- COMPETITORS -->
+<section class="competitors-section">
+  <div class="section-header">
+    <h2 class="section-title">Top 5 competitors</h2>
+    <span class="section-meta">Who AI search recommends instead of you</span>
+  </div>
+
+  <div class="comp-table">
+    <div class="comp-row comp-header">
+      <span class="comp-rank">#</span>
+      <span class="comp-name">Competitor</span>
+      <span class="comp-why">Why they're winning</span>
+      <span class="comp-share">Cite share</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">01</span>
+      <span class="comp-name">databricks.com</span>
+      <span class="comp-why">Unified data and AI platform. Cross-shopped against Hex by buyers covering exploratory analytics use cases at enterprise scale.</span>
+      <span class="comp-share">24%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">02</span>
+      <span class="comp-name">mode.com</span>
+      <span class="comp-why">SQL-and-Python analytics notebook with reporting. Owns the analyst workflow of querying warehouses and publishing reports.</span>
+      <span class="comp-share">19%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">03</span>
+      <span class="comp-name">deepnote.com</span>
+      <span class="comp-why">Cross-shopped against Hex with a real-time collaboration angle. Ranks #1 for "hex vs deepnote."</span>
+      <span class="comp-share">16%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">04</span>
+      <span class="comp-name">streamlit.io</span>
+      <span class="comp-why">Python data app framework. Buyers position it as a code-first alternative for building and sharing internal data apps.</span>
+      <span class="comp-share">11%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">05</span>
+      <span class="comp-name">jupyter.org</span>
+      <span class="comp-why">The canonical open-source notebook with deep Wikipedia and entity coverage. Default AI fallback for "notebook" queries.</span>
+      <span class="comp-share">9%</span>
+    </div>
+    <div class="comp-row" style="background: var(--green-50);">
+      <span class="comp-rank" style="color: var(--green-500);">—</span>
+      <span class="comp-name" style="color: var(--green-500);">hex.tech</span>
+      <span class="comp-why" style="color: var(--green-600); font-weight: 500;">Your current AI citation share</span>
+      <span class="comp-share" style="color: var(--green-500);">7%</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYBOOKS -->
+<section class="playbooks-section">
+  <div class="section-header">
+    <h2 class="section-title">3 AirOps winning playbooks we'd run for you</h2>
+    <span class="section-meta">One play per pillar: Refresh · Creation · Offsite</span>
+  </div>
+
+  <div class="playbooks-grid">
+    <div class="playbook-card">
+      <span class="playbook-label">AirOps Playbook · Refresh</span>
+      <h3 class="playbook-title">Refresh /blog/ and /templates/ with our Content Refresh playbook</h3>
+      <p class="playbook-body">Our refresh playbook scans 200+ pages for entity signals, schema coverage, and citation worthiness. We rewrite headers, inject answer-first paragraphs, layer in FAQ schema, and route Hex's brand mention into every cited section. Expected lift in cite share: 2.4x in 90 days.</p>
+      <span class="gate-pill">Locked · Book to unlock</span>
+    </div>
+
+    <div class="playbook-card">
+      <span class="playbook-label">AirOps Playbook · Creation</span>
+      <h3 class="playbook-title">Create on-brand category content with our Content Creation playbook</h3>
+      <p class="playbook-body">Target the 14 unowned AEO category queries Hex is missing. We produce listicle-style pages built to win AI Overviews: structured comparison tables, original benchmark data, and Hex named in every answerable section. Distribution into Datanami, The New Stack, and InfoWorld included.</p>
+      <span class="gate-pill">Locked · Book to unlock</span>
+    </div>
+
+    <div class="playbook-card">
+      <span class="playbook-label">AirOps Playbook · Offsite</span>
+      <h3 class="playbook-title">Fix 3rd-party citations with our Offsite Playbook</h3>
+      <p class="playbook-body">Commission the Wikipedia entry. Place Hex in the 7 listicles currently winning AI Overview for "best data notebook platform." Outreach to Splunk, ContentSquare, Zerve.ai, Julius.ai, Syracuse iSchool, and Quadratic with founder-quoted commentary. Highest-ROI move in the audit.</p>
+      <span class="gate-pill">Locked · Book to unlock</span>
+    </div>
+  </div>
+
+  <div class="playbooks-cta">
+    <a href="#cta" class="btn btn-primary">Book a strategy call &rarr;</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cta">
+  <span class="pill final-cta-pill">Your move</span>
+  <h2>See exactly where you're losing AI search share, and how to win it back.</h2>
+  <p>Our team breaks down your scorecard and maps the highest impact moves for the next 90 days.</p>
+  <a href="#" class="btn btn-accent" style="font-size: 16px; padding: 18px 36px;">Book a strategy call &rarr;</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  AirOps · AEO Strategy Scorecard · Generated for hex.tech
+</footer>
+
+</body>
+</html>
