@@ -298,14 +298,6 @@
     margin-top: 12px;
   }
 
-  .hero-title {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-
   .hero-logo {
     width: 72px;
     height: 72px;
@@ -314,19 +306,19 @@
     border: 1px solid var(--stroke-green);
     border-radius: 16px;
     padding: 10px;
-    margin: 0;
+    margin: 0 auto 20px;
     display: block;
-    flex-shrink: 0;
   }
 
   .hero-account {
     font-family: Georgia, serif;
-    font-size: 72px;
+    font-size: 48px;
     font-weight: 400;
-    letter-spacing: -0.025em;
-    line-height: 1;
-    margin: 0;
+    letter-spacing: -0.022em;
+    line-height: 1.12;
+    margin: 0 auto;
     color: var(--near-black);
+    max-width: 960px;
   }
 
   .hero-account .accent {
@@ -349,6 +341,7 @@
   .risks-section,
   .mid-cta,
   .competitors-section,
+  .proof-section,
   .playbooks-section,
   .final-cta,
   .footer {
@@ -500,49 +493,85 @@
   .read-card {
     background: var(--white);
     border: 1px solid var(--stroke-green);
-    padding: 40px;
+    padding: 32px 32px 28px;
     display: flex;
     flex-direction: column;
   }
 
-  .read-label {
-    font-family: 'DM Mono', monospace;
+  .chart-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .chart-title {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--near-black);
+  }
+
+  .chart-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-200);
+    color: var(--near-black);
+    border-radius: 999px;
+    padding: 4px 10px 4px 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .chart-pill::before {
+    content: "3";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--green-600);
+    color: var(--interaction);
     font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .chart-subtitle {
+    font-size: 14px;
     color: var(--text-secondary);
     margin-bottom: 20px;
   }
 
-  .read-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 28px 0;
-    flex: 1;
+  .chart-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 16px;
   }
 
-  .read-list li {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--stroke-green);
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--text-primary);
-    display: flex;
-    gap: 12px;
-  }
+  .chart-svg .grid { stroke: #E4E4E2; stroke-width: 1; stroke-dasharray: 3 4; fill: none; }
+  .chart-svg .axis-text { font-family: 'Inter', sans-serif; font-size: 11px; fill: var(--text-tertiary); font-weight: 500; }
+  .chart-svg .line { stroke: var(--green-600); stroke-width: 2.2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-svg .area { fill: var(--green-600); opacity: 0.08; }
+  .chart-svg .dot { fill: var(--green-600); }
 
-  .read-list li:last-child { border-bottom: none; }
-
-  .read-list .bullet {
-    color: var(--green-500);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .read-list strong {
-    font-weight: 600;
+  .chart-warning {
+    background: #FFF4E0;
+    border-left: 3px solid var(--risk-red);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.4;
     color: var(--near-black);
+    font-weight: 500;
+  }
+
+  .chart-warning strong {
+    color: var(--risk-red);
+    font-weight: 700;
   }
 
   /* SCORING BREAKDOWN */
@@ -986,6 +1015,89 @@
     border-color: var(--near-black);
   }
 
+  /* PROOF / CASE STUDIES */
+  .proof-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .proof-card {
+    border-radius: 24px;
+    padding: 36px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    color: var(--near-black);
+  }
+
+  .proof-card-mint   { background: #B6F1D4; }
+  .proof-card-blue   { background: #D6EEEF; }
+  .proof-card-yellow { background: #ECF36C; }
+  .proof-card-pink   { background: #F7DDDD; }
+  .proof-card-green  { background: #7FF09E; }
+
+  .proof-metric {
+    font-family: Georgia, serif;
+    font-size: 88px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--near-black);
+    margin-bottom: 12px;
+  }
+
+  .proof-label {
+    font-size: 18px;
+    line-height: 1.35;
+    color: var(--near-black);
+    margin-bottom: auto;
+  }
+
+  .proof-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .proof-brand {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: -0.03em;
+    color: var(--near-black);
+  }
+
+  .proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    background: var(--white);
+    border-radius: 999px;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--near-black);
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .proof-link:hover { opacity: 0.7; }
+
+  @media (max-width: 900px) {
+    .proof-grid { grid-template-columns: 1fr; }
+  }
+
   /* PLAYBOOKS */
   .playbooks-section {
     max-width: 1200px;
@@ -1223,11 +1335,8 @@
   <div class="hero-blob hero-blob-3"></div>
   <div class="hero-blob hero-blob-4"></div>
   <div class="hero-content">
-    <div class="hero-title">
-      <img class="hero-logo" src="assets/hex.png" alt="Hex.tech logo" onerror="this.style.display='none'">
-      <h1 class="hero-account">hex.tech</h1>
-    </div>
-    <p class="hero-subtitle">You're 25 points behind the competition in AI search.<br>Here's where you're losing.</p>
+    <img class="hero-logo" src="assets/hex.png" alt="Hex.tech logo" onerror="this.style.display='none'">
+    <h1 class="hero-account">Hex is 25 points behind Databricks, Mode, and Deepnote in AI search. Here's the 90&#8209;day plan to close the gap.</h1>
   </div>
 </section>
 
@@ -1259,22 +1368,42 @@
   </div>
 
   <div class="read-card">
-    <div class="read-label">The Read</div>
-    <ul class="read-list">
-      <li>
-        <span class="bullet">01</span>
-        <span>Ask ChatGPT <strong>"best collaborative SQL and Python notebook for data teams"</strong> (Hex's exact category positioning) and Hex isn't cited. Deepnote, Google Colab, JupyterLab, and Zepl (a deprecated tool) win that answer instead.</span>
-      </li>
-      <li>
-        <span class="bullet">02</span>
-        <span>Hex's blog and templates earn <strong>60.9% of tracked AI citations</strong>, but the answer text rarely names Hex. AI links to the page and skips the brand.</span>
-      </li>
-      <li>
-        <span class="bullet">03</span>
-        <span>For <strong>"data visualization tool"</strong> (2,900 searches/mo), AI Overviews surface Tableau, Power BI, Flourish, and Datawrapper. Not Hex.</span>
-      </li>
-    </ul>
-    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent">Walk through my scorecard &rarr;</a>
+    <div class="chart-header">
+      <h3 class="chart-title">Citation Rate</h3>
+      <span class="chart-pill">Published Content</span>
+    </div>
+    <p class="chart-subtitle">How often Hex pages are cited in AI responses</p>
+
+    <svg class="chart-svg" viewBox="0 0 540 240" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Hex citation rate declining from 15.5% to 5.5% over April">
+      <!-- gridlines -->
+      <line class="grid" x1="40" y1="60" x2="524" y2="60"/>
+      <line class="grid" x1="40" y1="114" x2="524" y2="114"/>
+      <line class="grid" x1="40" y1="168" x2="524" y2="168"/>
+      <line class="grid" x1="40" y1="204" x2="524" y2="204"/>
+
+      <!-- y-axis labels -->
+      <text class="axis-text" x="32" y="64" text-anchor="end">20%</text>
+      <text class="axis-text" x="32" y="118" text-anchor="end">15%</text>
+      <text class="axis-text" x="32" y="172" text-anchor="end">10%</text>
+      <text class="axis-text" x="32" y="208" text-anchor="end">5%</text>
+
+      <!-- area fill under the line -->
+      <path class="area" d="M40,77 L77,93 L115,90 L152,101 L189,86 L227,107 L264,119 L301,123 L339,128 L376,137 L413,144 L451,150 L487,160 L524,167 L524,210 L40,210 Z"/>
+      <!-- line -->
+      <path class="line" d="M40,77 L77,93 L115,90 L152,101 L189,86 L227,107 L264,119 L301,123 L339,128 L376,137 L413,144 L451,150 L487,160 L524,167"/>
+
+      <!-- dots at start and end -->
+      <circle class="dot" cx="40" cy="77" r="3"/>
+      <circle class="dot" cx="524" cy="167" r="3"/>
+
+      <!-- x-axis labels -->
+      <text class="axis-text" x="40" y="228" text-anchor="start">April 01</text>
+      <text class="axis-text" x="524" y="228" text-anchor="end">Apr 30</text>
+    </svg>
+
+    <p class="chart-warning">At current trend, Hex will fall to <strong>4% cite share</strong> by Q4.</p>
+
+    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent">Get the 90 day plan &rarr;</a>
   </div>
 </section>
 
@@ -1423,7 +1552,7 @@
 <section class="mid-cta">
   <div class="mid-cta-inner">
     <div class="mid-cta-text">Walk through your scorecard with our team. We'll build the action plan together, not a sales demo.</div>
-    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent">Walk through my scorecard &rarr;</a>
+    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent">Get the 90 day plan &rarr;</a>
   </div>
 </section>
 
@@ -1487,6 +1616,40 @@
   </div>
 </section>
 
+<!-- PROOF / CASE STUDIES -->
+<section class="proof-section">
+  <div class="section-header">
+    <h2 class="section-title">Teams winning AI search with AirOps</h2>
+    <span class="section-meta">Customer results · last 12 months</span>
+  </div>
+  <div class="proof-grid">
+    <div class="proof-card proof-card-mint">
+      <div class="proof-metric">+500%</div>
+      <div class="proof-label">AI-attributed signups</div>
+      <div class="proof-footer">
+        <span class="proof-brand">Webflow</span>
+        <a href="https://www.airops.com/blog/webflow-case-study" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
+    </div>
+    <div class="proof-card proof-card-yellow">
+      <div class="proof-metric">7x</div>
+      <div class="proof-label">Increase in AI search citations</div>
+      <div class="proof-footer">
+        <span class="proof-brand">carta</span>
+        <a href="https://www.airops.com/customers" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
+    </div>
+    <div class="proof-card proof-card-blue">
+      <div class="proof-metric">3x</div>
+      <div class="proof-label">Increase in AI search citations</div>
+      <div class="proof-footer">
+        <span class="proof-brand">chime</span>
+        <a href="https://www.airops.com/customers" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PLAYBOOKS -->
 <section class="playbooks-section" id="playbooks">
   <div class="section-header">
@@ -1496,36 +1659,36 @@
   <div class="playbooks-grid">
     <div class="playbook-card">
       <span class="playbook-label">Refresh Playbook</span>
-      <h3 class="playbook-title">Refresh /blog/ and /templates/ with our Content Refresh playbook</h3>
+      <h3 class="playbook-title">Win the data viz tool category in AI Overviews</h3>
       <p class="playbook-body">Our refresh playbook scans 200+ pages for entity signals, schema coverage, and citation worthiness. We rewrite headers, inject answer-first paragraphs, layer in FAQ schema, and route Hex's brand mention into every cited section. Expected lift in cite share: 2.4x in 90 days.</p>
       <span class="gate-pill">Talk to us to learn more</span>
     </div>
 
     <div class="playbook-card">
       <span class="playbook-label">Creation Playbook</span>
-      <h3 class="playbook-title">Create on-brand category content with our Content Creation playbook</h3>
+      <h3 class="playbook-title">Reclaim the Deepnote comparison SERP</h3>
       <p class="playbook-body">Target the 14 unowned AEO category queries Hex is missing. We produce listicle-style pages built to win AI Overviews: structured comparison tables, original benchmark data, and Hex named in every answerable section. Distribution into Datanami, The New Stack, and InfoWorld included.</p>
       <span class="gate-pill">Talk to us to learn more</span>
     </div>
 
     <div class="playbook-card">
       <span class="playbook-label">Offsite Playbook</span>
-      <h3 class="playbook-title">Fix 3rd-party citations with our Offsite Playbook</h3>
+      <h3 class="playbook-title">Earn citations in the 231 AI answers you're missing from</h3>
       <p class="playbook-body">Commission the Wikipedia entry. Place Hex in the 7 listicles currently winning AI Overview for "best data notebook platform." Outreach to Splunk, ContentSquare, Zerve.ai, Julius.ai, Syracuse iSchool, and Quadratic with founder-quoted commentary. Highest-ROI move in the audit.</p>
       <span class="gate-pill">Talk to us to learn more</span>
     </div>
   </div>
 
   <div class="playbooks-cta">
-    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-primary">Walk through my scorecard &rarr;</a>
+    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-primary">Get the 90 day plan &rarr;</a>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="final-cta" id="cta">
-  <h2>Not a sales demo. A working session focused on your winning plan.</h2>
+  <h2>We built your 90 day AI search plan. Walk through it with us.</h2>
   <p>Our team breaks down your scorecard and maps the highest impact moves for the next 90 days.</p>
-  <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent" style="font-size: 16px; padding: 18px 36px;">Walk through my scorecard &rarr;</a>
+  <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent" style="font-size: 16px; padding: 18px 36px;">Get the 90 day plan &rarr;</a>
 </section>
 
 <!-- FOOTER -->
