@@ -43,6 +43,7 @@
     background: var(--cream);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   .serif {
@@ -187,6 +188,40 @@
     margin-left: auto;
   }
 
+  .btn-share {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--near-black);
+    border: 1px solid var(--stroke-primary);
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  .btn-share:hover {
+    background: var(--cream);
+    border-color: var(--near-black);
+    box-shadow: none;
+  }
+
+  .btn-share.copied {
+    background: var(--green-200);
+    border-color: var(--green-500);
+    color: var(--green-600);
+  }
+
+  .btn-share svg {
+    flex-shrink: 0;
+  }
+
   @media (max-width: 800px) {
     .header-nav { display: none; }
     .header-inner { padding: 12px 12px 12px 24px; gap: 16px; }
@@ -198,7 +233,6 @@
     background: var(--cream);
     text-align: center;
     position: relative;
-    overflow: hidden;
   }
 
   .hero-blob {
@@ -323,68 +357,81 @@
     margin-bottom: 24px;
   }
 
-  .score-compare {
-    display: flex;
-    align-items: flex-end;
-    gap: 18px;
+  .score-head {
+    margin-bottom: 36px;
   }
 
-  .score-side {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    line-height: 1;
-  }
-
-  .score-side-label {
+  .score-sublabel {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--interaction);
+    margin-top: 4px;
   }
 
-  .score-side-label-muted {
-    color: rgba(255,255,255,0.55);
-  }
-
-  .score-side-label sup {
-    font-size: 11px;
-    color: var(--interaction);
-    margin-left: 2px;
+  .score-compare {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 32px;
   }
 
   .score-number {
     font-family: Georgia, serif;
-    font-size: 120px;
+    font-size: 200px;
     font-weight: 400;
-    letter-spacing: -0.04em;
-    line-height: 1;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
     color: var(--interaction);
+    flex-shrink: 0;
   }
 
-  .score-denom {
-    font-size: 32px;
-    color: var(--text-tertiary);
+  .score-versus {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
-  .score-vs {
-    font-family: Georgia, serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: var(--text-tertiary);
-    letter-spacing: -0.02em;
-    padding-bottom: 12px;
+  .score-versus-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .score-versus-label sup {
+    font-size: 12px;
   }
 
   .score-competitor {
     font-family: Georgia, serif;
-    font-size: 88px;
+    font-size: 80px;
     font-weight: 400;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
     line-height: 1;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .score-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .score-footnote {
+    font-size: 13px;
     color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  .score-footnote sup {
+    margin-right: 2px;
   }
 
   .score-divider {
@@ -410,18 +457,17 @@
 
   .competitor-logos {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
   .competitor-logos img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
     background: var(--white);
     border-radius: 8px;
-    padding: 5px;
+    padding: 4px;
   }
 
   .read-card {
@@ -1134,6 +1180,10 @@
       <a href="#playbooks">Winning Playbooks</a>
     </nav>
     <div class="header-actions">
+      <button type="button" class="btn-share" id="share-btn" aria-label="Copy link to share">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span class="btn-share-label">Share</span>
+      </button>
       <a href="https://www.airops.com/book-a-call" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Book a Demo &rarr;</a>
     </div>
   </div>
@@ -1155,28 +1205,27 @@
 <!-- SCORE -->
 <section class="score-section">
   <div class="score-card">
-    <div class="score-label">Your AEO Readiness Score</div>
+    <div class="score-head">
+      <div class="score-label">Your AEO Readiness Score</div>
+      <div class="score-sublabel">Hex.tech</div>
+    </div>
     <div class="score-compare">
-      <div class="score-side">
-        <span class="score-side-label">Hex.tech</span>
-        <span class="score-number">64</span>
-      </div>
-      <span class="score-vs">vs.</span>
-      <div class="score-side">
-        <span class="score-side-label score-side-label-muted">Top 5 Avg<sup>*</sup></span>
+      <span class="score-number">64</span>
+      <div class="score-versus">
+        <span class="score-versus-label">vs. Top 5 Avg<sup>*</sup></span>
         <span class="score-competitor">89</span>
       </div>
     </div>
     <div class="score-divider"></div>
-    <div class="competitor-line">
-      <span><sup>*</sup> Top 5 competitors in the market</span>
-    </div>
-    <div class="competitor-logos">
-      <img src="assets/databricks.jpeg" alt="Databricks" loading="lazy" onerror="this.style.display='none'">
-      <img src="assets/mode.png" alt="Mode" loading="lazy" onerror="this.style.display='none'">
-      <img src="assets/deepnote.jpeg" alt="Deepnote" loading="lazy" onerror="this.style.display='none'">
-      <img src="assets/streamlit.png" alt="Streamlit" loading="lazy" onerror="this.style.display='none'">
-      <img src="assets/jupyter.svg" alt="Jupyter" loading="lazy" onerror="this.style.display='none'">
+    <div class="score-footer">
+      <span class="score-footnote"><sup>*</sup> Benchmarked against top 5 competitors</span>
+      <div class="competitor-logos">
+        <img src="assets/databricks.jpeg" alt="Databricks" loading="lazy" onerror="this.style.display='none'">
+        <img src="assets/mode.png" alt="Mode" loading="lazy" onerror="this.style.display='none'">
+        <img src="assets/deepnote.jpeg" alt="Deepnote" loading="lazy" onerror="this.style.display='none'">
+        <img src="assets/streamlit.png" alt="Streamlit" loading="lazy" onerror="this.style.display='none'">
+        <img src="assets/jupyter.svg" alt="Jupyter" loading="lazy" onerror="this.style.display='none'">
+      </div>
     </div>
   </div>
 
@@ -1554,6 +1603,37 @@
     });
 
     reset();
+  })();
+
+  (function () {
+    const shareBtn = document.getElementById('share-btn');
+    if (!shareBtn) return;
+    const label = shareBtn.querySelector('.btn-share-label');
+    const originalLabel = label.textContent;
+
+    async function copyLink() {
+      const url = window.location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch (err) {
+        const tmp = document.createElement('textarea');
+        tmp.value = url;
+        tmp.style.position = 'fixed';
+        tmp.style.opacity = '0';
+        document.body.appendChild(tmp);
+        tmp.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        document.body.removeChild(tmp);
+      }
+      shareBtn.classList.add('copied');
+      label.textContent = 'Link copied';
+      setTimeout(() => {
+        shareBtn.classList.remove('copied');
+        label.textContent = originalLabel;
+      }, 1800);
+    }
+
+    shareBtn.addEventListener('click', copyLink);
   })();
 </script>
 
