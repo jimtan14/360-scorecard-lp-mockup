@@ -323,13 +323,45 @@
     margin-bottom: 24px;
   }
 
+  .score-compare {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+  }
+
+  .score-side {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1;
+  }
+
+  .score-side-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--interaction);
+  }
+
+  .score-side-label-muted {
+    color: rgba(255,255,255,0.55);
+  }
+
+  .score-side-label sup {
+    font-size: 11px;
+    color: var(--interaction);
+    margin-left: 2px;
+  }
+
   .score-number {
     font-family: Georgia, serif;
-    font-size: 144px;
+    font-size: 120px;
     font-weight: 400;
     letter-spacing: -0.04em;
     line-height: 1;
-    color: var(--white);
+    color: var(--interaction);
   }
 
   .score-denom {
@@ -339,26 +371,20 @@
 
   .score-vs {
     font-family: Georgia, serif;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 400;
     color: var(--text-tertiary);
     letter-spacing: -0.02em;
+    padding-bottom: 12px;
   }
 
   .score-competitor {
     font-family: Georgia, serif;
-    font-size: 96px;
+    font-size: 88px;
     font-weight: 400;
     letter-spacing: -0.04em;
     line-height: 1;
     color: rgba(255,255,255,0.55);
-  }
-
-  .score-competitor sup {
-    font-size: 48px;
-    vertical-align: super;
-    line-height: 0;
-    color: var(--interaction);
   }
 
   .score-divider {
@@ -1130,8 +1156,16 @@
 <section class="score-section">
   <div class="score-card">
     <div class="score-label">Your AEO Readiness Score</div>
-    <div>
-      <span class="score-number">64</span><span class="score-vs"> vs. </span><span class="score-competitor">89<sup>*</sup></span>
+    <div class="score-compare">
+      <div class="score-side">
+        <span class="score-side-label">Hex.tech</span>
+        <span class="score-number">64</span>
+      </div>
+      <span class="score-vs">vs.</span>
+      <div class="score-side">
+        <span class="score-side-label score-side-label-muted">Top 5 Avg<sup>*</sup></span>
+        <span class="score-competitor">89</span>
+      </div>
     </div>
     <div class="score-divider"></div>
     <div class="competitor-line">
