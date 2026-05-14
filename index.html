@@ -238,7 +238,7 @@
   .hero-blob {
     position: absolute !important;
     border-radius: 50%;
-    filter: blur(60px);
+    filter: blur(110px);
     pointer-events: none;
     z-index: 0;
   }
@@ -249,39 +249,39 @@
   }
 
   .hero-blob-1 {
-    width: 520px;
-    height: 460px;
-    background: radial-gradient(circle, #5FFF8A 0%, #5FFF8A 50%, transparent 75%);
-    top: -100px;
-    right: 4%;
-    opacity: 0.85;
+    width: 640px;
+    height: 560px;
+    background: radial-gradient(circle, #5FFF8A 0%, #5FFF8A 45%, transparent 75%);
+    top: -160px;
+    right: -40px;
+    opacity: 0.55;
   }
 
   .hero-blob-2 {
-    width: 480px;
-    height: 420px;
-    background: radial-gradient(circle, #80FFD0 0%, #80FFD0 50%, transparent 75%);
-    top: 30%;
-    right: 18%;
-    opacity: 0.7;
+    width: 580px;
+    height: 520px;
+    background: radial-gradient(circle, #80FFD0 0%, #80FFD0 45%, transparent 75%);
+    top: 25%;
+    right: 16%;
+    opacity: 0.45;
   }
 
   .hero-blob-3 {
-    width: 440px;
-    height: 400px;
-    background: radial-gradient(circle, #F5C8F0 0%, #F5C8F0 55%, transparent 80%);
-    bottom: -60px;
-    left: 2%;
-    opacity: 0.75;
+    width: 560px;
+    height: 480px;
+    background: radial-gradient(circle, #F5C8F0 0%, #F5C8F0 50%, transparent 80%);
+    bottom: -120px;
+    left: -40px;
+    opacity: 0.5;
   }
 
   .hero-blob-4 {
-    width: 380px;
-    height: 360px;
-    background: radial-gradient(circle, #B8F0E0 0%, #B8F0E0 50%, transparent 75%);
-    top: 20%;
-    left: 12%;
-    opacity: 0.65;
+    width: 460px;
+    height: 420px;
+    background: radial-gradient(circle, #B8F0E0 0%, #B8F0E0 45%, transparent 75%);
+    top: 18%;
+    left: 8%;
+    opacity: 0.45;
   }
 
   .hero > *:not(.hero-blob) {
@@ -327,6 +327,20 @@
     margin: 0 auto 24px;
     max-width: 720px;
     line-height: 1.5;
+  }
+
+  /* Make every section after the hero sit above the decorative blobs */
+  .score-section,
+  .breakdown,
+  .radar-section,
+  .risks-section,
+  .mid-cta,
+  .competitors-section,
+  .playbooks-section,
+  .final-cta,
+  .footer {
+    position: relative;
+    z-index: 1;
   }
 
   /* SCORE SECTION */
