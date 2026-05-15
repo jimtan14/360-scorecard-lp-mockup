@@ -690,6 +690,7 @@
 
   /* Make every section after the hero sit above the decorative blobs */
   .stats,
+  .form-section,
   .score-section,
   .breakdown,
   .radar-section,
@@ -1551,6 +1552,88 @@
     border-color: var(--near-black);
   }
 
+  /* FORM SECTION */
+  .form-section {
+    background: var(--green-600);
+    padding: 80px 0;
+  }
+  .form-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .form-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--interaction);
+    margin-bottom: 14px;
+  }
+  .form-title {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .form-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+  .scorecard-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .scorecard-form input,
+  .scorecard-form select {
+    height: 60px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--near-black);
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+            appearance: none;
+  }
+  .scorecard-form select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A1A10' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 18px 18px;
+    padding-right: 48px;
+  }
+  .scorecard-form input::placeholder {
+    color: rgba(10, 26, 16, 0.55);
+  }
+  .scorecard-form input:focus,
+  .scorecard-form select:focus {
+    outline: 2px solid var(--interaction);
+    outline-offset: 2px;
+  }
+  .scorecard-form-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .scorecard-form-note {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+  }
+
   /* PROOF / CASE STUDIES */
   .proof-section {
     background: var(--white);
@@ -2273,6 +2356,47 @@
 
 
 
+<!-- REQUEST SCORECARD FORM -->
+<section class="form-section" id="request">
+  <div class="form-inner">
+    <div class="form-eyebrow">Request your scorecard</div>
+    <h2 class="form-title">See how your brand stacks up in AI search.</h2>
+    <p class="form-sub">We'll generate a custom AEO 360 scorecard for your domain, benchmarked against your top 5 competitors.</p>
+    <form class="scorecard-form" onsubmit="event.preventDefault(); alert('Thanks — your scorecard is on its way.');">
+      <input type="text" name="name" placeholder="Name*" required>
+      <input type="email" name="email" placeholder="Work Email*" required>
+      <select name="spend" required>
+        <option value="" disabled selected>Estimated monthly spend on Content / SEO*</option>
+        <option>Under $10K / month</option>
+        <option>$10K&ndash;$50K / month</option>
+        <option>$50K&ndash;$100K / month</option>
+        <option>$100K+ / month</option>
+      </select>
+      <select name="employees" required>
+        <option value="" disabled selected>Number of employees*</option>
+        <option>1&ndash;50</option>
+        <option>51&ndash;200</option>
+        <option>201&ndash;1,000</option>
+        <option>1,001&ndash;5,000</option>
+        <option>5,000+</option>
+      </select>
+      <select name="source" required>
+        <option value="" disabled selected>How did you hear about AirOps?*</option>
+        <option>Google search</option>
+        <option>LinkedIn</option>
+        <option>Referral / word of mouth</option>
+        <option>Podcast or newsletter</option>
+        <option>Conference or event</option>
+        <option>Other</option>
+      </select>
+      <div class="scorecard-form-cta">
+        <button type="submit" class="btn btn-primary">Request my scorecard &rarr;</button>
+        <span class="scorecard-form-note">We'll only use this to deliver your scorecard. No spam.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="final-cta" id="cta">
   <h2>We built your 90 day AI search plan. Walk through it with us.</h2>
@@ -2296,19 +2420,19 @@
     const AVG = 64;
     const METRICS = {
       freshness:    { label: 'Freshness',           score: 62, competitorAvg: 90, description: 'How recently content has been updated. Older content gets cited less by AI engines.',
-                      action: 'Run the Refresh Playbook: rewrite stale pages with entity-anchored copy and answer-first paragraphs.' },
+                      action: "Active publishing cadence: /blog/ has 328 pages, /changelog/ has 115 pages, /docs/ has 187 pages — matches or beats most competitors." },
       crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 88, description: 'How easily AI bots can access, parse, and index pages and structured data.',
-                      action: 'Surface JSON-LD on top pages, audit robots/sitemap, and remove crawl traps that block AI agents.' },
+                      action: "robots.txt at hex.tech allows User-Agent: * with only /blog/github-sync and /files disallowed — GPTBot, ClaudeBot, PerplexityBot, Google-Extended, OAI-SearchBot, and anthropic-ai are all permitted by the catch-all rule. No bot-specific blocks. Crawl gate is open." },
       entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 67, description: 'Whether AI systems recognize Hex as a distinct, authoritative entity in the category.',
-                      action: 'Run the Offsite Playbook: commission Wikipedia, earn listicle placements, and shore up brand entity graphs.' },
+                      action: "NO Wikipedia article for 'Hex Technologies' or 'Hex (data platform)' surfaces in search. This is a critical entity-authority gap. Competitors Databricks, Looker, Tableau, Mode Analytics, and Jupyter all have Wikipedia pages that AI engines treat as canonical entity definitions." },
       schema:       { label: 'Schema Coverage',     score: 90, competitorAvg: 91, description: 'Use of structured data markup that helps AI systems parse page content.',
-                      action: 'Already strongest factor. Maintain FAQ + Article schema on all net-new templates and blog posts.' },
+                      action: "Aggregate coverage across 15 sampled URLs: WebPage 93% (14/15), BreadcrumbList 80% (12/15), SoftwareApplication 27% (4/15), Article 27% (4/15 — blog only), Organization 7% (homepage only), FAQPage 7% (pricing only), microdata 7% (docs only)." },
       citation:     { label: 'Citation Worthiness', score: 62, competitorAvg: 69, description: 'How quotable the content is — original data, clear claims, and answer-first structure.',
-                      action: 'Run the Creation Playbook: publish benchmark data and standalone "definition" pages AI engines can lift.' },
+                      action: "Hex publishes original research: 'State of Data Teams' surveyed twice (Spring 2025 + December 2025/2026), with extractable headline stats — '58% of data teams grew, up from 52% in spring,' '27% now name AI as top goal vs 4% in spring,' '53% of data leaders dissatisfied with current BI tool.' This is exactly the kind of fact-pattern AI engines love to cite. Competitors Mode and Sigma do not run a comparable annual survey." },
       answer:       { label: 'Answerable Format',   score: 66, competitorAvg: 86, description: 'Whether content is structured as direct Q&A blocks AI engines extract for answers.',
-                      action: 'Restructure top 50 pages with answer-first paragraphs and FAQ blocks so each query maps to a clean lift.' },
+                      action: "Content length is in the AirOps citation sweet spot: blog posts sampled run 1,551–3,778 words. This is the strongest page-level citation predictor and Hex is already there." },
       offsite:      { label: 'Offsite Readiness',   score: 48, competitorAvg: 55, description: 'Third-party mentions and citations on Wikipedia, Reddit, and authoritative listicles.',
-                      action: 'Earn coverage in Datanami, The New Stack, InfoWorld, and target Reddit threads where buyers are asking.' },
+                      action: "AEO ClickHouse data is brutal: 0 brand mentions across 35,178 AI citation events in Hex's four core topics — 0% on Data Notebooks & Coding (9,502 events), 0% on Data Visualization & App Building (9,142), 0% on AI & Data Science (8,457), 0% on Collaborative Analytics & BI (8,358). Competitors are capturing 100% of this share." },
     };
 
     const cells = document.querySelectorAll('.metric-cell[data-metric]');
@@ -2347,12 +2471,8 @@
       compareYouValue.textContent = m.score;
       compareCompLabel.textContent = 'Top 5 Competitors Avg';
       compareCompValue.textContent = m.competitorAvg;
-      const gap = m.competitorAvg - m.score;
-      stat3Label.textContent = 'Gap & how to close it';
-      const gapHtml = gap > 0
-        ? '<strong>' + gap + ' points behind</strong> the top 5 competitors. ' + m.action
-        : '<strong>On par with the top 5 competitors.</strong> ' + m.action;
-      stat3Context.innerHTML = gapHtml;
+      stat3Label.textContent = 'Finding';
+      stat3Context.textContent = m.action;
     }
 
     function reset() {
