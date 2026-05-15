@@ -545,6 +545,15 @@
     margin: 0 auto;
     padding: 0 48px 64px;
   }
+  .stats-heading {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--near-black);
+    margin: 0 0 24px;
+  }
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -557,21 +566,11 @@
     padding: 28px 28px 24px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-  }
-  .stat-icon {
-    width: 34px;
-    height: 34px;
-    background: var(--green-200);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--green-600);
+    gap: 16px;
   }
   .stat-value {
     font-family: Georgia, serif;
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -579,7 +578,7 @@
   }
   .stat-desc {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--text-secondary);
   }
 
@@ -2030,27 +2029,19 @@
 
 <!-- STATS CARDS -->
 <section class="stats">
+  <h2 class="stats-heading">You're losing your own category on the engine buyers use most</h2>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      </div>
-      <div class="stat-value">25 pts</div>
-      <div class="stat-desc">behind your top 5 competitors on AEO readiness &mdash; the gap compounds monthly</div>
+      <div class="stat-value">0 / 4</div>
+      <div class="stat-desc">unbranded ChatGPT category probes cited Hex, including your exact positioning query</div>
     </div>
     <div class="stat-card">
-      <div class="stat-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </div>
-      <div class="stat-value">$340K</div>
-      <div class="stat-desc">ARR exposure modeled from current citation decline trajectory</div>
+      <div class="stat-value">0%</div>
+      <div class="stat-desc">citation share across 35,178 AI events in your four core topics</div>
     </div>
     <div class="stat-card">
-      <div class="stat-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </div>
-      <div class="stat-value">3×</div>
-      <div class="stat-desc">faster citation acquisition for AirOps customers vs. category average</div>
+      <div class="stat-value">6 / 15</div>
+      <div class="stat-desc">live AI probes cited Hex; Deepnote, Colab, and a deprecated tool win the rest</div>
     </div>
   </div>
 </section>
