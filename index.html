@@ -229,10 +229,329 @@
 
   /* HERO */
   .hero {
-    padding: 58px 48px 48px;
+    padding: 48px 48px 56px;
     background: var(--cream);
-    text-align: center;
     position: relative;
+  }
+
+  .hero-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .hero-copy { display: flex; flex-direction: column; gap: 24px; }
+
+  .hero-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .hero-meta-pill {
+    background: var(--accent-mint);
+    color: var(--green-600);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+  .hero-meta-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .hero-h1 {
+    font-family: Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.06;
+    color: var(--near-black);
+    margin: 0;
+  }
+  .hero-h1 mark {
+    background: #F0F08C;
+    color: inherit;
+    padding: 0 6px;
+    border-radius: 2px;
+  }
+
+  .hero-lede {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 540px;
+  }
+  .hero-lede strong { color: var(--near-black); font-weight: 600; }
+
+  .hero-trustedby {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-top: 4px;
+  }
+  .trusted-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+  .trusted-list {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--near-black);
+    letter-spacing: -0.01em;
+  }
+  .trusted-list span { margin: 0 12px; color: var(--text-tertiary); font-weight: 400; }
+
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 4px; }
+
+  .btn-dark {
+    background: var(--near-black);
+    color: var(--white);
+    box-shadow: none;
+  }
+  .btn-dark:hover {
+    background: #1a2a20;
+    box-shadow: none;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--near-black);
+    border: 1px solid var(--near-black);
+    box-shadow: none;
+  }
+  .btn-outline:hover {
+    background: var(--near-black);
+    color: var(--white);
+    box-shadow: none;
+  }
+
+  /* white score card on right of hero */
+  .hero-scorecard {
+    background: var(--white);
+    border: 1px solid var(--stroke-primary);
+    border-radius: 12px;
+    padding: 28px 32px 24px;
+    color: var(--near-black);
+  }
+
+  .hsc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .hsc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .hsc-brand {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--near-black);
+  }
+  .hsc-badge {
+    background: #F7D9CF;
+    color: var(--risk-red);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+
+  .hsc-divider {
+    border: none;
+    border-top: 1px solid var(--stroke-primary);
+    margin: 0 0 18px;
+  }
+
+  .hsc-numbers-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .hsc-vs {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    text-align: right;
+    margin-bottom: -6px;
+  }
+  .hsc-numbers {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .hsc-num-you {
+    font-family: Georgia, serif;
+    font-size: 88px;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--near-black);
+  }
+  .hsc-num-comp {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text-tertiary);
+  }
+  .hsc-delta {
+    align-self: end;
+    background: #F7D9CF;
+    color: var(--risk-red);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+
+  .hsc-bars {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hsc-bars li {
+    display: grid;
+    grid-template-columns: 130px 1fr 36px;
+    align-items: center;
+    gap: 16px;
+  }
+  .hsc-bar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--near-black);
+  }
+  .hsc-bar {
+    position: relative;
+    height: 8px;
+    background: #ECECE3;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .hsc-fill {
+    height: 100%;
+    border-radius: 2px;
+  }
+  .hsc-fill-green  { background: #2D8A4A; }
+  .hsc-fill-orange { background: #D87E1F; }
+  .hsc-fill-red    { background: #B94524; }
+  .hsc-target {
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: 70%;
+    width: 2px;
+    background: var(--near-black);
+    z-index: 2;
+    border-radius: 1px;
+  }
+  .hsc-bar-val {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--near-black);
+    text-align: right;
+  }
+
+  .hsc-quote {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    padding-top: 16px;
+    border-top: 1px solid var(--stroke-primary);
+  }
+
+  /* STATS CARDS UNDER HERO */
+  .stats {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--stroke-primary);
+    border-radius: 12px;
+    padding: 28px 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .stat-icon {
+    width: 34px;
+    height: 34px;
+    background: var(--green-200);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green-600);
+  }
+  .stat-value {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--near-black);
+  }
+  .stat-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-h1 { font-size: 40px; }
+    .stats-grid { grid-template-columns: 1fr; }
   }
 
   .hero-blob {
@@ -335,6 +654,7 @@
   }
 
   /* Make every section after the hero sit above the decorative blobs */
+  .stats,
   .score-section,
   .breakdown,
   .radar-section,
@@ -1328,83 +1648,85 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO (2-col: copy + scorecard) -->
 <section class="hero">
   <div class="hero-blob hero-blob-1"></div>
   <div class="hero-blob hero-blob-2"></div>
   <div class="hero-blob hero-blob-3"></div>
   <div class="hero-blob hero-blob-4"></div>
-  <div class="hero-content">
-    <img class="hero-logo" src="assets/hex.png" alt="Hex.tech logo" onerror="this.style.display='none'">
-    <h1 class="hero-account">Hex is 25 points behind Databricks, Mode, and Deepnote in AI search. Here's the 90&#8209;day plan to close the gap.</h1>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="hero-meta">
+        <span class="hero-meta-pill">AEO 360 Scorecard</span>
+        <span class="hero-meta-text">Generated for hex.tech · May 14, 2026</span>
+      </div>
+      <h1 class="hero-h1">Win AI search visibility for <mark>Hex.tech</mark>, built for data &amp; analytics teams.</h1>
+      <p class="hero-lede">Deepnote is winning <strong>3× more AI citations</strong> than Hex on the queries your buyers use to compare notebook platforms. We mapped the gap. Here's the 90-day plan to close it.</p>
+      <div class="hero-trustedby">
+        <span class="trusted-label">Trusted by</span>
+        <span class="trusted-list">Webflow<span>·</span>Asana<span>·</span>Ramp<span>·</span>Notion<span>·</span>Chime</span>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn btn-dark" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">Book a strategy call &rarr;</a>
+        <a class="btn btn-outline" href="#score-breakdown">See your scorecard</a>
+      </div>
+    </div>
+
+    <div class="hero-scorecard">
+      <div class="hsc-top">
+        <div>
+          <div class="hsc-label">Your AEO Readiness Score</div>
+          <div class="hsc-brand">hex.tech</div>
+        </div>
+        <span class="hsc-badge">Needs Work</span>
+      </div>
+      <hr class="hsc-divider">
+      <div class="hsc-numbers-row">
+        <div class="hsc-vs">vs. Top 5 Competitor Avg</div>
+        <div class="hsc-numbers">
+          <span class="hsc-num-you">64</span>
+          <span class="hsc-num-comp">89</span>
+        </div>
+        <span class="hsc-delta">&minus;25 pts · Rank 4/5</span>
+      </div>
+      <ul class="hsc-bars">
+        <li><span class="hsc-bar-label">Freshness</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-green" style="width:62%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">62</span></li>
+        <li><span class="hsc-bar-label">Crawlability</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-green" style="width:78%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">78</span></li>
+        <li><span class="hsc-bar-label">Entity Signals</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-red" style="width:42%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">42</span></li>
+        <li><span class="hsc-bar-label">Schema Coverage</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-green" style="width:90%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">90</span></li>
+        <li><span class="hsc-bar-label">Answer Format</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-orange" style="width:66%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">66</span></li>
+        <li><span class="hsc-bar-label">Citation Worth</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-orange" style="width:62%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">62</span></li>
+        <li><span class="hsc-bar-label">Offsite Readiness</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-red" style="width:48%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">48</span></li>
+      </ul>
+      <p class="hsc-quote">Ask ChatGPT "best collaborative SQL and Python notebook for data teams" and Hex isn't cited. Deepnote, Google Colab, JupyterLab, and Zepl win the answer instead.</p>
+    </div>
   </div>
 </section>
 
-<!-- SCORE -->
-<section class="score-section">
-  <div class="score-card">
-    <div class="score-head">
-      <div class="score-label">Your AEO Readiness Score</div>
-      <div class="score-sublabel">Hex.tech</div>
-    </div>
-    <div class="score-compare">
-      <span class="score-number">64</span>
-      <div class="score-versus">
-        <span class="score-versus-label">vs. Top 5 Avg<sup>*</sup></span>
-        <span class="score-competitor">89</span>
+<!-- STATS CARDS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       </div>
+      <div class="stat-value">25 pts</div>
+      <div class="stat-desc">behind your top 5 competitors on AEO readiness &mdash; the gap compounds monthly</div>
     </div>
-    <div class="score-divider"></div>
-    <div class="score-footer">
-      <span class="score-footnote"><sup>*</sup> Benchmarked against top 5 competitors</span>
-      <div class="competitor-logos">
-        <img src="assets/databricks.jpeg" alt="Databricks" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/mode.png" alt="Mode" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/deepnote.jpeg" alt="Deepnote" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/streamlit.png" alt="Streamlit" loading="lazy" onerror="this.style.display='none'">
-        <img src="assets/jupyter.svg" alt="Jupyter" loading="lazy" onerror="this.style.display='none'">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       </div>
+      <div class="stat-value">$340K</div>
+      <div class="stat-desc">ARR exposure modeled from current citation decline trajectory</div>
     </div>
-  </div>
-
-  <div class="read-card">
-    <div class="chart-header">
-      <h3 class="chart-title">Citation Rate</h3>
-      <span class="chart-pill">Published Content</span>
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </div>
+      <div class="stat-value">3×</div>
+      <div class="stat-desc">faster citation acquisition for AirOps customers vs. category average</div>
     </div>
-    <p class="chart-subtitle">How often Hex pages are cited in AI responses</p>
-
-    <svg class="chart-svg" viewBox="0 0 540 240" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Hex citation rate declining from 15.5% in Q2 to 5.5% projected by Q4">
-      <!-- gridlines -->
-      <line class="grid" x1="40" y1="60" x2="524" y2="60"/>
-      <line class="grid" x1="40" y1="114" x2="524" y2="114"/>
-      <line class="grid" x1="40" y1="168" x2="524" y2="168"/>
-      <line class="grid" x1="40" y1="204" x2="524" y2="204"/>
-
-      <!-- y-axis labels -->
-      <text class="axis-text" x="32" y="64" text-anchor="end">20%</text>
-      <text class="axis-text" x="32" y="118" text-anchor="end">15%</text>
-      <text class="axis-text" x="32" y="172" text-anchor="end">10%</text>
-      <text class="axis-text" x="32" y="208" text-anchor="end">5%</text>
-
-      <!-- area fill under the line -->
-      <path class="area" d="M40,77 L77,93 L115,90 L152,101 L189,86 L227,107 L264,119 L301,123 L339,128 L376,137 L413,144 L451,150 L487,160 L524,167 L524,210 L40,210 Z"/>
-      <!-- line -->
-      <path class="line" d="M40,77 L77,93 L115,90 L152,101 L189,86 L227,107 L264,119 L301,123 L339,128 L376,137 L413,144 L451,150 L487,160 L524,167"/>
-
-      <!-- dots at start and end -->
-      <circle class="dot" cx="40" cy="77" r="3"/>
-      <circle class="dot" cx="524" cy="167" r="3"/>
-
-      <!-- x-axis labels -->
-      <text class="axis-text" x="40" y="228" text-anchor="start">Q2</text>
-      <text class="axis-text" x="282" y="228" text-anchor="middle">Q3</text>
-      <text class="axis-text" x="524" y="228" text-anchor="end">Q4</text>
-    </svg>
-
-    <p class="chart-warning">At current trend, Hex will fall to <strong>8% cite share</strong> by Q4.</p>
-
-    <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent">Get the 90 day plan &rarr;</a>
   </div>
 </section>
 
