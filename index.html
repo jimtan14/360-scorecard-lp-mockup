@@ -930,6 +930,12 @@
     padding-bottom: 20px;
   }
 
+  .section-header-stacked {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
   .section-title {
     font-family: Georgia, serif;
     font-size: 36px;
@@ -1947,7 +1953,7 @@
 
 <!-- COMBINED METRICS + RADAR -->
 <section class="breakdown" id="score-breakdown">
-  <div class="section-header">
+  <div class="section-header section-header-stacked">
     <h2 class="section-title">Scoring breakdown</h2>
     <span class="section-meta">7 metrics · Click to highlight on the radar · vs. target 70</span>
   </div>
@@ -2066,7 +2072,6 @@
 <section class="competitors-section">
   <div class="section-header">
     <h2 class="section-title">See exactly who's beating you, where</h2>
-    <span class="section-meta">Who AI search recommends instead of you</span>
   </div>
 
   <div class="comp-table">
