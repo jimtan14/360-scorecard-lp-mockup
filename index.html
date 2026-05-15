@@ -241,10 +241,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
-    align-items: start;
+    align-items: stretch;
   }
 
-  .hero-copy { display: flex; flex-direction: column; gap: 24px; }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+  }
 
   .hero-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .hero-meta-pill {
@@ -371,6 +376,20 @@
     font-weight: 400;
     letter-spacing: -0.02em;
     color: var(--near-black);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hsc-brand-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    background: var(--white);
+    border: 1px solid var(--stroke-primary);
+    border-radius: 7px;
+    padding: 3px;
+    display: block;
+    flex-shrink: 0;
   }
   .hsc-badge {
     background: #F7D9CF;
@@ -1640,10 +1659,6 @@
       <a href="#playbooks">Winning Playbooks</a>
     </nav>
     <div class="header-actions">
-      <button type="button" class="btn-share" id="share-btn" aria-label="Copy link to share">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        <span class="btn-share-label">Share</span>
-      </button>
       <a href="https://www.airops.com/book-a-call" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">Book a Demo &rarr;</a>
     </div>
   </div>
@@ -1659,7 +1674,7 @@
     <div class="hero-copy">
       <div class="hero-meta">
         <span class="hero-meta-pill">AEO 360 Scorecard</span>
-        <span class="hero-meta-text">Generated for hex.tech · May 14, 2026</span>
+        <span class="hero-meta-text">May 14, 2026</span>
       </div>
       <h1 class="hero-h1">Win AI search visibility for <mark>Hex.tech</mark>, built for data &amp; analytics teams.</h1>
       <p class="hero-lede">Deepnote is winning <strong>3× more AI citations</strong> than Hex on the queries your buyers use to compare notebook platforms. We mapped the gap. Here's the 90-day plan to close it.</p>
@@ -1676,7 +1691,10 @@
       <div class="hsc-top">
         <div>
           <div class="hsc-label">Your AEO Readiness Score</div>
-          <div class="hsc-brand">hex.tech</div>
+          <div class="hsc-brand">
+            <img class="hsc-brand-logo" src="assets/hex.png" alt="Hex.tech logo" onerror="this.style.display='none'">
+            <span>hex.tech</span>
+          </div>
         </div>
         <span class="hsc-badge">Needs Work</span>
       </div>
