@@ -437,6 +437,12 @@
     align-items: flex-end;
     gap: 2px;
   }
+  .hsc-you-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
   .hsc-num-you {
     font-family: Georgia, serif;
     font-size: 88px;
@@ -1909,13 +1915,15 @@
       <hr class="hsc-divider">
       <div class="hsc-numbers-row">
         <div class="hsc-numbers">
-          <span class="hsc-num-you">64</span>
+          <div class="hsc-you-block">
+            <span class="hsc-num-you">64</span>
+            <span class="hsc-delta">&minus;25 pts · Rank 4/5</span>
+          </div>
           <div class="hsc-comp-block">
             <span class="hsc-num-comp">89</span>
             <div class="hsc-vs">vs. Top 5 Competitor Avg</div>
           </div>
         </div>
-        <span class="hsc-delta">&minus;25 pts · Rank 4/5</span>
       </div>
       <ul class="hsc-bars">
         <li><span class="hsc-bar-label">Freshness</span><div class="hsc-bar"><div class="hsc-fill hsc-fill-green" style="width:62%"></div><span class="hsc-target"></span></div><span class="hsc-bar-val">62</span></li>
