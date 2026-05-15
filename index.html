@@ -1490,18 +1490,32 @@
     padding: 0 48px 64px;
   }
 
+  .proof-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .proof-title {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--near-black);
+    margin: 0;
+  }
+
   .proof-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
   }
 
   .proof-card {
-    border-radius: 24px;
-    padding: 36px 32px 28px;
+    border-radius: 16px;
+    padding: 22px 20px 18px;
     display: flex;
     flex-direction: column;
-    min-height: 320px;
+    min-height: 240px;
     color: var(--near-black);
   }
 
@@ -1513,16 +1527,16 @@
 
   .proof-metric {
     font-family: Georgia, serif;
-    font-size: 88px;
+    font-size: 48px;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1;
     color: var(--near-black);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .proof-label {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.35;
     color: var(--near-black);
     margin-bottom: auto;
@@ -1532,29 +1546,29 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    margin-top: 32px;
+    gap: 8px;
+    margin-top: 20px;
     flex-wrap: wrap;
   }
 
   .proof-brand {
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
     font-weight: 800;
-    font-size: 24px;
-    letter-spacing: -0.03em;
+    font-size: 16px;
+    letter-spacing: -0.02em;
     color: var(--near-black);
   }
 
   .proof-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 10px 18px;
+    gap: 4px;
+    padding: 7px 12px;
     background: var(--white);
     border-radius: 999px;
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     color: var(--near-black);
     text-decoration: none;
     transition: opacity 0.15s ease;
@@ -1562,7 +1576,10 @@
 
   .proof-link:hover { opacity: 0.7; }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
+    .proof-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 700px) {
     .proof-grid { grid-template-columns: 1fr; }
   }
 
@@ -1986,6 +2003,66 @@
   </div>
 </section>
 
+<!-- COMPETITORS -->
+<section class="competitors-section">
+  <div class="section-header">
+    <h2 class="section-title">See exactly who's beating you, where</h2>
+    <span class="section-meta">Who AI search recommends instead of you</span>
+  </div>
+
+  <div class="comp-table">
+    <div class="comp-row comp-header">
+      <span class="comp-rank">#</span>
+      <span class="comp-logo-spacer"></span>
+      <span class="comp-name">Competitor</span>
+      <span class="comp-why">Why they're winning</span>
+      <span class="comp-share">Cite share</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">01</span>
+      <img class="comp-logo" src="assets/databricks.jpeg" alt="Databricks logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <span class="comp-name">databricks.com</span>
+      <span class="comp-why">Unified data and AI platform. Cross-shopped against Hex by buyers covering exploratory analytics use cases at enterprise scale.</span>
+      <span class="comp-share">24%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">02</span>
+      <img class="comp-logo" src="assets/mode.png" alt="Mode logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <span class="comp-name">mode.com</span>
+      <span class="comp-why">SQL-and-Python analytics notebook with reporting. Owns the analyst workflow of querying warehouses and publishing reports.</span>
+      <span class="comp-share">19%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">03</span>
+      <img class="comp-logo" src="assets/deepnote.jpeg" alt="Deepnote logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <span class="comp-name">deepnote.com</span>
+      <span class="comp-why">Cross-shopped against Hex with a real-time collaboration angle. Ranks #1 for "hex vs deepnote."</span>
+      <span class="comp-share">16%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">04</span>
+      <img class="comp-logo" src="assets/streamlit.png" alt="Streamlit logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <span class="comp-name">streamlit.io</span>
+      <span class="comp-why">Python data app framework. Buyers position it as a code-first alternative for building and sharing internal data apps.</span>
+      <span class="comp-share">11%</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-rank">05</span>
+      <img class="comp-logo" src="assets/jupyter.svg" alt="Jupyter logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <span class="comp-name">jupyter.org</span>
+      <span class="comp-why">The canonical open-source notebook with deep Wikipedia and entity coverage. Default AI fallback for "notebook" queries.</span>
+      <span class="comp-share">9%</span>
+    </div>
+    <div class="comp-row comp-row-you">
+      <span class="comp-rank">YOU</span>
+      <img class="comp-logo" src="assets/hex.png" alt="Hex logo" loading="lazy" onerror="this.style.visibility='hidden'">
+      <span class="comp-name">hex.tech</span>
+      <span class="comp-why">Your current AI citation share</span>
+      <span class="comp-share">7%</span>
+    </div>
+  </div>
+</section>
+
 <!-- STRATEGIC OPPORTUNITIES -->
 <section class="risks-section" id="opportunities">
   <div class="opportunities-header">
@@ -2058,66 +2135,55 @@
   </div>
 </section>
 
-
-<!-- COMPETITORS -->
-<section class="competitors-section">
-  <div class="section-header">
-    <h2 class="section-title">See exactly who's beating you, where</h2>
-    <span class="section-meta">Who AI search recommends instead of you</span>
+<!-- PROOF / CASE STUDIES -->
+<section class="proof-section">
+  <div class="proof-header">
+    <h2 class="proof-title">This is how you hit your number.</h2>
   </div>
-
-  <div class="comp-table">
-    <div class="comp-row comp-header">
-      <span class="comp-rank">#</span>
-      <span class="comp-logo-spacer"></span>
-      <span class="comp-name">Competitor</span>
-      <span class="comp-why">Why they're winning</span>
-      <span class="comp-share">Cite share</span>
+  <div class="proof-grid">
+    <div class="proof-card proof-card-green">
+      <div class="proof-metric">+79%</div>
+      <div class="proof-label">Higher conversion rate</div>
+      <div class="proof-footer">
+        <span class="proof-brand">Angi</span>
+        <a href="https://www.airops.com/customers" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
     </div>
-    <div class="comp-row">
-      <span class="comp-rank">01</span>
-      <img class="comp-logo" src="assets/databricks.jpeg" alt="Databricks logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">databricks.com</span>
-      <span class="comp-why">Unified data and AI platform. Cross-shopped against Hex by buyers covering exploratory analytics use cases at enterprise scale.</span>
-      <span class="comp-share">24%</span>
+    <div class="proof-card proof-card-pink">
+      <div class="proof-metric">+71%</div>
+      <div class="proof-label">Increase in AI search citations</div>
+      <div class="proof-footer">
+        <span class="proof-brand">asana</span>
+        <a href="https://www.airops.com/customers" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
     </div>
-    <div class="comp-row">
-      <span class="comp-rank">02</span>
-      <img class="comp-logo" src="assets/mode.png" alt="Mode logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">mode.com</span>
-      <span class="comp-why">SQL-and-Python analytics notebook with reporting. Owns the analyst workflow of querying warehouses and publishing reports.</span>
-      <span class="comp-share">19%</span>
+    <div class="proof-card proof-card-blue">
+      <div class="proof-metric">3x</div>
+      <div class="proof-label">Increase in AI search citations</div>
+      <div class="proof-footer">
+        <span class="proof-brand">chime</span>
+        <a href="https://www.airops.com/customers" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
     </div>
-    <div class="comp-row">
-      <span class="comp-rank">03</span>
-      <img class="comp-logo" src="assets/deepnote.jpeg" alt="Deepnote logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">deepnote.com</span>
-      <span class="comp-why">Cross-shopped against Hex with a real-time collaboration angle. Ranks #1 for "hex vs deepnote."</span>
-      <span class="comp-share">16%</span>
+    <div class="proof-card proof-card-mint">
+      <div class="proof-metric">+500%</div>
+      <div class="proof-label">AI-attributed signups</div>
+      <div class="proof-footer">
+        <span class="proof-brand">Webflow</span>
+        <a href="https://www.airops.com/blog/webflow-case-study" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
     </div>
-    <div class="comp-row">
-      <span class="comp-rank">04</span>
-      <img class="comp-logo" src="assets/streamlit.png" alt="Streamlit logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">streamlit.io</span>
-      <span class="comp-why">Python data app framework. Buyers position it as a code-first alternative for building and sharing internal data apps.</span>
-      <span class="comp-share">11%</span>
-    </div>
-    <div class="comp-row">
-      <span class="comp-rank">05</span>
-      <img class="comp-logo" src="assets/jupyter.svg" alt="Jupyter logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">jupyter.org</span>
-      <span class="comp-why">The canonical open-source notebook with deep Wikipedia and entity coverage. Default AI fallback for "notebook" queries.</span>
-      <span class="comp-share">9%</span>
-    </div>
-    <div class="comp-row comp-row-you">
-      <span class="comp-rank">YOU</span>
-      <img class="comp-logo" src="assets/hex.png" alt="Hex logo" loading="lazy" onerror="this.style.visibility='hidden'">
-      <span class="comp-name">hex.tech</span>
-      <span class="comp-why">Your current AI citation share</span>
-      <span class="comp-share">7%</span>
+    <div class="proof-card proof-card-yellow">
+      <div class="proof-metric">7x</div>
+      <div class="proof-label">Increase in AI search citations</div>
+      <div class="proof-footer">
+        <span class="proof-brand">carta</span>
+        <a href="https://www.airops.com/customers" target="_blank" class="proof-link">Case study &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
+
 
 
 <!-- FINAL CTA -->
