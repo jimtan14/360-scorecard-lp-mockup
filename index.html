@@ -410,26 +410,32 @@
   }
 
   .hsc-numbers-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 22px;
   }
   .hsc-vs {
     font-family: 'DM Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-secondary);
     text-align: right;
-    margin-bottom: -6px;
+    margin-top: 4px;
   }
   .hsc-numbers {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 16px;
+  }
+  .hsc-comp-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
   }
   .hsc-num-you {
     font-family: Georgia, serif;
@@ -1902,10 +1908,12 @@
       </div>
       <hr class="hsc-divider">
       <div class="hsc-numbers-row">
-        <div class="hsc-vs">vs. Top 5 Competitor Avg</div>
         <div class="hsc-numbers">
           <span class="hsc-num-you">64</span>
-          <span class="hsc-num-comp">89</span>
+          <div class="hsc-comp-block">
+            <span class="hsc-num-comp">89</span>
+            <div class="hsc-vs">vs. Top 5 Competitor Avg</div>
+          </div>
         </div>
         <span class="hsc-delta">&minus;25 pts · Rank 4/5</span>
       </div>
