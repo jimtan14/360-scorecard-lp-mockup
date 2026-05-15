@@ -517,8 +517,8 @@
 
   .hsc-quote {
     font-style: italic;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 11px;
+    line-height: 1.55;
     color: var(--text-secondary);
     padding-top: 16px;
     border-top: 1px solid var(--stroke-primary);
@@ -1134,6 +1134,133 @@
   }
 
   /* STRATEGIC RISKS */
+  /* STRATEGIC OPPORTUNITIES — new */
+  .opportunities-header {
+    text-align: center;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 0;
+    margin-bottom: 36px;
+  }
+  .opportunities-pill {
+    background: #F0F08C;
+    color: var(--near-black);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 6px;
+  }
+  .opportunities-title {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    color: var(--near-black);
+    margin: 0;
+  }
+  .opportunities-subtitle {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .opp-card {
+    background: var(--white);
+    border: 1px solid var(--stroke-primary);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .opp-visual {
+    background: #F2F8F4;
+    border-bottom: 1px solid var(--stroke-primary);
+    padding: 28px;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .opp-visual svg { width: 100%; height: 100%; max-height: 140px; }
+
+  .opp-content {
+    padding: 24px 26px 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 14px;
+  }
+
+  .opp-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-500);
+  }
+  .opp-meta-critical { color: var(--risk-red); }
+
+  .opp-title {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.18;
+    color: var(--near-black);
+    margin: 0;
+  }
+
+  .opp-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .opp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    background: transparent;
+    border: 1px solid var(--near-black);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--near-black);
+    text-decoration: none;
+    width: fit-content;
+    margin-top: auto;
+    transition: all 0.15s ease;
+  }
+  .opp-link:hover {
+    background: var(--near-black);
+    color: var(--white);
+  }
+
+  @media (max-width: 900px) {
+    .opp-grid { grid-template-columns: 1fr; }
+    .opportunities-title { font-size: 34px; }
+  }
+
   .risks-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -1860,31 +1987,72 @@
 
 <!-- STRATEGIC OPPORTUNITIES -->
 <section class="risks-section" id="opportunities">
-  <div class="section-header">
-    <h2 class="section-title">Strategic opportunities for Hex.tech</h2>
-    <span class="section-meta">Where you can win more AI visibility</span>
+  <div class="opportunities-header">
+    <span class="opportunities-pill">3 Strategic Opportunities</span>
+    <h2 class="opportunities-title">Where Hex can take citations back.</h2>
+    <p class="opportunities-subtitle">Your scorecard surfaced three structural gaps driving the 25-point delta. Each one maps to a specific AirOps playbook with a modeled lift.</p>
   </div>
 
-  <div class="risks-grid">
-    <div class="risk-card">
-      <span class="risk-number">[1]</span>
-      <span class="risk-tag">Critical</span>
-      <h3 class="risk-title">Recapture the "hex vs deepnote" SERP and fix broken comparison pages.</h3>
-      <div class="risk-detail">Deepnote ranks <strong>#1 for "hex vs deepnote"</strong> and <strong>#4 for "hex competitors."</strong> Hex's matching comparison pages return 404. (Source: DataForSEO + SERP audit)</div>
+  <div class="opp-grid">
+    <!-- Card 1: YOU vs DEEPNOTE bar chart -->
+    <div class="opp-card">
+      <div class="opp-visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <text x="40" y="20" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#B94524" letter-spacing="0.8">YOU</text>
+          <text x="92" y="20" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#0A1A10" letter-spacing="0.8">DEEPNOTE</text>
+          <line x1="40" y1="28" x2="40" y2="118" stroke="#B94524" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <rect x="28" y="92" width="24" height="22" fill="#D9D9D2" rx="2"/>
+          <rect x="80" y="40" width="24" height="74" fill="#2D8A4A" rx="2"/>
+          <rect x="132" y="62" width="24" height="52" fill="#D9D9D2" rx="2"/>
+          <rect x="184" y="78" width="24" height="36" fill="#D9D9D2" rx="2"/>
+          <line x1="20" y1="118" x2="220" y2="118" stroke="#C7C7BD" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="opp-content">
+        <div class="opp-meta opp-meta-critical">[1] Critical &middot; Refresh Playbook</div>
+        <h3 class="opp-title">Recapture the "hex vs deepnote" SERP</h3>
+        <p class="opp-body">Deepnote ranks <strong>#1 for "hex vs deepnote"</strong> and <strong>#4 for "hex competitors."</strong> Hex's matching comparison pages return 404. Modeled lift: <strong>+2.4&times; cite share in 90 days</strong>.</p>
+        <a class="opp-link" href="#playbooks">See the playbook &rarr;</a>
+      </div>
     </div>
 
-    <div class="risk-card">
-      <span class="risk-number">[2]</span>
-      <span class="risk-tag high">High</span>
-      <h3 class="risk-title">Convert AI citations into named brand mentions on blog and template pages.</h3>
-      <div class="risk-detail">Of <strong>231 tracked AI citations</strong>, /blog/ accounts for 94 and /templates/ for 47. AI engines link to the pages but rarely name Hex in the answer.</div>
+    <!-- Card 2: 47 citations donut -->
+    <div class="opp-card">
+      <div class="opp-visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <circle cx="120" cy="70" r="46" fill="none" stroke="#E6EAE3" stroke-width="14"/>
+          <circle cx="120" cy="70" r="46" fill="none" stroke="#2D8A4A" stroke-width="14"
+                  stroke-dasharray="58.7 230.2" transform="rotate(-90 120 70)" stroke-linecap="butt"/>
+          <text x="120" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="400" fill="#0A1A10">47</text>
+          <text x="120" y="84" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" font-weight="700" fill="#5A6157" letter-spacing="1.2">CITATIONS</text>
+        </svg>
+      </div>
+      <div class="opp-content">
+        <div class="opp-meta">[2] High &middot; Creation Playbook</div>
+        <h3 class="opp-title">Convert AI citations into named brand mentions</h3>
+        <p class="opp-body">Of <strong>231 tracked AI citations</strong>, /blog/ accounts for 94 and /templates/ for 47. AI engines link to the pages but rarely name Hex in the answer. Add entity-anchored copy.</p>
+        <a class="opp-link" href="#playbooks">See the playbook &rarr;</a>
+      </div>
     </div>
 
-    <div class="risk-card">
-      <span class="risk-number">[3]</span>
-      <span class="risk-tag high">High</span>
-      <h3 class="risk-title">Win inclusion in AI Overviews for high-intent data tooling queries.</h3>
-      <div class="risk-detail">Hex ranks top 10 on Google for <strong>"data visualization tool"</strong> (2,900 monthly searches). AI Overviews currently surface Tableau, Power BI, Flourish, and Datawrapper—Hex is absent.</div>
+    <!-- Card 3: Tableau / Power BI / ABSENT bars -->
+    <div class="opp-card">
+      <div class="opp-visual">
+        <svg viewBox="0 0 240 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <rect x="32" y="26" width="148" height="18" rx="3" fill="#D9D9D2"/>
+          <text x="40" y="39" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0A1A10">Tableau</text>
+          <rect x="32" y="58" width="124" height="18" rx="3" fill="#D9D9D2"/>
+          <text x="40" y="71" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0A1A10">Power BI</text>
+          <rect x="32" y="90" width="36" height="18" rx="3" fill="#B94524"/>
+          <text x="78" y="103" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#B94524" letter-spacing="0.8">ABSENT</text>
+        </svg>
+      </div>
+      <div class="opp-content">
+        <div class="opp-meta">[3] High &middot; Offsite Playbook</div>
+        <h3 class="opp-title">Win inclusion in AI Overviews for "data viz tool"</h3>
+        <p class="opp-body">Hex ranks top 10 on Google for <strong>"data visualization tool"</strong> (2,900 mo. searches). AI Overviews surface Tableau, Power BI, Flourish, Datawrapper &mdash; Hex is absent.</p>
+        <a class="opp-link" href="#playbooks">See the playbook &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
