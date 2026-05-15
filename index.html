@@ -1195,6 +1195,32 @@
     font-weight: 600;
   }
 
+  .finding-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .finding-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  .finding-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-500);
+  }
+
   .radar-chart-wrap {
     display: flex;
     justify-content: center;
@@ -2411,7 +2437,11 @@
     const AVG = 64;
     const METRICS = {
       freshness:    { label: 'Freshness',           score: 62, competitorAvg: 90, description: 'How recently content has been updated. Older content gets cited less by AI engines.',
-                      action: "Active publishing cadence: /blog/ has 328 pages, /changelog/ has 115 pages, /docs/ has 187 pages — matches or beats most competitors." },
+                      action: [
+                        "Top comparison post refreshed Dec 2025 across 328 blog pages",
+                        "2026 sitewide framing plus December 2025 research refresh",
+                        "115 changelog entries aging risks diluting freshness signal"
+                      ] },
       crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 88, description: 'How easily AI bots can access, parse, and index pages and structured data.',
                       action: "robots.txt at hex.tech allows User-Agent: * with only /blog/github-sync and /files disallowed — GPTBot, ClaudeBot, PerplexityBot, Google-Extended, OAI-SearchBot, and anthropic-ai are all permitted by the catch-all rule. No bot-specific blocks. Crawl gate is open." },
       entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 67, description: 'Whether AI systems recognize Hex as a distinct, authoritative entity in the category.',
@@ -2462,8 +2492,15 @@
       compareYouValue.textContent = m.score;
       compareCompLabel.textContent = 'Top 5 Competitors Avg';
       compareCompValue.textContent = m.competitorAvg;
-      stat3Label.textContent = 'Finding';
-      stat3Context.textContent = m.action;
+      stat3Label.textContent = Array.isArray(m.action) ? 'Key findings' : 'Finding';
+      if (Array.isArray(m.action)) {
+        stat3Context.innerHTML = '<ul class="finding-list">' +
+          m.action.map(function (item) {
+            return '<li>' + item.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</li>';
+          }).join('') + '</ul>';
+      } else {
+        stat3Context.textContent = m.action;
+      }
     }
 
     function reset() {
