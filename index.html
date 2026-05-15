@@ -1127,6 +1127,53 @@
     margin-top: 8px;
   }
 
+  .radar-stat-compare {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .compare-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .compare-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .compare-value {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .compare-value-you  { color: var(--near-black); }
+  .compare-value-comp { color: var(--text-tertiary); }
+  .compare-vs {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--text-tertiary);
+    padding-bottom: 4px;
+  }
+
+  .radar-stat-context {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-top: 6px;
+  }
+  .radar-stat-context strong {
+    color: var(--near-black);
+    font-weight: 600;
+  }
+
   .radar-chart-wrap {
     display: flex;
     justify-content: center;
@@ -1485,9 +1532,14 @@
 
   /* PROOF / CASE STUDIES */
   .proof-section {
+    background: var(--white);
+    padding: 72px 0 80px;
+    margin: 24px 0;
+  }
+  .proof-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 48px 64px;
+    padding: 0 48px;
   }
 
   .proof-header {
@@ -1946,13 +1998,20 @@
           <div class="radar-stat-value" id="stat-1-value">— None</div>
           <div class="radar-stat-description" id="stat-1-description">Click any metric above to see what it measures.</div>
         </div>
-        <div class="radar-stat">
-          <div class="radar-stat-label" id="stat-2-label">Average</div>
-          <div class="radar-stat-value" id="stat-2-value">64</div>
+        <div class="radar-stat radar-stat-compare">
+          <div class="compare-side">
+            <div class="compare-label" id="compare-you-label">Hex.tech</div>
+            <div class="compare-value compare-value-you" id="compare-you-value">64</div>
+          </div>
+          <div class="compare-vs">vs.</div>
+          <div class="compare-side">
+            <div class="compare-label" id="compare-comp-label">Top 5 Competitors Avg</div>
+            <div class="compare-value compare-value-comp" id="compare-comp-value">89</div>
+          </div>
         </div>
         <div class="radar-stat">
-          <div class="radar-stat-label" id="stat-3-label">Top 5 Competitor Avg Score</div>
-          <div class="radar-stat-value" id="stat-3-value">89</div>
+          <div class="radar-stat-label" id="stat-3-label">Gap &amp; how to close it</div>
+          <div class="radar-stat-context" id="stat-3-context">Hex trails the top 5 competitors by <strong>25 points</strong> across 7 AEO factors. Click any factor to see the specific gap and the action that closes it.</div>
         </div>
       </div>
       <div class="radar-chart-wrap">
@@ -2137,6 +2196,7 @@
 
 <!-- PROOF / CASE STUDIES -->
 <section class="proof-section">
+  <div class="proof-inner">
   <div class="proof-header">
     <h2 class="proof-title">This is how you hit your number.</h2>
   </div>
@@ -2182,6 +2242,7 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 
@@ -2208,13 +2269,20 @@
     const TARGET = 70;
     const AVG = 64;
     const METRICS = {
-      freshness:    { label: 'Freshness',           score: 62, competitorAvg: 90, description: 'How recently your content has been updated. Older content gets cited less by AI engines.' },
-      crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 88, description: 'How easily AI bots can access, parse, and index your pages and structured data.' },
-      entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 67, description: 'Whether AI systems recognize your brand as a distinct, authoritative entity in the topic.' },
-      schema:       { label: 'Schema Coverage',     score: 90, competitorAvg: 91, description: 'Use of structured data markup that helps AI systems understand your page content.' },
-      citation:     { label: 'Citation Worthiness', score: 62, competitorAvg: 69, description: 'How quotable your content is — original data, clear claims, and answer-first structure.' },
-      answer:       { label: 'Answerable Format',   score: 66, competitorAvg: 86, description: 'Whether content is structured as direct Q&A blocks that AI engines extract for answers.' },
-      offsite:      { label: 'Offsite Readiness',   score: 48, competitorAvg: 55, description: 'Third-party mentions and citations on Wikipedia, Reddit, and authoritative listicles.' },
+      freshness:    { label: 'Freshness',           score: 62, competitorAvg: 90, description: 'How recently content has been updated. Older content gets cited less by AI engines.',
+                      action: 'Run the Refresh Playbook: rewrite stale pages with entity-anchored copy and answer-first paragraphs.' },
+      crawlability: { label: 'Crawlability',        score: 78, competitorAvg: 88, description: 'How easily AI bots can access, parse, and index pages and structured data.',
+                      action: 'Surface JSON-LD on top pages, audit robots/sitemap, and remove crawl traps that block AI agents.' },
+      entity:       { label: 'Entity Signals',      score: 42, competitorAvg: 67, description: 'Whether AI systems recognize Hex as a distinct, authoritative entity in the category.',
+                      action: 'Run the Offsite Playbook: commission Wikipedia, earn listicle placements, and shore up brand entity graphs.' },
+      schema:       { label: 'Schema Coverage',     score: 90, competitorAvg: 91, description: 'Use of structured data markup that helps AI systems parse page content.',
+                      action: 'Already strongest factor. Maintain FAQ + Article schema on all net-new templates and blog posts.' },
+      citation:     { label: 'Citation Worthiness', score: 62, competitorAvg: 69, description: 'How quotable the content is — original data, clear claims, and answer-first structure.',
+                      action: 'Run the Creation Playbook: publish benchmark data and standalone "definition" pages AI engines can lift.' },
+      answer:       { label: 'Answerable Format',   score: 66, competitorAvg: 86, description: 'Whether content is structured as direct Q&A blocks AI engines extract for answers.',
+                      action: 'Restructure top 50 pages with answer-first paragraphs and FAQ blocks so each query maps to a clean lift.' },
+      offsite:      { label: 'Offsite Readiness',   score: 48, competitorAvg: 55, description: 'Third-party mentions and citations on Wikipedia, Reddit, and authoritative listicles.',
+                      action: 'Earn coverage in Datanami, The New Stack, InfoWorld, and target Reddit threads where buyers are asking.' },
     };
 
     const cells = document.querySelectorAll('.metric-cell[data-metric]');
@@ -2225,10 +2293,12 @@
     const stat1Label = document.getElementById('stat-1-label');
     const stat1Value = document.getElementById('stat-1-value');
     const stat1Description = document.getElementById('stat-1-description');
-    const stat2Label = document.getElementById('stat-2-label');
-    const stat2Value = document.getElementById('stat-2-value');
+    const compareYouLabel = document.getElementById('compare-you-label');
+    const compareYouValue = document.getElementById('compare-you-value');
+    const compareCompLabel = document.getElementById('compare-comp-label');
+    const compareCompValue = document.getElementById('compare-comp-value');
     const stat3Label = document.getElementById('stat-3-label');
-    const stat3Value = document.getElementById('stat-3-value');
+    const stat3Context = document.getElementById('stat-3-context');
 
     function clearActive() {
       cells.forEach(c => c.classList.remove('active'));
@@ -2247,11 +2317,16 @@
       stat1Label.textContent = 'Selected';
       stat1Value.textContent = m.label;
       stat1Description.textContent = m.description;
-      stat2Label.textContent = 'Score';
-      stat2Value.textContent = m.score;
-      stat3Label.textContent = 'Top 5 Competitor Avg ' + m.label;
-      stat3Value.textContent = m.competitorAvg;
-      stat3Value.style.color = '';
+      compareYouLabel.textContent = 'Hex.tech ' + m.label;
+      compareYouValue.textContent = m.score;
+      compareCompLabel.textContent = 'Top 5 Competitors Avg';
+      compareCompValue.textContent = m.competitorAvg;
+      const gap = m.competitorAvg - m.score;
+      stat3Label.textContent = 'Gap & how to close it';
+      const gapHtml = gap > 0
+        ? '<strong>' + gap + ' points behind</strong> the top 5 competitors. ' + m.action
+        : '<strong>On par with the top 5 competitors.</strong> ' + m.action;
+      stat3Context.innerHTML = gapHtml;
     }
 
     function reset() {
@@ -2260,11 +2335,12 @@
       stat1Value.textContent = '— None';
       stat1Value.style.color = '';
       stat1Description.textContent = 'Click any metric above to see what it measures.';
-      stat2Label.textContent = 'Average';
-      stat2Value.textContent = AVG;
-      stat3Label.textContent = 'Top 5 Competitor Avg Score';
-      stat3Value.textContent = COMPETITOR_AVG_OVERALL;
-      stat3Value.style.color = '';
+      compareYouLabel.textContent = 'Hex.tech';
+      compareYouValue.textContent = AVG;
+      compareCompLabel.textContent = 'Top 5 Competitors Avg';
+      compareCompValue.textContent = COMPETITOR_AVG_OVERALL;
+      stat3Label.textContent = 'Gap & how to close it';
+      stat3Context.innerHTML = 'Hex trails the top 5 competitors by <strong>' + (COMPETITOR_AVG_OVERALL - AVG) + ' points</strong> across 7 AEO factors. Click any factor to see the specific gap and the action that closes it.';
     }
 
     cells.forEach(cell => {
