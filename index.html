@@ -229,7 +229,7 @@
 
   /* HERO */
   .hero {
-    padding: 48px 48px 56px;
+    padding: 48px 0 56px;
     background: var(--cream);
     position: relative;
   }
@@ -237,6 +237,7 @@
   .hero-grid {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 48px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
@@ -1662,13 +1663,12 @@
       </div>
       <h1 class="hero-h1">Win AI search visibility for <mark>Hex.tech</mark>, built for data &amp; analytics teams.</h1>
       <p class="hero-lede">Deepnote is winning <strong>3× more AI citations</strong> than Hex on the queries your buyers use to compare notebook platforms. We mapped the gap. Here's the 90-day plan to close it.</p>
-      <div class="hero-trustedby">
-        <span class="trusted-label">Trusted by</span>
-        <span class="trusted-list">Webflow<span>·</span>Asana<span>·</span>Ramp<span>·</span>Notion<span>·</span>Chime</span>
-      </div>
       <div class="hero-ctas">
-        <a class="btn btn-dark" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">Book a strategy call &rarr;</a>
-        <a class="btn btn-outline" href="#score-breakdown">See your scorecard</a>
+        <a class="btn btn-dark" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">Get the 90 day plan &rarr;</a>
+        <button type="button" class="btn btn-outline" id="hero-share-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span class="btn-share-label">Share with your team</span>
+        </button>
       </div>
     </div>
 
@@ -2118,12 +2118,13 @@
   })();
 
   (function () {
-    const shareBtn = document.getElementById('share-btn');
-    if (!shareBtn) return;
-    const label = shareBtn.querySelector('.btn-share-label');
-    const originalLabel = label.textContent;
+    const buttons = [
+      document.getElementById('share-btn'),
+      document.getElementById('hero-share-btn'),
+    ].filter(Boolean);
+    if (!buttons.length) return;
 
-    async function copyLink() {
+    async function writeUrl() {
       const url = window.location.href;
       try {
         await navigator.clipboard.writeText(url);
@@ -2137,15 +2138,21 @@
         try { document.execCommand('copy'); } catch (_) {}
         document.body.removeChild(tmp);
       }
-      shareBtn.classList.add('copied');
-      label.textContent = 'Link copied';
-      setTimeout(() => {
-        shareBtn.classList.remove('copied');
-        label.textContent = originalLabel;
-      }, 1800);
     }
 
-    shareBtn.addEventListener('click', copyLink);
+    buttons.forEach(btn => {
+      const label = btn.querySelector('.btn-share-label');
+      const originalLabel = label ? label.textContent : '';
+      btn.addEventListener('click', async () => {
+        await writeUrl();
+        btn.classList.add('copied');
+        if (label) label.textContent = 'Link copied';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          if (label) label.textContent = originalLabel;
+        }, 1800);
+      });
+    });
   })();
 </script>
 
