@@ -509,9 +509,9 @@
     height: 100%;
     border-radius: 2px;
   }
-  .hsc-fill-green  { background: #2D8A4A; }
-  .hsc-fill-orange { background: #D87E1F; }
-  .hsc-fill-red    { background: #B94524; }
+  .hsc-fill-green  { background: #7FF09E; }
+  .hsc-fill-orange { background: #ECF36C; }
+  .hsc-fill-red    { background: #F0A8AE; }
   .hsc-target {
     position: absolute;
     top: -2px;
@@ -1185,7 +1185,7 @@
 
   .metric-bar-fill {
     height: 100%;
-    background: var(--green-500);
+    background: #7FF09E;
   }
 
   .gated-metrics {
@@ -1571,7 +1571,7 @@
     display: inline-flex;
     align-items: center;
     padding: 6px 14px;
-    background: var(--risk-red);
+    background: #F0A8AE;
     color: var(--white);
     font-family: 'DM Mono', monospace;
     font-size: 13px;
@@ -2273,12 +2273,12 @@
       <div class="metric-cell" data-metric="entity" tabindex="0" role="button">
         <div class="metric-label">Entity Signals</div>
         <div><span class="metric-score">60</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 60%; background: #D87E1F;"></div></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 60%; background: #ECF36C;"></div></div>
       </div>
       <div class="metric-cell" data-metric="schema" tabindex="0" role="button">
         <div class="metric-label">Schema Coverage</div>
         <div><span class="metric-score">55</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 55%; background: #D87E1F;"></div></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 55%; background: #ECF36C;"></div></div>
       </div>
       <div class="metric-cell" data-metric="citation" tabindex="0" role="button">
         <div class="metric-label">Citation Worthiness</div>
@@ -2293,7 +2293,7 @@
       <div class="metric-cell" data-metric="offsite" tabindex="0" role="button">
         <div class="metric-label">Offsite Readiness</div>
         <div><span class="metric-score">38</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 38%; background: var(--risk-red);"></div></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 38%; background: #F0A8AE;"></div></div>
       </div>
     </div>
 
@@ -2744,10 +2744,10 @@
       <div class="opp-visual">
         <svg viewBox="0 0 240 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <text x="120" y="20" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#5A6157" letter-spacing="1.5">COMPARISON PAGES</text>
-          <rect x="22" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
-          <rect x="56" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
-          <rect x="90" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
-          <rect x="124" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
+          <rect x="22" y="38" width="28" height="20" fill="#7FF09E" rx="2"/>
+          <rect x="56" y="38" width="28" height="20" fill="#7FF09E" rx="2"/>
+          <rect x="90" y="38" width="28" height="20" fill="#7FF09E" rx="2"/>
+          <rect x="124" y="38" width="28" height="20" fill="#7FF09E" rx="2"/>
           <rect x="158" y="38" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
           <rect x="192" y="38" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
           <rect x="22" y="64" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
@@ -2775,7 +2775,7 @@
       <div class="opp-visual">
         <svg viewBox="0 0 240 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <circle cx="120" cy="70" r="46" fill="none" stroke="#DDE2D5" stroke-width="14"/>
-          <circle cx="120" cy="70" r="46" fill="none" stroke="#0F6A3A" stroke-width="14"
+          <circle cx="120" cy="70" r="46" fill="none" stroke="#7FF09E" stroke-width="14"
                   stroke-dasharray="78 211" transform="rotate(-90 120 70)" stroke-linecap="butt"/>
           <text x="120" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="400" fill="#0A1A10">27%</text>
           <text x="120" y="84" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" font-weight="700" fill="#5A6157" letter-spacing="1.2">SCHEMA</text>
@@ -2800,8 +2800,8 @@
           <text x="40" y="39" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0A1A10">Tableau</text>
           <rect x="32" y="58" width="124" height="18" rx="3" fill="#DDE2D5"/>
           <text x="40" y="71" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#0A1A10">Power BI</text>
-          <rect x="32" y="90" width="36" height="18" rx="3" fill="#B94524"/>
-          <text x="78" y="103" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#B94524" letter-spacing="0.8">ABSENT</text>
+          <rect x="32" y="90" width="36" height="18" rx="3" fill="#F0A8AE"/>
+          <text x="78" y="103" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#F0A8AE" letter-spacing="0.8">ABSENT</text>
         </svg>
       </div>
       <div class="opp-content">
