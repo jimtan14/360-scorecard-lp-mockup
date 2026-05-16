@@ -552,8 +552,18 @@
     background: var(--white);
     border: 1px solid var(--stroke-primary);
     border-radius: 12px;
-    overflow: hidden;
+    max-height: 440px;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
   }
+  .probes-list::-webkit-scrollbar { width: 10px; }
+  .probes-list::-webkit-scrollbar-track { background: transparent; }
+  .probes-list::-webkit-scrollbar-thumb {
+    background: var(--stroke-primary);
+    border-radius: 999px;
+    border: 2px solid var(--white);
+  }
+  .probes-list::-webkit-scrollbar-thumb:hover { background: #C7C0AE; }
   .probe-row {
     display: grid;
     grid-template-columns: 1fr auto;
