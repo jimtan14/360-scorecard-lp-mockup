@@ -539,6 +539,86 @@
     border-top: 1px solid var(--stroke-primary);
   }
 
+  /* LIVE AI ENGINE PROBES */
+  .probes-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 48px 64px;
+  }
+  .probes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: var(--white);
+    border: 1px solid var(--stroke-primary);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .probe-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--stroke-primary);
+  }
+  .probe-row:last-child { border-bottom: none; }
+
+  .probe-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .probe-engine {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .probe-engine-logo {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    border-radius: 3px;
+    background: var(--white);
+  }
+  .probe-query {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--near-black);
+  }
+  .probe-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .probe-cited {
+    background: var(--interaction);
+    color: var(--near-black);
+  }
+  .probe-not-cited {
+    background: #F7D9CF;
+    color: var(--risk-red);
+  }
+  @media (max-width: 700px) {
+    .probe-row { grid-template-columns: 1fr; }
+  }
+
   /* STATS CARDS UNDER HERO */
   .stats {
     max-width: 1200px;
@@ -696,6 +776,7 @@
   .risks-section,
   .mid-cta,
   .competitors-section,
+  .probes-section,
   .proof-section,
   .playbooks-section,
   .final-cta,
@@ -2254,6 +2335,121 @@
       <span class="comp-share">1 / 15</span>
     </div>
   </div>
+</section>
+
+<!-- LIVE AI ENGINE PROBES -->
+<section class="probes-section">
+  <div class="section-header section-header-stacked">
+    <h2 class="section-title">Examples &mdash; live AI engine answers</h2>
+    <span class="section-meta">15 probes across ChatGPT, Claude, Perplexity, and Gemini</span>
+  </div>
+  <ul class="probes-list">
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</span>
+        <div class="probe-query">"best data notebook tools for analytics teams"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</span>
+        <div class="probe-query">"best collaborative SQL and Python notebook for data teams"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</span>
+        <div class="probe-query">"Jupyter notebook alternatives for data teams"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</span>
+        <div class="probe-query">"best tools to build interactive data apps from notebooks"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</span>
+        <div class="probe-query">"Hex vs Mode vs Deepnote vs Databricks notebooks"</div>
+      </div>
+      <span class="probe-status probe-cited">Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</span>
+        <div class="probe-query">"how to build a data app from a Jupyter notebook for stakeholders"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude</span>
+        <div class="probe-query">"best AI-powered data analysis platforms 2025"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude</span>
+        <div class="probe-query">"best modern BI tools for data analysts"</div>
+      </div>
+      <span class="probe-status probe-cited">Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude</span>
+        <div class="probe-query">"Mode Analytics alternatives for collaborative data work"</div>
+      </div>
+      <span class="probe-status probe-cited">Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude</span>
+        <div class="probe-query">"best data exploration tools that combine SQL Python and visualization"</div>
+      </div>
+      <span class="probe-status probe-cited">Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude</span>
+        <div class="probe-query">"best Snowflake notebook tools for analytics"</div>
+      </div>
+      <span class="probe-status probe-cited">Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude</span>
+        <div class="probe-query">"best tools for embedded analytics in SaaS applications"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</span>
+        <div class="probe-query">"Hex data platform review pros and cons"</div>
+      </div>
+      <span class="probe-status probe-cited">Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=64" alt="" loading="lazy">Perplexity</span>
+        <div class="probe-query">"best collaborative data notebook for data teams 2025"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+    <li class="probe-row">
+      <div class="probe-text">
+        <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=64" alt="" loading="lazy">Gemini &middot; AI Overview</span>
+        <div class="probe-query">"best data notebook platform for analytics teams"</div>
+      </div>
+      <span class="probe-status probe-not-cited">Not Cited</span>
+    </li>
+  </ul>
 </section>
 
 <!-- STRATEGIC OPPORTUNITIES -->
