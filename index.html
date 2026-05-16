@@ -2146,11 +2146,11 @@
   /* RADAR SVG styling */
   .radar-svg .grid-line { stroke: var(--stroke-green); stroke-width: 1; fill: none; }
   .radar-svg .axis-line { stroke: var(--stroke-green); stroke-width: 1; transition: stroke 0.2s ease, stroke-width 0.2s ease; }
-  .radar-svg .data-shape { fill: rgba(0, 140, 68, 0.18); stroke: var(--green-500); stroke-width: 2; }
+  .radar-svg .data-shape { fill: rgba(127, 240, 158, 0.32); stroke: #5FCC7A; stroke-width: 2; }
   .radar-svg .target-shape { fill: none; stroke: var(--green-600); stroke-width: 1; stroke-dasharray: 4 4; }
-  .radar-svg .data-point { fill: var(--green-500); transition: r 0.2s ease, fill 0.2s ease; }
-  .radar-svg .data-point.active { r: 8; fill: var(--interaction); stroke: var(--green-600); stroke-width: 2; }
-  .radar-svg .axis-line.active { stroke: var(--green-500); stroke-width: 2; }
+  .radar-svg .data-point { fill: #5FCC7A; transition: r 0.2s ease, fill 0.2s ease; }
+  .radar-svg .data-point.active { r: 8; fill: #7FF09E; stroke: var(--green-600); stroke-width: 2; }
+  .radar-svg .axis-line.active { stroke: #5FCC7A; stroke-width: 2; }
   .radar-svg .axis-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--text-secondary); transition: fill 0.2s ease, font-weight 0.2s ease; }
   .radar-svg .axis-label.active { fill: var(--near-black); font-weight: 700; }
 
@@ -2194,7 +2194,7 @@
     <div class="hero-copy">
       <div class="hero-meta">
         <span class="hero-meta-pill">AEO 360 Scorecard</span>
-        <span class="hero-meta-text">May 14, 2026</span>
+        <span class="hero-meta-text" id="hero-date">May 14, 2026</span>
       </div>
       <h1 class="hero-h1">Win AI search visibility for <mark>Hex</mark>, built for data &amp; analytics teams.</h1>
       <p class="hero-lede">Deepnote is winning <strong>3× more AI citations</strong> than Hex on the queries your buyers use to compare notebook platforms. We mapped the gap. Here's the 90-day plan to close it.</p>
@@ -3111,6 +3111,15 @@
         }, 1800);
       });
     });
+  })();
+
+  // Always reflect the latest refresh date in the hero meta line
+  (function () {
+    const el = document.getElementById('hero-date');
+    if (!el) return;
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const d = new Date();
+    el.textContent = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
   })();
 </script>
 
