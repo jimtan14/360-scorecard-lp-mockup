@@ -569,11 +569,7 @@
   .probe-row:last-child { border-bottom: none; }
   .probe-details { width: 100%; }
   .probe-summary {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 24px;
-    padding: 18px 24px;
+    display: block;
     cursor: pointer;
     list-style: none;
     transition: background 0.15s ease;
@@ -581,6 +577,13 @@
   .probe-summary::-webkit-details-marker { display: none; }
   .probe-summary:hover { background: var(--cream); }
   .probe-details[open] > .probe-summary { background: var(--cream); }
+  .probe-summary-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 24px;
+  }
   .probe-caret {
     margin-left: 6px;
     font-size: 14px;
@@ -679,11 +682,11 @@
     flex-shrink: 0;
   }
   .probe-cited {
-    background: var(--interaction);
+    background: #7FF09E;
     color: var(--near-black);
   }
   .probe-not-cited {
-    background: #F7D9CF;
+    background: #F7DDDD;
     color: var(--risk-red);
   }
   @media (max-width: 700px) {
@@ -2454,11 +2457,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best data notebook tools for analytics teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Hex is invisible. Every analytics buyer asking ChatGPT this question is steered to Jupyter, Colab, Zeppelin, Azure Synapse, and RStudio. ZappySys — a niche SSIS plugin — gets more share-of-voice than Hex. This is happening every day in 2026.</p>
@@ -2473,11 +2478,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best collaborative SQL and Python notebook for data teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">This is the bullseye query — Hex&#x27;s exact category positioning (&#x27;collaborative SQL + Python notebook&#x27;) — and Hex is NOT cited. Deepnote captures the #1 spot. Zepl, a deprecated/acquired tool, is still cited above Hex. This single query represents direct, daily competitive loss to Deepnote.</p>
@@ -2492,11 +2499,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;Jupyter notebook alternatives for data teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Hex has a 2,092-word /blog/jupyter-alternatives/ post updated December 15, 2025 that explicitly positions Hex as &#x27;best overall&#x27; Jupyter alternative — and ChatGPT still does not cite Hex for this query. The content exists; the offsite signal that gets it cited does not.</p>
@@ -2511,11 +2520,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best tools to build interactive data apps from notebooks&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Hex&#x27;s flagship product is data apps from notebooks (/product/data-apps/). ChatGPT does not name Hex once. Streamlit (a listed competitor in the brand kit) wins this query outright. Every product team asking &#x27;how do I share notebook results with stakeholders?&#x27; is being told to use Streamlit, not Hex.</p>
@@ -2530,11 +2541,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;Hex vs Mode vs Deepnote vs Databricks notebooks&quot;</div>
           </div>
           <span class="probe-status probe-cited">Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">When prompted by name, ChatGPT can describe Hex correctly — meaning the model HAS a representation of Hex but does not RECALL it for unbranded category queries. This is the textbook offsite-influence gap: Hex exists in the model, but lacks the third-party citation density that makes it pop for category queries.</p>
@@ -2549,11 +2562,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;how to build a data app from a Jupyter notebook for stakeholders&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">This is a high-intent buyer query where the entire value prop of Hex applies — and Hex is absent. Streamlit, Voila, Dash, Binder, Anvil all win share. Buyers are being pointed at open-source rebuilds rather than Hex&#x27;s native publish-from-notebook flow.</p>
@@ -2568,11 +2583,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best AI-powered data analysis platforms 2025&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Hex&#x27;s entire 2026 positioning is &#x27;AI Analytics Platform&#x27; (literal homepage headline). Claude — which DOES know Hex — fails to cite Hex on the most direct AI-platform query. Microsoft, Databricks, Tableau, Julius AI win this query. Hex&#x27;s AI Notebook Agent and Context Studio go unmentioned.</p>
@@ -2587,11 +2604,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best modern BI tools for data analysts&quot;</div>
           </div>
           <span class="probe-status probe-cited">Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Hex IS cited but bucketed as &#x27;modern/emerging&#x27; below Tableau, Power BI, Looker, Metabase, Redash, and Superset. Six legacy tools rank above Hex. The opportunity is to push Hex from &#x27;emerging&#x27; into the &#x27;top tier&#x27; bucket — which requires the Wikipedia + offsite editorial presence Tableau and Looker have.</p>
@@ -2606,11 +2625,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;Mode Analytics alternatives for collaborative data work&quot;</div>
           </div>
           <span class="probe-status probe-cited">Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">STRONG WIN. Claude names Hex as the #1 Mode replacement. This is the proof point that the win condition is achievable — but it&#x27;s only Claude, and only on this very specific query. The question is how to replicate this Claude behavior across ChatGPT and across broader category queries.</p>
@@ -2625,11 +2646,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best data exploration tools that combine SQL Python and visualization&quot;</div>
           </div>
           <span class="probe-status probe-cited">Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Another strong Claude win — Hex named #3 with explicit recommendation. Still ranked behind Jupyter and Databricks (legacy/enterprise incumbents), but well-positioned among modern peers.</p>
@@ -2644,11 +2667,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best Snowflake notebook tools for analytics&quot;</div>
           </div>
           <span class="probe-status probe-cited">Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">BEST RESULT in the audit — Claude names Hex as the gold-medal Snowflake notebook tool and explicitly says &#x27;Hex + Snowflake is the most popular modern stack.&#x27; Hex&#x27;s Snowflake co-marketing partnership is paying off in Claude. This is the playbook to replicate for AWS, dbt, and BigQuery integrations.</p>
@@ -2663,11 +2688,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best tools for embedded analytics in SaaS applications&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">MAJOR MISS. Hex has a dedicated /product/embedded-analytics/ page and even Claude — the Hex-friendliest engine — does not cite it for embedded analytics. 11 competitors named, Hex zero. Every SaaS founder asking &#x27;what should I use to embed dashboards in my product&#x27; is being directed to Looker, Cube, Sisense — not Hex.</p>
@@ -2682,11 +2709,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;Hex data platform review pros and cons&quot;</div>
           </div>
           <span class="probe-status probe-cited">Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">When asked by name, ChatGPT produces a balanced review. The brand exists in the model. The problem is exclusively that Hex is NOT recalled for the unbranded category queries that drive 90%+ of buyer-journey volume.</p>
@@ -2701,11 +2730,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=64" alt="" loading="lazy">Perplexity<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best collaborative data notebook for data teams 2025&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Perplexity probe inconclusive due to fetch issue. Should be re-run; given that Perplexity&#x27;s index is heavily tilted toward third-party editorial properties (G2, Forbes, Datanami), Hex&#x27;s offsite gap likely produces a similar miss to ChatGPT.</p>
@@ -2720,11 +2751,13 @@
     <li class="probe-row">
       <details class="probe-details">
         <summary class="probe-summary">
+          <div class="probe-summary-inner">
           <div class="probe-text">
             <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=64" alt="" loading="lazy">Gemini · AI Overview<span class="probe-caret" aria-hidden="true">›</span></span>
             <div class="probe-query">&quot;best data notebook platform for analytics teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
+          </div>
         </summary>
         <div class="probe-body">
           <p class="probe-commentary">Hex shows up at organic position 7 — but the page that ranks is the Notebook Agent product launch, not a comparison/alternatives page. Deepnote owns the #1 organic position with their own .com. The third-party editorial roundups (ContentSquare, Zerve, Julius.ai, Syracuse, Quadratic, Splunk) all appear above hex.tech and are exactly the publishers that feed Gemini&#x27;s AI Overview — and Hex is absent from those roundups. Pure Offsite Playbook gap.</p>
