@@ -1063,6 +1063,8 @@
   .combined-card {
     border: 1px solid var(--stroke-green);
     background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
   }
 
   .metrics-grid {
@@ -1199,7 +1201,7 @@
     grid-template-columns: 1fr 1.2fr;
     gap: 40px;
     align-items: start;
-    min-height: 720px;
+    min-height: 612px;
   }
   .radar-chart-wrap {
     align-self: center;
@@ -1397,15 +1399,43 @@
     gap: 14px;
   }
 
+  .opp-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
   .opp-meta {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--green-500);
+    color: var(--text-secondary);
   }
   .opp-meta-critical { color: var(--risk-red); }
+
+  .opp-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .opp-status-gap {
+    background: #F7E5C8;
+    color: #B05C00;
+  }
+  .opp-status-critical {
+    background: #F7D9CF;
+    color: var(--risk-red);
+  }
 
   .opp-title {
     font-family: Georgia, serif;
@@ -1561,6 +1591,8 @@
   .comp-table {
     background: var(--white);
     border: 1px solid var(--stroke-green);
+    border-radius: 12px;
+    overflow: hidden;
   }
 
   .comp-row {
@@ -2237,7 +2269,7 @@
         </div>
       </div>
       <div class="radar-chart-wrap">
-        <svg class="radar-svg" viewBox="0 0 440 440" width="100%" style="max-width: 440px;">
+        <svg class="radar-svg" viewBox="0 0 440 440" width="100%" style="max-width: 528px;">
           <!-- Grid -->
           <polygon class="grid-line" points="220,80 341.24,150 341.24,290 220,360 98.76,290 98.76,150"/>
           <polygon class="grid-line" points="220,108 317,164 317,276 220,332 123,276 123,164"/>
@@ -2475,43 +2507,55 @@
   </div>
 
   <div class="opp-grid">
-    <!-- Card 1: YOU vs DEEPNOTE bar chart -->
+    <!-- Card 1: 4 of 12 comparison pages live -->
     <div class="opp-card">
       <div class="opp-visual">
         <svg viewBox="0 0 240 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <text x="40" y="20" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#B94524" letter-spacing="0.8">YOU</text>
-          <text x="92" y="20" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#0A1A10" letter-spacing="0.8">DEEPNOTE</text>
-          <line x1="40" y1="28" x2="40" y2="118" stroke="#B94524" stroke-width="1.5" stroke-dasharray="3 3"/>
-          <rect x="28" y="92" width="24" height="22" fill="#DDE2D5" rx="2"/>
-          <rect x="80" y="40" width="24" height="74" fill="#0F6A3A" rx="2"/>
-          <rect x="132" y="62" width="24" height="52" fill="#DDE2D5" rx="2"/>
-          <rect x="184" y="78" width="24" height="36" fill="#DDE2D5" rx="2"/>
-          <line x1="20" y1="118" x2="220" y2="118" stroke="#C7C7BD" stroke-width="1"/>
+          <text x="120" y="20" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" font-weight="700" fill="#5A6157" letter-spacing="1.5">COMPARISON PAGES</text>
+          <rect x="22" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
+          <rect x="56" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
+          <rect x="90" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
+          <rect x="124" y="38" width="28" height="20" fill="#0F6A3A" rx="2"/>
+          <rect x="158" y="38" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <rect x="192" y="38" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <rect x="22" y="64" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <rect x="56" y="64" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <rect x="90" y="64" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <rect x="124" y="64" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <rect x="158" y="64" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <rect x="192" y="64" width="28" height="20" fill="none" stroke="#DDE2D5" stroke-width="2" rx="2"/>
+          <text x="120" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="400" fill="#0A1A10">4 / 12 live</text>
         </svg>
       </div>
       <div class="opp-content">
-        <div class="opp-meta opp-meta-critical">[1] Critical &middot; Refresh Playbook</div>
-        <h3 class="opp-title">Recapture the "hex vs deepnote" SERP</h3>
-        <p class="opp-body">Deepnote ranks <strong>#1 for "hex vs deepnote"</strong> and <strong>#4 for "hex competitors."</strong> Hex's matching comparison pages return 404. Modeled lift: <strong>+2.4&times; cite share in 90 days</strong>.</p>
+        <div class="opp-meta-row">
+          <span class="opp-meta">Pillar 01 &middot; Onsite Creation</span>
+          <span class="opp-status opp-status-gap">Gap</span>
+        </div>
+        <h3 class="opp-title">Programmatic page sets that intercept buyer queries before competitors do.</h3>
+        <p class="opp-body"><strong>8 of 12 competitor comparison pages missing.</strong> Deepnote ranks #1 for "hex vs deepnote." Hex's matching page returns 404.</p>
         <a class="opp-link" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">See the playbook &rarr;</a>
       </div>
     </div>
 
-    <!-- Card 2: 47 citations donut -->
+    <!-- Card 2: schema coverage donut -->
     <div class="opp-card">
       <div class="opp-visual">
         <svg viewBox="0 0 240 140" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <circle cx="120" cy="70" r="46" fill="none" stroke="#DDE2D5" stroke-width="14"/>
           <circle cx="120" cy="70" r="46" fill="none" stroke="#0F6A3A" stroke-width="14"
-                  stroke-dasharray="58.7 230.2" transform="rotate(-90 120 70)" stroke-linecap="butt"/>
-          <text x="120" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="400" fill="#0A1A10">47</text>
-          <text x="120" y="84" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" font-weight="700" fill="#5A6157" letter-spacing="1.2">CITATIONS</text>
+                  stroke-dasharray="78 211" transform="rotate(-90 120 70)" stroke-linecap="butt"/>
+          <text x="120" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="400" fill="#0A1A10">27%</text>
+          <text x="120" y="84" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" font-weight="700" fill="#5A6157" letter-spacing="1.2">SCHEMA</text>
         </svg>
       </div>
       <div class="opp-content">
-        <div class="opp-meta">[2] High &middot; Creation Playbook</div>
-        <h3 class="opp-title">Convert AI citations into named brand mentions</h3>
-        <p class="opp-body">Of <strong>231 tracked AI citations</strong>, /blog/ accounts for 94 and /templates/ for 47. AI engines link to the pages but rarely name Hex in the answer. Add entity-anchored copy.</p>
+        <div class="opp-meta-row">
+          <span class="opp-meta">Pillar 02 &middot; Onsite Refresh</span>
+          <span class="opp-status opp-status-gap">Gap</span>
+        </div>
+        <h3 class="opp-title">Pattern-based updates that make existing pages AI-citable at scale.</h3>
+        <p class="opp-body"><strong>SoftwareApplication schema on 27% of pages.</strong> FAQPage on 7%. AggregateRating: 0% despite 377 G2 reviews.</p>
         <a class="opp-link" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">See the playbook &rarr;</a>
       </div>
     </div>
@@ -2529,9 +2573,12 @@
         </svg>
       </div>
       <div class="opp-content">
-        <div class="opp-meta">[3] High &middot; Offsite Playbook</div>
-        <h3 class="opp-title">Win inclusion in AI Overviews for "data viz tool"</h3>
-        <p class="opp-body">Hex ranks top 10 on Google for <strong>"data visualization tool"</strong> (2,900 mo. searches). AI Overviews surface Tableau, Power BI, Flourish, Datawrapper &mdash; Hex is absent.</p>
+        <div class="opp-meta-row">
+          <span class="opp-meta">Pillar 03 &middot; Offsite Influence</span>
+          <span class="opp-status opp-status-critical">Critical</span>
+        </div>
+        <h3 class="opp-title">Third-party citation engine. 85% of AI brand mentions originate here.</h3>
+        <p class="opp-body"><strong>0% citation rate across 35,178 AI citation events.</strong> No Wikipedia article. ChatGPT cites Hex in 0 of 4 unbranded category queries.</p>
         <a class="opp-link" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">See the playbook &rarr;</a>
       </div>
     </div>
