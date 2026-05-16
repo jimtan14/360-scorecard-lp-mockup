@@ -552,8 +552,19 @@
     background: var(--white);
     border: 1px solid var(--stroke-primary);
     border-radius: 12px;
-    overflow: hidden;
+    max-height: 460px;
+    overflow-y: auto;
+    direction: rtl;
   }
+  .probes-list > * { direction: ltr; }
+  .probes-list::-webkit-scrollbar { width: 10px; }
+  .probes-list::-webkit-scrollbar-track { background: transparent; }
+  .probes-list::-webkit-scrollbar-thumb {
+    background: var(--stroke-primary);
+    border-radius: 999px;
+    border: 2px solid var(--white);
+  }
+  .probes-list::-webkit-scrollbar-thumb:hover { background: #C7C0AE; }
   .probe-row {
     border-bottom: 1px solid var(--stroke-primary);
   }
