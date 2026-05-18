@@ -2396,8 +2396,8 @@
           <span class="metric-label">Crawlability</span>
           <button type="button" class="info-btn" aria-label="What is Crawlability?">i</button>
           <div class="info-tooltip" role="tooltip">
-            <p>Whether AI agents can reach, parse, and index your pages — robots.txt allowances, sitemap coverage, and structured-data exposure.</p>
-            <p><strong>How it&rsquo;s scored:</strong> Scored from bot allowlist coverage in robots.txt, presence of /llms.txt, sitemap reach across product/compare/docs surfaces, and JSON-LD vs microdata exposure.</p>
+            <p>Whether AI agents can actually fetch, render, and parse your pages. Includes robots.txt, sitemap, status codes, and JS rendering.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from sitemap coverage, % of pages returning 200, robots.txt allowlist for AI bots, and HTML-first vs JS-only render.</p>
           </div>
         </div>
         <div><span class="metric-score">72</span><span class="metric-denom">/100</span></div>
@@ -2408,8 +2408,8 @@
           <span class="metric-label">Entity Signals</span>
           <button type="button" class="info-btn" aria-label="What is Entity Signals?">i</button>
           <div class="info-tooltip" role="tooltip">
-            <p>Whether AI engines recognize your brand as a distinct, authoritative entity in the category.</p>
-            <p><strong>How it&rsquo;s scored:</strong> Scored from Wikipedia presence, GitHub/marketplace verified-org status, named-author bylines with sameAs metadata, and Knowledge Graph stitching across third-party properties.</p>
+            <p>How clearly the brand is represented as a named entity across the web — Wikipedia, Crunchbase, knowledge panels, structured author bios.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from Wikipedia presence, knowledge-panel detection, sameAs link count, author-entity schema, and brand mention density on third-party properties.</p>
           </div>
         </div>
         <div><span class="metric-score">60</span><span class="metric-denom">/100</span></div>
@@ -2420,8 +2420,8 @@
           <span class="metric-label">Schema Coverage</span>
           <button type="button" class="info-btn" aria-label="What is Schema Coverage?">i</button>
           <div class="info-tooltip" role="tooltip">
-            <p>Use of structured data markup that helps AI systems parse what each page is about.</p>
-            <p><strong>How it&rsquo;s scored:</strong> Scored from coverage of WebPage, BreadcrumbList, SoftwareApplication, Article, FAQPage, AggregateRating, Review, and HowTo schemas across high-value URLs.</p>
+            <p>How well your pages declare structured data (JSON-LD) so engines can extract entities, FAQ, products, and articles cleanly.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from % of sampled pages with valid JSON-LD, schema-type diversity (Article, Product, FAQPage, HowTo, Organization), and required-field completeness.</p>
           </div>
         </div>
         <div><span class="metric-score">55</span><span class="metric-denom">/100</span></div>
