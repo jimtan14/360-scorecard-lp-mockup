@@ -585,14 +585,19 @@
     padding: 18px 24px;
   }
   .probe-caret {
-    margin-left: 6px;
-    font-size: 14px;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: #F7DDDD;
     color: var(--risk-red);
-    transition: transform 0.15s ease;
-    display: inline-block;
-    transform: rotate(0deg);
+    transition: transform 0.2s ease, background 0.15s ease;
   }
-  .probe-details[open] .probe-caret { transform: rotate(90deg); }
+  .probe-summary:hover .probe-caret { background: #F0C5C5; }
+  .probe-details[open] .probe-caret { transform: rotate(180deg); background: #C5EDD5; color: var(--green-600); }
   .probe-body {
     padding: 4px 24px 22px;
     display: flex;
@@ -2457,11 +2462,11 @@
   </div>
   <ul class="probes-list">
 <li class="probe-row">
-      <details class="probe-details">
+      <details class="probe-details" open>
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best data notebook tools for analytics teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2473,7 +2478,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">For analytics teams seeking robust data notebook tools, several options stand out… 1. Jupyter Notebook… 2. Google Colab… 3. Apache Zeppelin… 4. Azure Synapse Analytics Notebooks… 5. RStudio… 6. ZappySys SSIS PowerPack.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>jupyter.org (implied) · colab.research.google.com (implied) · rstudio.com (implied) · zappysys.com</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>jupyter.org · colab.research.google.com · rstudio.com · zappysys.com</p>
         </div>
       </details>
     </li>
@@ -2482,7 +2487,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best collaborative SQL and Python notebook for data teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2494,7 +2499,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">1. Deepnote: a modern data notebook designed for real-time collaboration, much like Google Docs for data science. Supports SQL and Python… 2. Google Colab… 3. JupyterLab with JupyterHub… 4. Zepl.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>deepnote.com (implied) · colab.research.google.com (implied) · jupyter.org (implied) · zepl.com (implied)</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>deepnote.com · colab.research.google.com · jupyter.org · zepl.com</p>
         </div>
       </details>
     </li>
@@ -2503,7 +2508,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;Jupyter notebook alternatives for data teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2515,7 +2520,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">1. Google Colab… 2. RStudio… 3. Apache Zeppelin… 4. Databricks… 5. Deepnote… 6. Kaggle Kernels… 7. VS Code with Jupyter Extension.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>google.com · rstudio.com · deepnote.com (implied) · databricks.com (implied)</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>google.com · rstudio.com · deepnote.com · databricks.com</p>
         </div>
       </details>
     </li>
@@ -2524,7 +2529,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best tools to build interactive data apps from notebooks&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2545,7 +2550,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;how to build a data app from a Jupyter notebook for stakeholders&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2566,7 +2571,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best AI-powered data analysis platforms 2025&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2587,7 +2592,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best tools for embedded analytics in SaaS applications&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2608,7 +2613,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=64" alt="" loading="lazy">Perplexity<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=64" alt="" loading="lazy">Perplexity<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best collaborative data notebook for data teams 2025&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2629,7 +2634,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=64" alt="" loading="lazy">Gemini · AI Overview<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=64" alt="" loading="lazy">Gemini · AI Overview<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best data notebook platform for analytics teams&quot;</div>
           </div>
           <span class="probe-status probe-not-cited">Not Cited</span>
@@ -2650,7 +2655,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;Hex vs Mode vs Deepnote vs Databricks notebooks&quot;</div>
           </div>
           <span class="probe-status probe-cited">Brand Cited</span>
@@ -2662,7 +2667,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">1. Hex — Primarily for data teams and business analysts. Hex offers a user-friendly interface to create interactive data applications and dashboards. Supports SQL, Python, and no-code. Recommendation: ideal for teams needing to publish polished data apps.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>hex.tech (implied) · mode.com (implied) · deepnote.com (implied) · databricks.com (implied)</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>hex.tech · mode.com · deepnote.com · databricks.com</p>
         </div>
       </details>
     </li>
@@ -2671,7 +2676,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best modern BI tools for data analysts&quot;</div>
           </div>
           <span class="probe-status probe-cited">Brand Cited</span>
@@ -2683,7 +2688,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">Modern/Emerging Tools: Hex — combines notebooks + dashboards; collaborative Python/SQL workspace; best for data scientists doing analysis + sharing. Recommendations by use case: Ad-hoc analysis + sharing → Hex.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>tableau.com · powerbi.microsoft.com · looker.com · metabase.com · redash.io · superset.apache.org · hex.tech (implied) · observablehq.com</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>tableau.com · powerbi.microsoft.com · looker.com · metabase.com · redash.io · superset.apache.org · hex.tech · observablehq.com</p>
         </div>
       </details>
     </li>
@@ -2692,7 +2697,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;Mode Analytics alternatives for collaborative data work&quot;</div>
           </div>
           <span class="probe-status probe-cited">Brand Cited</span>
@@ -2704,7 +2709,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">SQL-First Notebooks: Hex — most direct competitor; excellent collaboration, Python/SQL notebooks, version control, shareable apps. Closest Mode replacement: Hex. Hex is the most recommended direct replacement for teams that rely on Mode&#x27;s SQL + notebook + sharing workflow.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>hex.tech (implied) · count.co · deepnote.com · metabase.com · redash.io · lightdash.com · tableau.com · looker.com</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>hex.tech · count.co · deepnote.com · metabase.com · redash.io · lightdash.com · tableau.com · looker.com</p>
         </div>
       </details>
     </li>
@@ -2713,7 +2718,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best data exploration tools that combine SQL Python and visualization&quot;</div>
           </div>
           <span class="probe-status probe-cited">Brand Cited</span>
@@ -2725,7 +2730,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">3. Hex — SQL cells + Python cells in same workflow, drag-and-drop charts, shareable apps. Best for: team collaboration, polished outputs (highly recommended). Hex is currently the most seamless all-in-one experience for combining SQL, Python, and visualization in a single workflow.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>jupyter.org · databricks.com · hex.tech (implied) · deepnote.com · observablehq.com · mode.com · marimo.io · evidence.dev</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>jupyter.org · databricks.com · hex.tech · deepnote.com · observablehq.com · mode.com · marimo.io · evidence.dev</p>
         </div>
       </details>
     </li>
@@ -2734,7 +2739,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;best Snowflake notebook tools for analytics&quot;</div>
           </div>
           <span class="probe-status probe-cited">Brand Cited</span>
@@ -2746,7 +2751,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">Top Third-Party Integrations: Hex — best overall for collaborative data analytics; seamless Snowflake connector; combines SQL, Python, and no-code blocks. For most analytics teams, Hex + Snowflake is the most popular modern stack.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>snowflake.com · hex.tech (implied) · databricks.com · jupyter.org · observablehq.com · count.co · deepnote.com</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>snowflake.com · hex.tech · databricks.com · jupyter.org · observablehq.com · count.co · deepnote.com</p>
         </div>
       </details>
     </li>
@@ -2755,7 +2760,7 @@
         <summary class="probe-summary">
           <div class="probe-summary-inner">
           <div class="probe-text">
-            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true">›</span></span>
+            <span class="probe-engine"><img class="probe-engine-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT<span class="probe-caret" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></span>
             <div class="probe-query">&quot;Hex data platform review pros and cons&quot;</div>
           </div>
           <span class="probe-status probe-cited">Brand Cited</span>
@@ -2767,7 +2772,7 @@
             <div class="probe-sub-label">AI answer snippet</div>
             <p class="probe-snippet-text">Pros: collaborative environment (Google Docs-style real-time); versatile integrations (Snowflake, BigQuery, Redshift); ease of use; interactive dashboards; Python and SQL support. Cons: pricing; limited customization; dependency on internet; learning curve for non-coders.</p>
           </div>
-          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>hex.tech (implied)</p>
+          <p class="probe-sources"><span class="probe-sub-label">Cited sources</span>hex.tech</p>
         </div>
       </details>
     </li>
