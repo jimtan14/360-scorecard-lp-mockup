@@ -1525,6 +1525,40 @@
     color: var(--text-secondary);
     margin: 0;
   }
+  .opp-gaps { display: flex; flex-direction: column; gap: 8px; }
+  .opp-gaps-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+  .opp-gaps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .opp-gaps-list li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text-primary);
+  }
+  .opp-gaps-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-500);
+  }
 
   .opp-link {
     display: inline-flex;
@@ -2814,7 +2848,15 @@
           <span class="opp-status opp-status-gap">Gap</span>
         </div>
         <h3 class="opp-title">Programmatic page sets that intercept buyer queries before competitors do.</h3>
-        <p class="opp-body"><strong>8 of 12 competitor comparison pages missing.</strong> Deepnote ranks #1 for "hex vs deepnote." Hex's matching page returns 404.</p>
+        <div class="opp-gaps">
+          <div class="opp-gaps-label">Key Gaps</div>
+          <ul class="opp-gaps-list">
+            <li>Missing /compare/ pages for Mode, Deepnote, Databricks, Jupyter, Colab, Streamlit, Marimo, Observable</li>
+            <li>State of Data Teams lives at 1 URL, should be 30&ndash;50 stat-pages</li>
+            <li>One /integrations/ page covers what should be per-warehouse</li>
+            <li>No /alternatives/ hub. Deepnote already ranks for &ldquo;hex alternatives&rdquo;</li>
+          </ul>
+        </div>
         <a class="opp-link" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">See the playbook &rarr;</a>
       </div>
     </div>
@@ -2836,7 +2878,15 @@
           <span class="opp-status opp-status-gap">Gap</span>
         </div>
         <h3 class="opp-title">Pattern-based updates that make existing pages AI-citable at scale.</h3>
-        <p class="opp-body"><strong>SoftwareApplication schema on 27% of pages.</strong> FAQPage on 7%. AggregateRating: 0% despite 377 G2 reviews.</p>
+        <div class="opp-gaps">
+          <div class="opp-gaps-label">Key Gaps</div>
+          <ul class="opp-gaps-list">
+            <li>SoftwareApplication on 27% of pages, AggregateRating at 0% despite 377 G2 reviews</li>
+            <li>Promo banner duplicates 100&ndash;150 nav words into every page&rsquo;s first viewport</li>
+            <li>Product pages lead with marketing copy, not extractable definitions</li>
+            <li>328 blog posts attributed to &ldquo;The Hex Team,&rdquo; zero E-E-A-T author signal</li>
+          </ul>
+        </div>
         <a class="opp-link" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">See the playbook &rarr;</a>
       </div>
     </div>
@@ -2859,7 +2909,15 @@
           <span class="opp-status opp-status-critical">Critical</span>
         </div>
         <h3 class="opp-title">Third-party citation engine. 85% of AI brand mentions originate here.</h3>
-        <p class="opp-body"><strong>0% citation rate across 35,178 AI citation events.</strong> No Wikipedia article. ChatGPT cites Hex in 0 of 4 unbranded category queries.</p>
+        <div class="opp-gaps">
+          <div class="opp-gaps-label">Key Gaps</div>
+          <ul class="opp-gaps-list">
+            <li>No Wikipedia entity. Databricks, Mode, Looker, Tableau, Sigma, Jupyter all have one</li>
+            <li>ChatGPT cites Hex in 0 of 4 unbranded category queries</li>
+            <li>Even Claude misses Hex for &ldquo;best embedded analytics tools&rdquo;</li>
+            <li>Listicles feeding Gemini AI Overviews exclude Hex entirely</li>
+          </ul>
+        </div>
         <a class="opp-link" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">See the playbook &rarr;</a>
       </div>
     </div>
@@ -2921,8 +2979,8 @@
 
 <!-- FINAL CTA -->
 <section class="final-cta" id="cta">
-  <h2>You've seen the gap. Here's how to close it.</h2>
-  <p>45 minutes with our team. We walk through your scorecard, prioritize the moves that compound, and show you the 90-day path to citation share.</p>
+  <h2>You've seen the gap. Let's get to work.</h2>
+  <p>Book a strategy session with our team. We walk through your scorecard, prioritize the moves that compound, and show you the 90-day path to citation share.</p>
   <a href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank" class="btn btn-accent" style="font-size: 16px; padding: 18px 36px;">Get the 90 day plan &rarr;</a>
 </section>
 
