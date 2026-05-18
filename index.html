@@ -1242,6 +1242,79 @@
     right: 0;
   }
 
+  /* STRATEGIC BRIEF */
+  .brief {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 48px;
+  }
+  .brief-card {
+    background: var(--white);
+    border: 1px solid var(--stroke-green);
+    border-radius: 12px;
+    padding: 44px 56px 48px;
+  }
+  .brief-eyebrow {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green-500);
+    margin-bottom: 18px;
+  }
+  .brief-title {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.22;
+    color: var(--near-black);
+    margin: 0 0 24px;
+    max-width: 920px;
+  }
+  .brief-body {
+    color: #2A332C;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .brief-body p { margin: 0 0 18px; }
+  .brief-body p:last-child { margin: 0; }
+  .brief-body em { font-style: italic; color: var(--near-black); }
+  .brief-body strong { color: var(--green-500); font-weight: 700; }
+  .brief-body code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+    background: #F0EEE2;
+    border: 1px solid var(--stroke-green);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--near-black);
+    white-space: nowrap;
+  }
+  .brief-gated {
+    position: relative;
+    margin-top: 8px;
+  }
+  .brief-gated > p {
+    filter: blur(5px);
+    user-select: none;
+    pointer-events: none;
+  }
+  .brief-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 55%, rgba(255,255,255,0.95) 100%);
+    pointer-events: none;
+  }
+  @media (max-width: 720px) {
+    .brief { padding: 0 20px 32px; }
+    .brief-card { padding: 32px 22px 36px; }
+    .brief-title { font-size: 26px; }
+  }
+
   .metric-score {
     font-family: Georgia, serif;
     font-size: 42px;
@@ -1980,7 +2053,7 @@
 
   .proof-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 12px;
   }
 
@@ -2001,7 +2074,7 @@
 
   .proof-metric {
     font-family: Georgia, serif;
-    font-size: 48px;
+    font-size: 38px;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -2010,7 +2083,7 @@
   }
 
   .proof-label {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.35;
     color: var(--near-black);
     margin-bottom: auto;
@@ -2028,7 +2101,7 @@
   .proof-brand {
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 26px;
     letter-spacing: -0.03em;
     color: var(--near-black);
     white-space: nowrap;
@@ -2930,6 +3003,25 @@
       </details>
     </li>
   </ul>
+</section>
+
+<!-- STRATEGIC BRIEF -->
+<section class="brief" id="strategic-brief">
+  <div class="brief-card">
+    <span class="brief-eyebrow">Strategic brief</span>
+    <h2 class="brief-title">Hex is losing its own category on the searches buyers use most.</h2>
+    <div class="brief-body">
+      <p class="brief-lead">When buyers compare notebook tools, they ask Google and ChatGPT first. Deepnote already owns those answers. They&rsquo;ve built 30+ comparison pages and rank #1 for <em>&ldquo;hex vs deepnote,&rdquo;</em> <em>&ldquo;hex vs jupyter,&rdquo;</em> and <em>&ldquo;hex vs colab.&rdquo;</em></p>
+      <div class="brief-gated">
+        <p>We tested 7 obvious Hex comparison URLs &mdash; <code>/compare/hex-vs-deepnote</code>, <code>/compare/hex-vs-mode</code>, <code>/compare/hex-vs-databricks</code>, and four others. Every one returned a 404. Only two comparison pages exist today (<code>/compare/sigma-vs-hex</code> and <code>/compare/looker-vs-hex</code>), and both rank well when they&rsquo;re live. The pages buyers are searching for simply don&rsquo;t exist.</p>
+        <p>The structural picture makes it worse. Across our 16-page sample of hex.tech, <strong>0%</strong> have a TL;DR summary at the top &mdash; the block AI engines copy into their answers. <strong>25%</strong> have FAQ-style content, but <strong>0%</strong> use the markup AI engines need to read it. When AI pulls from a Hex page, it rarely names Hex.</p>
+        <p>Offsite is the biggest gap. Across <strong>15,157</strong> third-party citations AI engines read for this category, Hex shows up in <strong>0%</strong>. Reddit (<strong>2,792 citations</strong>), YouTube (<strong>1,204</strong>), Wikipedia (<strong>1,009</strong>), and Medium (983) drive the answers, and Hex isn&rsquo;t named in any of them.</p>
+        <p>For category searches like <em>&ldquo;data visualization tool&rdquo;</em> (<strong>2,900/mo</strong>), <em>&ldquo;ai agent for data analysis,&rdquo;</em> and <em>&ldquo;snowflake notebook,&rdquo;</em> Deepnote, Julius, and Databricks own the AI answer. Hex doesn&rsquo;t appear.</p>
+        <p>The bright spot: when Hex IS named in AI answers (<em>&ldquo;hex vs deepnote,&rdquo; &ldquo;hex alternatives,&rdquo; &ldquo;agentic analytics&rdquo;</em>), the citation leans on third-party sources. The brand voice works when it shows up &mdash; there just isn&rsquo;t enough of it out there.</p>
+        <div class="brief-fade"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- STRATEGIC OPPORTUNITIES -->
