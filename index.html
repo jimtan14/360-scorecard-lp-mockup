@@ -2197,10 +2197,9 @@
     <div class="hero-copy">
       <div class="hero-meta">
         <span class="hero-meta-pill">AEO 360 Scorecard</span>
-        <span class="hero-meta-text" id="hero-date">May 14, 2026</span>
       </div>
-      <h1 class="hero-h1">Win AI search visibility for <mark>Hex</mark>, built for data &amp; analytics teams.</h1>
-      <p class="hero-lede">Deepnote is winning <strong>3× more AI citations</strong> than Hex on the queries your buyers use to compare notebook platforms. We mapped the gap. Here's the 90-day plan to close it.</p>
+      <h1 class="hero-h1">Hex is losing AI search citations to <mark>Deepnote</mark>.</h1>
+      <p class="hero-lede">Deepnote wins <strong>3× more AI citations</strong> than Hex on the queries your buyers ask. AirOps ships the fix in 90 days.</p>
       <div class="hero-ctas">
         <a class="btn btn-dark" href="https://calendly.com/zoe-jessup-airops/airops-connect" target="_blank">Get the 90 day plan &rarr;</a>
         <button type="button" class="btn btn-outline" id="hero-share-btn">
@@ -2252,8 +2251,8 @@
   <h2 class="stats-heading">You're losing your own category on the engine buyers use most</h2>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-value">7 / 15</div>
-      <div class="stat-desc">unbranded ChatGPT category probes cited Hex, including your exact positioning query</div>
+      <div class="stat-value">53%</div>
+      <div class="stat-desc">unbranded ChatGPT category probes are not cited, including your exact positioning query</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">0%</div>
@@ -2938,11 +2937,11 @@
     const AVG = 64;
     const METRICS = {
       freshness:    { label: 'Freshness', score: 92, competitorAvg: 90,
-                      description: "Active publishing cadence: /blog/ has 328 pages, /changelog/ has 115, /docs/ has 187 — matches or beats most competitors.",
+                      description: "Active publishing cadence — 328 blog posts, 115 changelog entries, 187 docs pages, plus weekly product-launch signals (Context Suggestions, Notebook Agent Act II, CLI campaign shipped in a single recent week). That meets the velocity AI engines reward; competitors in data-tooling typically ship at a slower monthly cadence.",
                       action: [
-                        "Top comparison post refreshed Dec 2025 across 328 blog pages",
-                        "2026 sitewide framing plus December 2025 research refresh",
-                        "115 changelog entries aging risks diluting freshness signal"
+                        "Highest-value comparison page (/blog/jupyter-alternatives) was last updated December 15, 2025 — and the full 328-page blog is in active rotation",
+                        "Sitewide '© 2026 Hex Technologies' plus the 'State of Data Teams 2026' homepage banner give every page current-year framing, which correlates strongly with AI citations",
+                        "Changelog: 115 entries dated once and left to age — older entries drift out of relevance and dilute the aggregate freshness signal over time"
                       ] },
       crawlability: { label: 'Crawlability', score: 72, competitorAvg: 88,
                       description: "robots.txt permits all major AI bots — GPTBot, ClaudeBot, Perplexity — and the sitemap covers buyer-intent product, compare, and customers pages.",
@@ -3114,15 +3113,6 @@
         }, 1800);
       });
     });
-  })();
-
-  // Always reflect the latest refresh date in the hero meta line
-  (function () {
-    const el = document.getElementById('hero-date');
-    if (!el) return;
-    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    const d = new Date();
-    el.textContent = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
   })();
 </script>
 
