@@ -1178,9 +1178,65 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-secondary);
+  }
+  .metric-label-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     margin-bottom: 16px;
     min-height: 26px;
+    position: relative;
   }
+  .info-btn {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--text-tertiary);
+    color: var(--text-tertiary);
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .info-btn:hover,
+  .info-btn:focus-visible {
+    color: var(--near-black);
+    border-color: var(--near-black);
+    outline: none;
+  }
+  .info-tooltip {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 280px;
+    background: var(--near-black);
+    color: var(--white);
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0;
+    text-transform: none;
+    z-index: 60;
+    display: none;
+    box-shadow: 0 10px 28px rgba(10,26,16,0.22);
+    text-align: left;
+  }
+  .info-tooltip.open { display: block; }
+  .info-tooltip p { margin: 0 0 10px; }
+  .info-tooltip p:last-child { margin: 0; }
+  .info-tooltip strong { color: var(--white); font-weight: 600; }
 
   .metric-score {
     font-family: Georgia, serif;
@@ -2324,37 +2380,86 @@
   <div class="combined-card">
     <div class="metrics-grid">
       <div class="metric-cell" data-metric="freshness" tabindex="0" role="button">
-        <div class="metric-label">Freshness</div>
+        <div class="metric-label-row">
+          <span class="metric-label">Freshness</span>
+          <button type="button" class="info-btn" aria-label="What is Freshness?">i</button>
+          <div class="info-tooltip" role="tooltip">
+            <p>Whether content is updated, datestamped, and signals recency — a major weighting factor in AI answer engines.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from datePublished/dateModified coverage, % of pages updated in the last 12 months, datestamp visibility in body copy, and statistic-currency.</p>
+          </div>
+        </div>
         <div><span class="metric-score">92</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 92%"></div></div>
       </div>
       <div class="metric-cell" data-metric="crawlability" tabindex="0" role="button">
-        <div class="metric-label">Crawlability</div>
+        <div class="metric-label-row">
+          <span class="metric-label">Crawlability</span>
+          <button type="button" class="info-btn" aria-label="What is Crawlability?">i</button>
+          <div class="info-tooltip" role="tooltip">
+            <p>Whether AI agents can reach, parse, and index your pages — robots.txt allowances, sitemap coverage, and structured-data exposure.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from bot allowlist coverage in robots.txt, presence of /llms.txt, sitemap reach across product/compare/docs surfaces, and JSON-LD vs microdata exposure.</p>
+          </div>
+        </div>
         <div><span class="metric-score">72</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 72%"></div></div>
       </div>
       <div class="metric-cell" data-metric="entity" tabindex="0" role="button">
-        <div class="metric-label">Entity Signals</div>
+        <div class="metric-label-row">
+          <span class="metric-label">Entity Signals</span>
+          <button type="button" class="info-btn" aria-label="What is Entity Signals?">i</button>
+          <div class="info-tooltip" role="tooltip">
+            <p>Whether AI engines recognize your brand as a distinct, authoritative entity in the category.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from Wikipedia presence, GitHub/marketplace verified-org status, named-author bylines with sameAs metadata, and Knowledge Graph stitching across third-party properties.</p>
+          </div>
+        </div>
         <div><span class="metric-score">60</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 60%; background: #ECF36C;"></div></div>
       </div>
       <div class="metric-cell" data-metric="schema" tabindex="0" role="button">
-        <div class="metric-label">Schema Coverage</div>
+        <div class="metric-label-row">
+          <span class="metric-label">Schema Coverage</span>
+          <button type="button" class="info-btn" aria-label="What is Schema Coverage?">i</button>
+          <div class="info-tooltip" role="tooltip">
+            <p>Use of structured data markup that helps AI systems parse what each page is about.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from coverage of WebPage, BreadcrumbList, SoftwareApplication, Article, FAQPage, AggregateRating, Review, and HowTo schemas across high-value URLs.</p>
+          </div>
+        </div>
         <div><span class="metric-score">55</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 55%; background: #ECF36C;"></div></div>
       </div>
       <div class="metric-cell" data-metric="citation" tabindex="0" role="button">
-        <div class="metric-label">Citation Worthiness</div>
+        <div class="metric-label-row">
+          <span class="metric-label">Citation Worthiness</span>
+          <button type="button" class="info-btn" aria-label="What is Citation Worthiness?">i</button>
+          <div class="info-tooltip" role="tooltip">
+            <p>Whether your content is the kind of thing AI engines pull as a source — original data, expert analysis, definitive guides, structured comparisons.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from original-data presence, citation density (links to primary sources), comparison/listicle structures, and observed AI cite rate vs. category baseline.</p>
+          </div>
+        </div>
         <div><span class="metric-score">78</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 78%"></div></div>
       </div>
       <div class="metric-cell" data-metric="answer" tabindex="0" role="button">
-        <div class="metric-label">Answerable Format</div>
+        <div class="metric-label-row">
+          <span class="metric-label">Answerable Format</span>
+          <button type="button" class="info-btn" aria-label="What is Answerable Format?">i</button>
+          <div class="info-tooltip" role="tooltip">
+            <p>Whether content is structured as direct answers — H2 questions, lists, tables, definitions — that AI can lift into responses.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from H2-as-question rate, presence of TL;DR / key-takeaways blocks, table+list density, and average answer length under 300 words.</p>
+          </div>
+        </div>
         <div><span class="metric-score">70</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 70%"></div></div>
       </div>
       <div class="metric-cell" data-metric="offsite" tabindex="0" role="button">
-        <div class="metric-label">Offsite Readiness</div>
+        <div class="metric-label-row">
+          <span class="metric-label">Offsite Readiness</span>
+          <button type="button" class="info-btn" aria-label="What is Offsite Readiness?">i</button>
+          <div class="info-tooltip" role="tooltip">
+            <p>Whether the brand is present on the third-party properties LLMs actually trust — Wikipedia, G2, Capterra, editorial sites, communities. 85% of brand mentions in AI come from offsite, so a brand absent here is invisible to most AI answers.</p>
+            <p><strong>How it&rsquo;s scored:</strong> Scored from named third-party properties citing the brand, competitor offsite citation share, original-research distribution potential, review-site coverage, and community presence (Reddit / Quora / Stack Overflow).</p>
+          </div>
+        </div>
         <div><span class="metric-score">38</span><span class="metric-denom">/100</span></div>
         <div class="metric-bar"><div class="metric-bar-fill" style="width: 38%; background: #F0A8AE;"></div></div>
       </div>
@@ -3185,6 +3290,39 @@
           if (label) label.textContent = originalLabel;
         }, 1800);
       });
+    });
+  })();
+
+  // Info tooltips on each metric label
+  (function () {
+    const buttons = document.querySelectorAll('.info-btn');
+    let active = null;
+    buttons.forEach(btn => {
+      const tip = btn.parentElement.querySelector('.info-tooltip');
+      if (!tip) return;
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (active === tip) {
+          tip.classList.remove('open');
+          active = null;
+        } else {
+          if (active) active.classList.remove('open');
+          tip.classList.add('open');
+          active = tip;
+        }
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (active && !active.contains(e.target)) {
+        active.classList.remove('open');
+        active = null;
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && active) {
+        active.classList.remove('open');
+        active = null;
+      }
     });
   })();
 </script>
