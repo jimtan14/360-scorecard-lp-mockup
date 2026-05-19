@@ -229,6 +229,12 @@
   }
 
   .header-nav a:hover { opacity: 0.65; }
+  .header-nav a.active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    text-decoration-color: #00ff64;
+  }
 
   .header-actions {
     display: flex;
@@ -2842,7 +2848,7 @@
 <!-- COMBINED METRICS + RADAR -->
 <section class="breakdown" id="score-breakdown">
   <div class="section-header section-header-stacked">
-    <span class="ao-eyebrow">Competitor Intelligence</span>
+    <span class="ao-eyebrow">Score Breakdown</span>
     <h2 class="section-title">Where <img class="hero-h1-logo" src="https://cdn.brandfetch.io/domain/hex.tech/w/400/h/120/fallback/transparent/type/logo?c=1ids_5G-Qg7zNH8A-tg" alt="Hex" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Hex'}))"> wins, where it lags</h2>
   </div>
 
@@ -3813,6 +3819,44 @@
         }, 1800);
       });
     });
+  })();
+
+  // Scroll-spy: underline the header nav link whose section is in view
+  (function () {
+    const links = document.querySelectorAll('.header-nav a[href^="#"]');
+    if (!links.length) return;
+    const targets = [];
+    links.forEach(a => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) targets.push({ el, link: a });
+    });
+    if (!targets.length) return;
+
+    function setActive(activeLink) {
+      links.forEach(l => l.classList.toggle('active', l === activeLink));
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      // Find the entry closest to the top of viewport that's intersecting
+      let bestEntry = null;
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (!bestEntry || entry.boundingClientRect.top < bestEntry.boundingClientRect.top) {
+            bestEntry = entry;
+          }
+        }
+      });
+      if (bestEntry) {
+        const match = targets.find(t => t.el === bestEntry.target);
+        if (match) setActive(match.link);
+      }
+    }, {
+      rootMargin: '-120px 0px -60% 0px',
+      threshold: 0,
+    });
+
+    targets.forEach(t => observer.observe(t.el));
   })();
 
   // Probe filters: reorder probe rows to put matching engine at top
