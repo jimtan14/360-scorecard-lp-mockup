@@ -3824,7 +3824,8 @@
     });
   })();
 
-  // Scroll-spy: underline the header nav link whose section is in view
+  // Scroll-spy: underline the header nav link whose section is in view.
+  // Clears all underlines when no tracked section is currently in view.
   (function () {
     const links = document.querySelectorAll('.header-nav a[href^="#"]');
     if (!links.length) return;
@@ -3836,26 +3837,42 @@
     });
     if (!targets.length) return;
 
+    const visible = new Set();
+
+    function clearAll() {
+      links.forEach(l => l.classList.remove('active'));
+    }
+
     function setActive(activeLink) {
       links.forEach(l => l.classList.toggle('active', l === activeLink));
     }
 
     const observer = new IntersectionObserver((entries) => {
-      // Find the entry closest to the top of viewport that's intersecting
-      let bestEntry = null;
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (!bestEntry || entry.boundingClientRect.top < bestEntry.boundingClientRect.top) {
-            bestEntry = entry;
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      });
+
+      if (visible.size === 0) {
+        clearAll();
+        return;
+      }
+
+      // Topmost visible section wins
+      let topMost = null;
+      let topMostY = Infinity;
+      targets.forEach(t => {
+        if (visible.has(t.el)) {
+          const y = t.el.getBoundingClientRect().top;
+          if (y < topMostY) {
+            topMostY = y;
+            topMost = t;
           }
         }
       });
-      if (bestEntry) {
-        const match = targets.find(t => t.el === bestEntry.target);
-        if (match) setActive(match.link);
-      }
+      if (topMost) setActive(topMost.link);
     }, {
-      rootMargin: '-120px 0px -60% 0px',
+      rootMargin: '-120px 0px -50% 0px',
       threshold: 0,
     });
 
