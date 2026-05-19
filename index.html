@@ -894,22 +894,22 @@
     height: 6px;
     background: #057a28;
   }
-  .stat-card[data-tier="warn"]::before { background: #6b7a0a; }
-  .stat-card[data-tier="crit"]::before { background: #802828; }
+  .stat-card[data-tier="warn"]::before { background: #E0850A; }
+  .stat-card[data-tier="crit"]::before { background: #C13030; }
 
   /* Tier-colored eyebrow + stat */
   .stat-card[data-tier="warn"] .stat-eyebrow {
-    background: #fdfff3;
-    border-color: #6b7a0a;
-    color: #586605;
+    background: #FFF1DC;
+    border-color: #C26408;
+    color: #6B3C00;
   }
   .stat-card[data-tier="crit"] .stat-eyebrow {
     background: #fff0f0;
-    border-color: #802828;
-    color: #802828;
+    border-color: #C13030;
+    color: #C13030;
   }
-  .stat-card[data-tier="warn"] .stat-value { color: #586605; }
-  .stat-card[data-tier="crit"] .stat-value { color: #802828; }
+  .stat-card[data-tier="warn"] .stat-value { color: #6B3C00; }
+  .stat-card[data-tier="crit"] .stat-value { color: #C13030; }
 
   .stat-value {
     font-family: 'Serrif', Georgia, serif;
@@ -2555,51 +2555,51 @@
   .radar-svg .axis-label-group:hover .axis-label,
   .radar-svg .axis-label.active { fill: #057a28; font-weight: 500; }
 
-  /* Tier-based eyebrow + data-point colors (mid-tier yellow scores, low-tier red) */
+  /* Tier-based eyebrow + data-point colors (mid-tier orange scores, low-tier red) */
   .radar-svg .axis-label-group:hover [data-metric="entity"].axis-label-bg,
   .radar-svg .axis-label-group:hover [data-metric="schema"].axis-label-bg,
   .radar-svg [data-metric="entity"].axis-label-bg.active,
   .radar-svg [data-metric="schema"].axis-label-bg.active {
-    fill: #EEFF8C;
-    stroke: #586605;
+    fill: #FFF1DC;
+    stroke: #C26408;
   }
   .radar-svg .axis-label-group:hover [data-metric="entity"].axis-label,
   .radar-svg .axis-label-group:hover [data-metric="schema"].axis-label,
   .radar-svg [data-metric="entity"].axis-label.active,
   .radar-svg [data-metric="schema"].axis-label.active {
-    fill: #586605;
+    fill: #6B3C00;
   }
   .radar-svg .axis-label-group:hover [data-metric="offsite"].axis-label-bg,
   .radar-svg [data-metric="offsite"].axis-label-bg.active {
     fill: #fff0f0;
-    stroke: #802828;
+    stroke: #C13030;
   }
   .radar-svg .axis-label-group:hover [data-metric="offsite"].axis-label,
   .radar-svg [data-metric="offsite"].axis-label.active {
-    fill: #802828;
+    fill: #C13030;
   }
 
   /* Data point colors by tier (always visible, not just active) */
   .radar-svg .data-point[data-metric="entity"],
   .radar-svg .data-point[data-metric="schema"] {
-    fill: #EEFF8C;
-    stroke: #586605;
+    fill: #E0850A;
+    stroke: #6B3C00;
     stroke-width: 1.5;
   }
   .radar-svg .data-point[data-metric="entity"].active,
   .radar-svg .data-point[data-metric="schema"].active {
-    fill: #EEFF8C;
-    stroke: #586605;
+    fill: #E0850A;
+    stroke: #6B3C00;
     stroke-width: 2;
   }
   .radar-svg .data-point[data-metric="offsite"] {
-    fill: #F0A8AE;
-    stroke: #802828;
+    fill: #E54848;
+    stroke: #C13030;
     stroke-width: 1.5;
   }
   .radar-svg .data-point[data-metric="offsite"].active {
-    fill: #F0A8AE;
-    stroke: #802828;
+    fill: #E54848;
+    stroke: #C13030;
     stroke-width: 2;
   }
 
@@ -2930,7 +2930,7 @@
           </div>
         </div>
         <div><span class="metric-score">38</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 38%; background: #802828;"></div></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 38%; background: #C13030;"></div></div>
       </div>
     </div>
 
