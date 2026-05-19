@@ -6,6 +6,7 @@
 <title>AEO Strategy Scorecard - Hex.tech | AirOps</title>
 <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
 <style>
   /* AirOps brand fonts */
   @font-face {
@@ -862,26 +863,57 @@
     background: var(--white);
     border: none;
     border-radius: 0;
-    padding: 28px 32px;
+    padding: 32px 32px 36px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 28px;
     box-shadow: 0 14px 40px rgba(0, 122, 40, 0.22);
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
   }
+  /* Tier accent bar at top of each card */
+  .stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: #057a28;
+  }
+  .stat-card[data-tier="warn"]::before { background: #6b7a0a; }
+  .stat-card[data-tier="crit"]::before { background: #802828; }
+
+  /* Tier-colored eyebrow + stat */
+  .stat-card[data-tier="warn"] .stat-eyebrow {
+    background: #fdfff3;
+    border-color: #6b7a0a;
+    color: #586605;
+  }
+  .stat-card[data-tier="crit"] .stat-eyebrow {
+    background: #fff0f0;
+    border-color: #802828;
+    color: #802828;
+  }
+  .stat-card[data-tier="warn"] .stat-value { color: #586605; }
+  .stat-card[data-tier="crit"] .stat-value { color: #802828; }
+
   .stat-value {
     font-family: 'Serrif', Georgia, serif;
-    font-size: 64px;
+    font-size: 96px;
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1;
     color: var(--near-black);
-    flex-shrink: 0;
+    margin: auto 0;
   }
   .stat-desc {
     font-size: 16px;
-    line-height: 1.45;
+    line-height: 1.5;
     color: var(--near-black);
+    max-width: 320px;
   }
 
   @media (max-width: 980px) {
@@ -1333,28 +1365,24 @@
   .info-btn {
     width: 18px;
     height: 18px;
-    border-radius: 50%;
+    border: none;
     background: transparent;
-    border: 1px solid var(--text-tertiary);
     color: var(--text-tertiary);
-    font-family: 'Serrif', Georgia, serif;
-    font-style: italic;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     cursor: pointer;
-    padding: 0 0 0 1px;
+    padding: 0;
     flex-shrink: 0;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    transition: color 0.15s ease;
+  }
+  .info-btn .ri-information-line {
+    font-size: 18px;
+    line-height: 1;
   }
   .info-btn:hover,
   .info-btn:focus-visible {
     color: var(--near-black);
-    border-color: var(--near-black);
     outline: none;
   }
   .info-tooltip {
@@ -1493,15 +1521,15 @@
   }
 
   .metric-bar {
-    height: 4px;
-    background: var(--green-100);
+    height: 6px;
+    background: #E5EBE7;
     margin-top: 16px;
     position: relative;
   }
 
   .metric-bar-fill {
     height: 100%;
-    background: #7FF09E;
+    background: #057a28;
   }
 
   .gated-metrics {
@@ -2782,15 +2810,18 @@
 <section class="stats">
   <h2 class="stats-heading">You're losing your own category on ChatGPT,<br>the engine buyers use most</h2>
   <div class="stats-grid">
-    <div class="stat-card">
+    <div class="stat-card" data-tier="warn">
+      <span class="ao-eyebrow stat-eyebrow">ChatGPT Gap</span>
       <div class="stat-value">53%</div>
       <div class="stat-desc">of ChatGPT searches in your category never mention Hex, including your own positioning query</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card" data-tier="crit">
+      <span class="ao-eyebrow stat-eyebrow">Citation Share</span>
       <div class="stat-value">0%</div>
       <div class="stat-desc">of AI mentions across Hex's four core topics go to Hex. Across 35,178 events.</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card" data-tier="warn">
+      <span class="ao-eyebrow stat-eyebrow">Entity Authority</span>
       <div class="stat-value">6</div>
       <div class="stat-desc">of your top competitors have a Wikipedia page. Hex doesn't.</div>
     </div>
@@ -2809,7 +2840,7 @@
       <div class="metric-cell" data-metric="freshness" tabindex="0" role="button">
         <div class="metric-label-row">
           <span class="metric-label">Freshness</span>
-          <button type="button" class="info-btn" aria-label="What is Freshness?">i</button>
+          <button type="button" class="info-btn" aria-label="What is Freshness?"><i class="ri-information-line" aria-hidden="true"></i></button>
           <div class="info-tooltip" role="tooltip">
             <p>Whether content is updated, datestamped, and signals recency - a major weighting factor in AI answer engines.</p>
             <p><strong>How it&rsquo;s scored:</strong> Scored from datePublished/dateModified coverage, % of pages updated in the last 12 months, datestamp visibility in body copy, and statistic-currency.</p>
@@ -2821,7 +2852,7 @@
       <div class="metric-cell" data-metric="crawlability" tabindex="0" role="button">
         <div class="metric-label-row">
           <span class="metric-label">Crawlability</span>
-          <button type="button" class="info-btn" aria-label="What is Crawlability?">i</button>
+          <button type="button" class="info-btn" aria-label="What is Crawlability?"><i class="ri-information-line" aria-hidden="true"></i></button>
           <div class="info-tooltip" role="tooltip">
             <p>Whether AI agents can actually fetch, render, and parse your pages. Includes robots.txt, sitemap, status codes, and JS rendering.</p>
             <p><strong>How it&rsquo;s scored:</strong> Scored from sitemap coverage, % of pages returning 200, robots.txt allowlist for AI bots, and HTML-first vs JS-only render.</p>
@@ -2833,31 +2864,31 @@
       <div class="metric-cell" data-metric="entity" tabindex="0" role="button">
         <div class="metric-label-row">
           <span class="metric-label">Entity Signals</span>
-          <button type="button" class="info-btn" aria-label="What is Entity Signals?">i</button>
+          <button type="button" class="info-btn" aria-label="What is Entity Signals?"><i class="ri-information-line" aria-hidden="true"></i></button>
           <div class="info-tooltip" role="tooltip">
             <p>How clearly the brand is represented as a named entity across the web - Wikipedia, Crunchbase, knowledge panels, structured author bios.</p>
             <p><strong>How it&rsquo;s scored:</strong> Scored from Wikipedia presence, knowledge-panel detection, sameAs link count, author-entity schema, and brand mention density on third-party properties.</p>
           </div>
         </div>
         <div><span class="metric-score">60</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 60%; background: #ECF36C;"></div></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 60%; background: #6b7a0a;"></div></div>
       </div>
       <div class="metric-cell" data-metric="schema" tabindex="0" role="button">
         <div class="metric-label-row">
           <span class="metric-label">Schema Coverage</span>
-          <button type="button" class="info-btn" aria-label="What is Schema Coverage?">i</button>
+          <button type="button" class="info-btn" aria-label="What is Schema Coverage?"><i class="ri-information-line" aria-hidden="true"></i></button>
           <div class="info-tooltip" role="tooltip">
             <p>How well your pages declare structured data (JSON-LD) so engines can extract entities, FAQ, products, and articles cleanly.</p>
             <p><strong>How it&rsquo;s scored:</strong> Scored from % of sampled pages with valid JSON-LD, schema-type diversity (Article, Product, FAQPage, HowTo, Organization), and required-field completeness.</p>
           </div>
         </div>
         <div><span class="metric-score">55</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 55%; background: #ECF36C;"></div></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 55%; background: #6b7a0a;"></div></div>
       </div>
       <div class="metric-cell" data-metric="citation" tabindex="0" role="button">
         <div class="metric-label-row">
           <span class="metric-label">Citation Worthiness</span>
-          <button type="button" class="info-btn" aria-label="What is Citation Worthiness?">i</button>
+          <button type="button" class="info-btn" aria-label="What is Citation Worthiness?"><i class="ri-information-line" aria-hidden="true"></i></button>
           <div class="info-tooltip" role="tooltip">
             <p>Whether your content is the kind of thing AI engines pull as a source - original data, expert analysis, definitive guides, structured comparisons.</p>
             <p><strong>How it&rsquo;s scored:</strong> Scored from original-data presence, citation density (links to primary sources), comparison/listicle structures, and observed AI cite rate vs. category baseline.</p>
@@ -2869,7 +2900,7 @@
       <div class="metric-cell" data-metric="answer" tabindex="0" role="button">
         <div class="metric-label-row">
           <span class="metric-label">Answerable Format</span>
-          <button type="button" class="info-btn" aria-label="What is Answerable Format?">i</button>
+          <button type="button" class="info-btn" aria-label="What is Answerable Format?"><i class="ri-information-line" aria-hidden="true"></i></button>
           <div class="info-tooltip" role="tooltip">
             <p>Whether content is structured as direct answers - H2 questions, lists, tables, definitions - that AI can lift into responses.</p>
             <p><strong>How it&rsquo;s scored:</strong> Scored from H2-as-question rate, presence of TL;DR / key-takeaways blocks, table+list density, and average answer length under 300 words.</p>
@@ -2881,14 +2912,14 @@
       <div class="metric-cell" data-metric="offsite" tabindex="0" role="button">
         <div class="metric-label-row">
           <span class="metric-label">Offsite Readiness</span>
-          <button type="button" class="info-btn" aria-label="What is Offsite Readiness?">i</button>
+          <button type="button" class="info-btn" aria-label="What is Offsite Readiness?"><i class="ri-information-line" aria-hidden="true"></i></button>
           <div class="info-tooltip" role="tooltip">
             <p>Whether the brand is present on the third-party properties LLMs actually trust - Wikipedia, G2, Capterra, editorial sites, communities. 85% of brand mentions in AI come from offsite, so a brand absent here is invisible to most AI answers.</p>
             <p><strong>How it&rsquo;s scored:</strong> Scored from named third-party properties citing the brand, competitor offsite citation share, original-research distribution potential, review-site coverage, and community presence (Reddit / Quora / Stack Overflow).</p>
           </div>
         </div>
         <div><span class="metric-score">38</span><span class="metric-denom">/100</span></div>
-        <div class="metric-bar"><div class="metric-bar-fill" style="width: 38%; background: #F0A8AE;"></div></div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width: 38%; background: #802828;"></div></div>
       </div>
     </div>
 
