@@ -647,6 +647,9 @@
     flex-wrap: wrap;
   }
   .probe-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: 'Saans Mono', 'DM Mono', monospace;
     font-size: 13px;
     font-weight: 500;
@@ -660,6 +663,14 @@
     cursor: pointer;
     color: #057a28;
     transition: background 0.15s ease, color 0.15s ease;
+  }
+  .probe-filter-logo {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    border-radius: 3px;
+    background: var(--white);
+    flex-shrink: 0;
   }
   .probe-filter:hover { background: #eef9f3; }
   .probe-filter.active { background: #00ff64; border-color: #00ff64; color: #002910; }
@@ -3090,10 +3101,10 @@
   </div>
   <div class="probe-filters">
     <button type="button" class="probe-filter active" data-engine="all">All</button>
-    <button type="button" class="probe-filter" data-engine="ChatGPT">ChatGPT</button>
-    <button type="button" class="probe-filter" data-engine="Claude">Claude</button>
-    <button type="button" class="probe-filter" data-engine="Perplexity">Perplexity</button>
-    <button type="button" class="probe-filter" data-engine="Gemini">Gemini</button>
+    <button type="button" class="probe-filter" data-engine="ChatGPT"><img class="probe-filter-logo" src="https://www.google.com/s2/favicons?domain=openai.com&amp;sz=64" alt="" loading="lazy">ChatGPT</button>
+    <button type="button" class="probe-filter" data-engine="Claude"><img class="probe-filter-logo" src="https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=64" alt="" loading="lazy">Claude</button>
+    <button type="button" class="probe-filter" data-engine="Perplexity"><img class="probe-filter-logo" src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=64" alt="" loading="lazy">Perplexity</button>
+    <button type="button" class="probe-filter" data-engine="Gemini"><img class="probe-filter-logo" src="https://www.google.com/s2/favicons?domain=gemini.google.com&amp;sz=64" alt="" loading="lazy">Gemini</button>
   </div>
   <ul class="probes-list">
 <li class="probe-row">
